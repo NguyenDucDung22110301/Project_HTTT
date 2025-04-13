@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,10 +56,88 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_BanHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_BanHang.Designer.cs">
+      <DependentUpon>UC_BanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DichVu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DichVu.Designer.cs">
+      <DependentUpon>UC_DichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_DoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_DoanhThu.Designer.cs">
+      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_HoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_HoaDon.Designer.cs">
+      <DependentUpon>UC_HoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_KhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_KhachHang.Designer.cs">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Kho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Kho.Designer.cs">
+      <DependentUpon>UC_Kho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_KhuyenMai.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_KhuyenMai.Designer.cs">
+      <DependentUpon>UC_KhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_NhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_NhanVien.Designer.cs">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_PhieuNhan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_PhieuNhan.Designer.cs">
+      <DependentUpon>UC_PhieuNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_PhieuNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_PhieuNhap.Designer.cs">
+      <DependentUpon>UC_PhieuNhap.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -69,6 +148,36 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UC_BanHang.resx">
+      <DependentUpon>UC_BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DichVu.resx">
+      <DependentUpon>UC_DichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_DoanhThu.resx">
+      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_HoaDon.resx">
+      <DependentUpon>UC_HoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_KhachHang.resx">
+      <DependentUpon>UC_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Kho.resx">
+      <DependentUpon>UC_Kho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_KhuyenMai.resx">
+      <DependentUpon>UC_KhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_NhanVien.resx">
+      <DependentUpon>UC_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_PhieuNhan.resx">
+      <DependentUpon>UC_PhieuNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_PhieuNhap.resx">
+      <DependentUpon>UC_PhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
