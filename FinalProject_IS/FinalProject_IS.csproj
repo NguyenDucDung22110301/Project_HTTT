@@ -118,6 +118,11 @@
     <Compile Include="SanPham.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ShopBadmintonDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopBadmintonDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ShopBadmintonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -262,6 +267,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ShopBadmintonModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ShopBadmintonDataSet.xsc">
+      <DependentUpon>ShopBadmintonDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ShopBadmintonDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShopBadmintonDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ShopBadmintonDataSet.xss">
+      <DependentUpon>ShopBadmintonDataSet.xsd</DependentUpon>
+    </None>
     <None Include="ShopBadmintonModel.edmx.diagram">
       <DependentUpon>ShopBadmintonModel.edmx</DependentUpon>
     </None>
