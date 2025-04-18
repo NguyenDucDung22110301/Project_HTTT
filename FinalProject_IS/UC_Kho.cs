@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalProject_IS.DAO;
 
 namespace FinalProject_IS
 {
@@ -20,29 +21,11 @@ namespace FinalProject_IS
 
         public void LoadSanPham()
         {
-            using (var context = new ShopBadmintonEntities()) 
+            using (var context = new ShopBadmintonEntities())
             {
-                var data = context.SanPhams
-                                  .Select(sp => new
-                                  {
-                                      sp.MaSP,
-                                      sp.TenSP,
-                                      sp.LoaiSP,
-                                      sp.GiaBan,
-                                      sp.SoLuongTon,
-                                      sp.NgayNhapKho,
-                                      sp.ThoiGianBaoHanh,
-                                      sp.MaTH,
-                                      TenThuongHieu = sp.ThuongHieu.TenTH, 
-                                      sp.GiaGoc,
-                                      sp.MoTa
-                                  })
-                                  .ToList();
-
-                dataGridView1.DataSource = data;
+                var dssanpham = SanPhamDAO.LoadSanPham();
+                dtgvSanPham.DataSource = dssanpham;
             }
         }
-
-        public 
     }
 }
