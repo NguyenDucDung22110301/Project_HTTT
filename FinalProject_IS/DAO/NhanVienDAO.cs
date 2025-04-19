@@ -11,34 +11,11 @@ namespace FinalProject_IS.DAO
 {
     public class NhanVienDAO
     {
-        //tạm thời, nếu có đủ dữ liệu ở mọi bảng sẽ bỏ
-        public class NhanVienView
-        {
-            public int MaNV {  get; set; }
-            public string HoTen { get; set; }
-            public DateTime NgaySinh { get; set; }
-            public string GioiTinh { get; set; }
-            public string Email { get; set; }
-            public int? MaChucVu { get; set; }
-            public decimal LuongCoBan { get; set; }
-        }
-
-        public static List<NhanVienView> LoadNhanVien()
+        public static List<NhanVien> LoadNhanVien()
         {
             using (var context = new ShopBadmintonEntities())
             {
-                return context.NhanViens
-                              .Select(nv => new NhanVienView
-                              {
-                                  MaNV = nv.MaNV,
-                                  HoTen = nv.HoTen,
-                                  NgaySinh = nv.NgaySinh,
-                                  GioiTinh = nv.GioiTinh,
-                                  Email = nv.Email,
-                                  MaChucVu = nv.MaChucVu,
-                                  LuongCoBan = nv.LuongCoBan
-                              })
-                              .ToList();
+                return context.NhanViens.ToList();
             }
         }
 

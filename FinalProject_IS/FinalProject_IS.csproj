@@ -126,6 +126,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ShopBadmintonDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ShopBadmintonDataSetHD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopBadmintonDataSetHD.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ShopBadmintonDataSetNV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopBadmintonDataSetNV.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ShopBadmintonModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -280,6 +290,28 @@
     </None>
     <None Include="ShopBadmintonDataSet.xss">
       <DependentUpon>ShopBadmintonDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ShopBadmintonDataSetHD.xsc">
+      <DependentUpon>ShopBadmintonDataSetHD.xsd</DependentUpon>
+    </None>
+    <None Include="ShopBadmintonDataSetHD.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShopBadmintonDataSetHD.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ShopBadmintonDataSetHD.xss">
+      <DependentUpon>ShopBadmintonDataSetHD.xsd</DependentUpon>
+    </None>
+    <None Include="ShopBadmintonDataSetNV.xsc">
+      <DependentUpon>ShopBadmintonDataSetNV.xsd</DependentUpon>
+    </None>
+    <None Include="ShopBadmintonDataSetNV.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ShopBadmintonDataSetNV.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ShopBadmintonDataSetNV.xss">
+      <DependentUpon>ShopBadmintonDataSetNV.xsd</DependentUpon>
     </None>
     <None Include="ShopBadmintonModel.edmx.diagram">
       <DependentUpon>ShopBadmintonModel.edmx</DependentUpon>

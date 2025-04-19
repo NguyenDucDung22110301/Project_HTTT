@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,9 +41,21 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.shopBadmintonDataSetHD = new FinalProject_IS.ShopBadmintonDataSetHD();
+            this.hoaDonBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.hoaDonTableAdapter = new FinalProject_IS.ShopBadmintonDataSetHDTableAdapters.HoaDonTableAdapter();
+            this.maHDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayGioTaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maKHDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maNVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tongTienDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maKMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loaiHoaDonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHoaDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shopBadmintonDataSetHD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hoaDonBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -99,7 +112,17 @@
             // 
             // dtgvHoaDon
             // 
+            this.dtgvHoaDon.AutoGenerateColumns = false;
             this.dtgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maHDDataGridViewTextBoxColumn,
+            this.ngayGioTaoDataGridViewTextBoxColumn,
+            this.maKHDataGridViewTextBoxColumn,
+            this.maNVDataGridViewTextBoxColumn,
+            this.tongTienDataGridViewTextBoxColumn,
+            this.maKMDataGridViewTextBoxColumn,
+            this.loaiHoaDonDataGridViewTextBoxColumn});
+            this.dtgvHoaDon.DataSource = this.hoaDonBindingSource;
             this.dtgvHoaDon.Location = new System.Drawing.Point(34, 127);
             this.dtgvHoaDon.Name = "dtgvHoaDon";
             this.dtgvHoaDon.RowHeadersWidth = 51;
@@ -190,6 +213,77 @@
             this.label1.TabIndex = 50;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 
+            // shopBadmintonDataSetHD
+            // 
+            this.shopBadmintonDataSetHD.DataSetName = "ShopBadmintonDataSetHD";
+            this.shopBadmintonDataSetHD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // hoaDonBindingSource
+            // 
+            this.hoaDonBindingSource.DataMember = "HoaDon";
+            this.hoaDonBindingSource.DataSource = this.shopBadmintonDataSetHD;
+            // 
+            // hoaDonTableAdapter
+            // 
+            this.hoaDonTableAdapter.ClearBeforeFill = true;
+            // 
+            // maHDDataGridViewTextBoxColumn
+            // 
+            this.maHDDataGridViewTextBoxColumn.DataPropertyName = "MaHD";
+            this.maHDDataGridViewTextBoxColumn.HeaderText = "MaHD";
+            this.maHDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maHDDataGridViewTextBoxColumn.Name = "maHDDataGridViewTextBoxColumn";
+            this.maHDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.maHDDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // ngayGioTaoDataGridViewTextBoxColumn
+            // 
+            this.ngayGioTaoDataGridViewTextBoxColumn.DataPropertyName = "NgayGioTao";
+            this.ngayGioTaoDataGridViewTextBoxColumn.HeaderText = "NgayGioTao";
+            this.ngayGioTaoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ngayGioTaoDataGridViewTextBoxColumn.Name = "ngayGioTaoDataGridViewTextBoxColumn";
+            this.ngayGioTaoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // maKHDataGridViewTextBoxColumn
+            // 
+            this.maKHDataGridViewTextBoxColumn.DataPropertyName = "MaKH";
+            this.maKHDataGridViewTextBoxColumn.HeaderText = "MaKH";
+            this.maKHDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maKHDataGridViewTextBoxColumn.Name = "maKHDataGridViewTextBoxColumn";
+            this.maKHDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // maNVDataGridViewTextBoxColumn
+            // 
+            this.maNVDataGridViewTextBoxColumn.DataPropertyName = "MaNV";
+            this.maNVDataGridViewTextBoxColumn.HeaderText = "MaNV";
+            this.maNVDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maNVDataGridViewTextBoxColumn.Name = "maNVDataGridViewTextBoxColumn";
+            this.maNVDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tongTienDataGridViewTextBoxColumn
+            // 
+            this.tongTienDataGridViewTextBoxColumn.DataPropertyName = "TongTien";
+            this.tongTienDataGridViewTextBoxColumn.HeaderText = "TongTien";
+            this.tongTienDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tongTienDataGridViewTextBoxColumn.Name = "tongTienDataGridViewTextBoxColumn";
+            this.tongTienDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // maKMDataGridViewTextBoxColumn
+            // 
+            this.maKMDataGridViewTextBoxColumn.DataPropertyName = "MaKM";
+            this.maKMDataGridViewTextBoxColumn.HeaderText = "MaKM";
+            this.maKMDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maKMDataGridViewTextBoxColumn.Name = "maKMDataGridViewTextBoxColumn";
+            this.maKMDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // loaiHoaDonDataGridViewTextBoxColumn
+            // 
+            this.loaiHoaDonDataGridViewTextBoxColumn.DataPropertyName = "LoaiHoaDon";
+            this.loaiHoaDonDataGridViewTextBoxColumn.HeaderText = "LoaiHoaDon";
+            this.loaiHoaDonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.loaiHoaDonDataGridViewTextBoxColumn.Name = "loaiHoaDonDataGridViewTextBoxColumn";
+            this.loaiHoaDonDataGridViewTextBoxColumn.Width = 125;
+            // 
             // UC_HoaDon
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -201,6 +295,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHoaDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shopBadmintonDataSetHD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hoaDonBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +316,15 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maHDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayGioTaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maKHDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maNVDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tongTienDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maKMDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loaiHoaDonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource hoaDonBindingSource;
+        private ShopBadmintonDataSetHD shopBadmintonDataSetHD;
+        private ShopBadmintonDataSetHDTableAdapters.HoaDonTableAdapter hoaDonTableAdapter;
     }
 }
