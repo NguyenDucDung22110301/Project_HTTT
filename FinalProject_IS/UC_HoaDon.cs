@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalProject_IS.DAOs;
 
 namespace FinalProject_IS
 {
@@ -15,6 +16,12 @@ namespace FinalProject_IS
         public UC_HoaDon()
         {
             InitializeComponent();
+            LoadDsHoaDon();
+        }
+
+        public void LoadDsHoaDon()
+        {
+            dtgvHoaDon.DataSource = HoaDonDAO.DSHoaDon();
         }
     }
 }
