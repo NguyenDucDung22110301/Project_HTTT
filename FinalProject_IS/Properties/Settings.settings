@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="conStr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Server=DESKTOP-O0DLACG;Database=ShopBadminton;Integrated Security=True;</Value>
+      <Value Profile="(Default)">Server=(LocalDB)\MSSQLLocalDB;Database=ShopBadminton;Integrated Security=True;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

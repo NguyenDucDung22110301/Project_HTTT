@@ -25,7 +25,7 @@ namespace FinalProject_IS.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=DESKTOP-O0DLACG;Database=ShopBadminton;Integrated Security=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=(LocalDB)\\MSSQLLocalDB;Database=ShopBadminton;Integrated Security=True;")]
         public string conStr {
             get {
                 return ((string)(this["conStr"]));
