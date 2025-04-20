@@ -17,6 +17,7 @@ namespace FinalProject_IS
         public int MaPhieuNhap { get; set; }
         public int MaSP { get; set; }
         public int SoLuongNhap { get; set; }
+        public string TenSP { get; set; }
     
         public virtual PhieuNhapHang PhieuNhapHang { get; set; }
         public virtual SanPham SanPham { get; set; }
