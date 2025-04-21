@@ -37,5 +37,38 @@ namespace FinalProject_IS.DAOs
 
             return dsPhieuNhan;
         }
+        public static List<PhieuNhan> DSPhieuNhanTheoMa(string maphieu)
+        {
+            List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"SELECT * FROM PhieuNhan
+                         WHERE MaPhieuNhan LIKE @maphieu";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@maphieu", maphieu + "%");
+
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+
+                    dataAdapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        PhieuNhan sp = new PhieuNhan
+                        {
+                            MaPhieuNhan = Convert.ToInt32(row["MaPhieuNhan"]),
+                            NgayTao = Convert.ToDateTime(row["NgayTao"]),
+                        };
+
+                        dsPhieuNhan.Add(sp);
+                    }
+                }
+            }
+
+            return dsPhieuNhan;
+        }
     }
 }
