@@ -14,6 +14,7 @@ namespace FinalProject_IS
 {
     public partial class UC_PhieuNhan : UserControl
     {
+        private bool isAscending = true;
         public UC_PhieuNhan()
         {
             InitializeComponent();
@@ -39,13 +40,13 @@ namespace FinalProject_IS
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            
+            isAscending = !isAscending; // Đảo ngược trạng thái sắp xếp
+            cb_Box_Filter_SelectedIndexChanged(sender, e); // Cập nhật DataGridView
         }
 
         private void cb_Box_Filter_SelectedIndexChanged(object sender, EventArgs e)
         {
             String values = cb_Box_Filter.Text;
-            MessageBox.Show(values);
             String nameColum = string.Empty; ;
             if (values == "Sắp xếp theo ngày")
             {
@@ -57,7 +58,10 @@ namespace FinalProject_IS
             }
             try
             {
-                dtgvPhieuNhan.DataSource = PhieuNhanDAO.DSSapXepPhieuNhan(nameColum);
+                dtgvPhieuNhan.DataSource = PhieuNhanDAO.DSSapXepPhieuNhan(nameColum, isAscending);
+                // Thông báo sau khi sắp xếp
+                string sortOrder = isAscending ? "tăng dần" : "giảm dần";
+                MessageBox.Show($"Đã sắp xếp theo {sortOrder} theo cột {nameColum}.");
             }
             catch (Exception ex)
             {

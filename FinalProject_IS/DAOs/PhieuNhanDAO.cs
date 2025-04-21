@@ -71,25 +71,24 @@ namespace FinalProject_IS.DAOs
 
             return dsPhieuNhan;
         }
-        public static List<PhieuNhan> DSSapXepPhieuNhan(string columnName)
+        public static List<PhieuNhan> DSSapXepPhieuNhan(string columnName, bool ascending)
         {
             List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
 
-            // Kiểm tra và xác thực tên cột để tránh SQL injection
             if (!IsValidColumnName(columnName))
             {
                 throw new ArgumentException("Tên cột không hợp lệ.");
             }
 
-            string query = $@"SELECT * FROM PhieuNhan
-                      ORDER BY {columnName} DESC";
+            string order = ascending ? "ASC" : "DESC"; // Chọn thứ tự sắp xếp
+            string query = $@"SELECT * FROM PhieuNhan ORDER BY {columnName} {order}";
 
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                conn.Open(); // Mở kết nối
+                conn.Open();
 
-                using (SqlDataReader reader = cmd.ExecuteReader()) // Sử dụng SqlDataReader
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
