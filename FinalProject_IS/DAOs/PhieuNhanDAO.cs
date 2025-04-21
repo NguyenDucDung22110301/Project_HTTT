@@ -60,7 +60,7 @@ namespace FinalProject_IS.DAOs
                         PhieuNhan sp = new PhieuNhan
                         {
                             MaPhieuNhan = Convert.ToInt32(row["MaPhieuNhan"]),
-                            NgayTao = Convert.ToDateTime(row["NgayTao"]),
+                            NgayTao = Convert.ToDateTime(row["NgayTao"])
                         };
 
                         dsPhieuNhan.Add(sp);

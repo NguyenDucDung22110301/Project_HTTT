@@ -24,10 +24,11 @@ namespace FinalProject_IS
             dtgvPhieuNhan.DataSource = PhieuNhanDAO.DSPhieuNhan();
         }
 
-        private void rtxb_SearchBox_Click(object sender, EventArgs e)
+        private void btn_Search_Click(object sender, EventArgs e)
         {
             dtgvPhieuNhan.DataSource = PhieuNhanDAO.DSPhieuNhanTheoMa(rtxb_SearchBox.Text);
         }
-     
     }
+     
+    
 }
