@@ -28,11 +28,24 @@ namespace FinalProject_IS
         {
             string query = @"
                             SELECT 
-                                DAY(NgayGioTao) AS Ngay,
-                                SUM(TongTien) AS DoanhThu
-                            FROM HoaDon
-                            WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year
-                            GROUP BY DAY(NgayGioTao)
+                                DAY(Ngay) AS Ngay,
+                                SUM(DoanhThu) AS DoanhThu
+                            FROM (
+                                SELECT 
+                                    NgayGioTao AS Ngay,
+                                    TongTien AS DoanhThu
+                                FROM HoaDon
+                                WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year
+
+                                UNION ALL
+
+                                SELECT 
+                                    NgayGioTao AS Ngay,
+                                    ThanhTien AS DoanhThu
+                                FROM HoaDonDichVu
+                                WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                            ) AS TongHop
+                            GROUP BY DAY(Ngay)
                             ORDER BY Ngay";
 
             DataTable dt = new DataTable();
@@ -54,14 +67,15 @@ namespace FinalProject_IS
             chartDoanhThu.Titles.Add($"Doanh thu tháng {month}/{year}");
             Series series = new Series("Doanh thu theo ngày")
             {
-                ChartType = SeriesChartType.Column
+                ChartType = SeriesChartType.Column,
+                IsValueShownAsLabel = true
             };
 
             foreach (DataRow row in dt.Rows)
             {
                 int ngay = Convert.ToInt32(row["Ngay"]);
                 decimal doanhThu = Convert.ToDecimal(row["DoanhThu"]);
-                series.Points.AddXY("Ngày " + ngay, doanhThu);
+                series.Points.AddXY(ngay + "/" + month, doanhThu);
             }
 
             chartDoanhThu.Series.Add(series);
@@ -70,13 +84,26 @@ namespace FinalProject_IS
         private void LoadDoanhThuTheoNam(int year)
         {
             string query = @"
-                        SELECT 
-                            MONTH(NgayGioTao) AS Thang,
-                            SUM(TongTien) AS DoanhThu
-                        FROM HoaDon
-                        WHERE YEAR(NgayGioTao) = @Year
-                        GROUP BY MONTH(NgayGioTao)
-                        ORDER BY Thang ";
+                            SELECT 
+                                MONTH(Ngay) AS Thang,
+                                SUM(DoanhThu) AS DoanhThu
+                            FROM (
+                                SELECT 
+                                    NgayGioTao AS Ngay,
+                                    TongTien AS DoanhThu
+                                FROM HoaDon
+                                WHERE YEAR(NgayGioTao) = @Year
+
+                                UNION ALL
+
+                                SELECT 
+                                    NgayGioTao AS Ngay,
+                                    ThanhTien AS DoanhThu
+                                FROM HoaDonDichVu
+                                WHERE YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                            ) AS TongHop
+                            GROUP BY MONTH(Ngay)
+                            ORDER BY Thang";
 
             DataTable dt = new DataTable();
 
@@ -96,14 +123,15 @@ namespace FinalProject_IS
             chartDoanhThu.Titles.Add($"Doanh thu năm {year}");
             Series series = new Series("Doanh thu theo tháng")
             {
-                ChartType = SeriesChartType.Column
+                ChartType = SeriesChartType.Column,
+                IsValueShownAsLabel= true
             };
 
             foreach (DataRow row in dt.Rows)
             {
                 int thang = Convert.ToInt32(row["Thang"]);
                 decimal doanhThu = Convert.ToDecimal(row["DoanhThu"]);
-                series.Points.AddXY("Tháng " + thang, doanhThu);
+                series.Points.AddXY(thang + "/" + year, doanhThu);
             }
 
             chartDoanhThu.Series.Add(series);
