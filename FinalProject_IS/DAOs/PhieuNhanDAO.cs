@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
 
 namespace FinalProject_IS.DAOs
 {
@@ -69,6 +70,49 @@ namespace FinalProject_IS.DAOs
             }
 
             return dsPhieuNhan;
+        }
+        public static List<PhieuNhan> DSSapXepPhieuNhan(string columnName)
+        {
+            List<PhieuNhan> dsPhieuNhan = new List<PhieuNhan>();
+
+            // Kiểm tra và xác thực tên cột để tránh SQL injection
+            if (!IsValidColumnName(columnName))
+            {
+                throw new ArgumentException("Tên cột không hợp lệ.");
+            }
+
+            string query = $@"SELECT * FROM PhieuNhan
+                      ORDER BY {columnName} DESC";
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open(); // Mở kết nối
+
+                using (SqlDataReader reader = cmd.ExecuteReader()) // Sử dụng SqlDataReader
+                {
+                    while (reader.Read())
+                    {
+                        PhieuNhan sp = new PhieuNhan
+                        {
+                            MaPhieuNhan = reader.GetInt32(reader.GetOrdinal("MaPhieuNhan")),
+                            NgayTao = reader.GetDateTime(reader.GetOrdinal("NgayTao"))
+                        };
+
+                        dsPhieuNhan.Add(sp);
+                    }
+                }
+            }
+
+            return dsPhieuNhan;
+        }
+
+        // Phương thức để kiểm tra tên cột
+        private static bool IsValidColumnName(string columnName)
+        {
+            // Kiểm tra tên cột với danh sách các tên cột hợp lệ
+            var validColumns = new List<string> { "MaPhieuNhan", "NgayTao" }; // Thêm các cột hợp lệ ở đây
+            return validColumns.Contains(columnName);
         }
     }
 }
