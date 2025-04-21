@@ -160,11 +160,11 @@
     <Compile Include="UC_DichVu.Designer.cs">
       <DependentUpon>UC_DichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_DoanhThu.cs">
+    <Compile Include="UC_ThongKe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_DoanhThu.Designer.cs">
-      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
+    <Compile Include="UC_ThongKe.Designer.cs">
+      <DependentUpon>UC_ThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_HoaDon.cs">
       <SubType>UserControl</SubType>
@@ -232,8 +232,8 @@
     <EmbeddedResource Include="UC_DichVu.resx">
       <DependentUpon>UC_DichVu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_DoanhThu.resx">
-      <DependentUpon>UC_DoanhThu.cs</DependentUpon>
+    <EmbeddedResource Include="UC_ThongKe.resx">
+      <DependentUpon>UC_ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_HoaDon.resx">
       <DependentUpon>UC_HoaDon.cs</DependentUpon>

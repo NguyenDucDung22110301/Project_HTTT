@@ -42,7 +42,7 @@ namespace FinalProject_IS
 
         private void btn_DoanhThu_Click(object sender, EventArgs e)
         {
-            ChangeTab(new UC_DoanhThu());
+            ChangeTab(new UC_ThongKe());
         }
 
         private void btn_KhachHang_Click(object sender, EventArgs e)

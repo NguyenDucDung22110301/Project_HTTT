@@ -184,7 +184,7 @@
             this.btn_DoanhThu.Name = "btn_DoanhThu";
             this.btn_DoanhThu.Size = new System.Drawing.Size(100, 68);
             this.btn_DoanhThu.TabIndex = 1;
-            this.btn_DoanhThu.Text = "Doanh Thu";
+            this.btn_DoanhThu.Text = "Thống Kê";
             this.btn_DoanhThu.UseVisualStyleBackColor = true;
             this.btn_DoanhThu.Click += new System.EventHandler(this.btn_DoanhThu_Click);
             // 
