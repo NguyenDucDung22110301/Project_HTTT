@@ -44,5 +44,39 @@ namespace FinalProject_IS.DAOs
 
             return dsSanPham;
         }
+
+        public static int GetNewProductID()
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open();
+
+                string query = "SELECT ISNULL(MAX(MaSP), 0) FROM SanPham";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    int maxID = Convert.ToInt32(result);
+                    return maxID + 1; 
+                }
+            }
+        }
+
+        public static string GetProductNameByID(int productID)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open();
+
+                string query = "Select TenSP From SanPham where MaSP = @productID;";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@productID", productID);
+                    object result = cmd.ExecuteScalar();
+                    string maxID = result.ToString();
+                    return maxID;
+                }
+            }
+        }
+
     }
 }
