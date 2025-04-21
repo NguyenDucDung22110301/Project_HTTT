@@ -28,7 +28,7 @@ namespace FinalProject_IS.DAOs
                 {
                     PhieuNhan pn = new PhieuNhan
                     {
-                        MaPhieuNhan = Convert.ToInt32(row["PhieuNhan"]),
+                        MaPhieuNhan = Convert.ToInt32(row["MaPhieuNhan"]),
                         NgayTao = Convert.ToDateTime(row["NgayTao"]),
                     };
                     dsPhieuNhan.Add(pn);
