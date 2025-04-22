@@ -122,6 +122,7 @@
             this.dtgvPhieuNhap.RowHeadersWidth = 51;
             this.dtgvPhieuNhap.Size = new System.Drawing.Size(1059, 424);
             this.dtgvPhieuNhap.TabIndex = 41;
+            this.dtgvPhieuNhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuNhap_CellContentClick);
             // 
             // btn_Search
             // 

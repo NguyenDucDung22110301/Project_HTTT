@@ -65,6 +65,18 @@
     <Compile Include="ChiTietPhieuNhan.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="F_ChiTietPhieuNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_ChiTietPhieuNhan.Designer.cs">
+      <DependentUpon>F_ChiTietPhieuNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_ChiTietPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_ChiTietPhieuNhap.Designer.cs">
+      <DependentUpon>F_ChiTietPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChiTietPhieuNhapHang.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
@@ -80,6 +92,7 @@
     <Compile Include="DAOs\PhieuNhanDAO.cs" />
     <Compile Include="DAOs\KhachHangDAO.cs" />
     <Compile Include="DAOs\SanPhamDAO.cs" />
+    <Compile Include="DAOs\ThuongHieuDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +221,12 @@
     <Compile Include="UC_PhieuNhap.Designer.cs">
       <DependentUpon>UC_PhieuNhap.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="F_ChiTietPhieuNhan.resx">
+      <DependentUpon>F_ChiTietPhieuNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_ChiTietPhieuNhap.resx">
+      <DependentUpon>F_ChiTietPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
