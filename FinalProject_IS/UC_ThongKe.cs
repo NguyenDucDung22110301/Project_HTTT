@@ -235,7 +235,7 @@ namespace FinalProject_IS
                                 LoiNhuanSanPham AS (
                                     SELECT 
                                         CAST(hd.NgayGioTao AS DATE) AS Ngay,
-                                        SUM(ct.SoLuongSP * ct.DonGia - ct.SoLuongSP * ISNULL(ttn.GiaNhap, 0)) AS LoiNhuan
+                                        SUM(ct.SoLuongSP * (ct.DonGia - ISNULL(ttn.GiaNhap, 0))) AS LoiNhuan
                                     FROM HoaDon hd
                                     JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
                                     LEFT JOIN ThongtinNhap ttn ON ct.MaSP = ttn.MaSP
@@ -314,7 +314,7 @@ namespace FinalProject_IS
                                 LoiNhuanSanPham AS (
                                     SELECT 
                                         CAST(hd.NgayGioTao AS DATE) AS Ngay,
-                                        SUM(ct.SoLuongSP * ct.DonGia - ct.SoLuongSP * ISNULL(ttn.GiaNhap, 0)) AS LoiNhuan
+                                        SUM(ct.SoLuongSP * (ct.DonGia - ISNULL(ttn.GiaNhap, 0))) AS LoiNhuan
                                     FROM HoaDon hd
                                     JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
                                     LEFT JOIN ThongTinNhap ttn ON ct.MaSP = ttn.MaSP

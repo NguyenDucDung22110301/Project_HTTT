@@ -19,8 +19,5 @@ namespace FinalProject_IS
         public int SoLuongSP { get; set; }
         public decimal DonGia { get; set; }
         public Nullable<decimal> ThanhTien { get; set; }
-    
-        public virtual HoaDon HoaDon { get; set; }
-        public virtual SanPham SanPham { get; set; }
     }
 }

@@ -19,7 +19,5 @@ namespace FinalProject_IS
         public Nullable<int> SoGioLam { get; set; }
         public Nullable<System.DateTime> NgayXuat { get; set; }
         public Nullable<decimal> TongTien { get; set; }
-    
-        public virtual NhanVien NhanVien { get; set; }
     }
 }

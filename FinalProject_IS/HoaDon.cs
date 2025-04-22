@@ -14,12 +14,6 @@ namespace FinalProject_IS
     
     public partial class HoaDon
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoaDon()
-        {
-            this.ChiTietHD_SanPham = new HashSet<ChiTietHD_SanPham>();
-        }
-    
         public int MaHD { get; set; }
         public Nullable<System.DateTime> NgayGioTao { get; set; }
         public Nullable<int> MaKH { get; set; }
@@ -27,12 +21,5 @@ namespace FinalProject_IS
         public decimal TongTien { get; set; }
         public Nullable<int> MaKM { get; set; }
         public string LoaiHoaDon { get; set; }
-        public string SoHD { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHD_SanPham> ChiTietHD_SanPham { get; set; }
-        public virtual KhachHang KhachHang { get; set; }
-        public virtual KhuyenMai KhuyenMai { get; set; }
-        public virtual NhanVien NhanVien { get; set; }
     }
 }

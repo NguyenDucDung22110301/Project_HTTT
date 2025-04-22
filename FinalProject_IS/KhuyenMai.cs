@@ -14,12 +14,6 @@ namespace FinalProject_IS
     
     public partial class KhuyenMai
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhuyenMai()
-        {
-            this.HoaDons = new HashSet<HoaDon>();
-        }
-    
         public int MaKM { get; set; }
         public string TenChuongTrinh { get; set; }
         public double GiaTriKhuyenMai { get; set; }
@@ -27,8 +21,5 @@ namespace FinalProject_IS
         public System.DateTime NgayBatDau { get; set; }
         public System.DateTime NgayKetThuc { get; set; }
         public int SoLuong { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
     }
 }

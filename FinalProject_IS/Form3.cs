@@ -102,7 +102,11 @@ namespace FinalProject_IS
                 dtgv_ChiTiet[7, e.RowIndex].Value = ThuongHieuDAO.GetTenThuongHieuByID(prod.MaTH);
                 dtgv_ChiTiet[8, e.RowIndex].Value = prod.ThoiGianBaoHanh.ToString();
                 dtgv_ChiTiet[9, e.RowIndex].Value = prod.MoTa;
-                dtgv_ChiTiet[10, e.RowIndex].Value = 0;
+            }
+            if (e.ColumnIndex == 5)
+            {
+                dtgv_ChiTiet[10, e.RowIndex].Value = 
+                    (Convert.ToInt32(dtgv_ChiTiet[5, e.RowIndex].Value) * Convert.ToDecimal(dtgv_ChiTiet[6, e.RowIndex].Value)).ToString();
             }
         }
     }

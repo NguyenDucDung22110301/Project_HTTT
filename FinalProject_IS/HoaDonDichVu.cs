@@ -25,8 +25,5 @@ namespace FinalProject_IS
         public int SoKG { get; set; }
         public Nullable<decimal> ThanhTien { get; set; }
         public string LoaiPhieu { get; set; }
-    
-        public virtual KhachHang KhachHang { get; set; }
-        public virtual NhanVien NhanVien { get; set; }
     }
 }

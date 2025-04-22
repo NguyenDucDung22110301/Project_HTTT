@@ -25,8 +25,5 @@ namespace FinalProject_IS
         public string MoTa { get; set; }
         public Nullable<decimal> TongTien { get; set; }
         public Nullable<System.DateTime> NgayNhan { get; set; }
-    
-        public virtual PhieuNhan PhieuNhan { get; set; }
-        public virtual SanPham SanPham { get; set; }
     }
 }

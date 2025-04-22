@@ -147,8 +147,11 @@ namespace FinalProject_IS.DAOs
                             };
                         }
                     }
+
+                    return sanPham;
                 }
             }
+        }
 
         public static void UpdateSanPhamNhan(int id, int soluong)
         {
@@ -169,10 +172,6 @@ namespace FinalProject_IS.DAOs
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
-
-
-            return sanPham; // Trả về sản phẩm hoặc null nếu không tìm thấy
         }
     }
 }

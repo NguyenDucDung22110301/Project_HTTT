@@ -14,14 +14,6 @@ namespace FinalProject_IS
     
     public partial class NhanVien
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhanVien()
-        {
-            this.HoaDons = new HashSet<HoaDon>();
-            this.HoaDonDichVus = new HashSet<HoaDonDichVu>();
-            this.HoaDonLuongs = new HashSet<HoaDonLuong>();
-        }
-    
         public int MaNV { get; set; }
         public string HoTen { get; set; }
         public System.DateTime NgaySinh { get; set; }
@@ -29,13 +21,5 @@ namespace FinalProject_IS
         public string Email { get; set; }
         public Nullable<int> MaChucVu { get; set; }
         public decimal LuongCoBan { get; set; }
-    
-        public virtual ChucVu ChucVu { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonDichVu> HoaDonDichVus { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonLuong> HoaDonLuongs { get; set; }
     }
 }

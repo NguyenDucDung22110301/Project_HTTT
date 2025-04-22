@@ -14,17 +14,8 @@ namespace FinalProject_IS
     
     public partial class PhieuNhapHang
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PhieuNhapHang()
-        {
-            this.ChiTietPhieuNhapHangs = new HashSet<ChiTietPhieuNhapHang>();
-        }
-    
         public int MaPhieuNhap { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
         public string TinhTrangPhieuNhap { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietPhieuNhapHang> ChiTietPhieuNhapHangs { get; set; }
     }
 }

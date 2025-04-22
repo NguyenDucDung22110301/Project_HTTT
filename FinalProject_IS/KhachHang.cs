@@ -14,23 +14,10 @@ namespace FinalProject_IS
     
     public partial class KhachHang
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhachHang()
-        {
-            this.HoaDons = new HashSet<HoaDon>();
-            this.HoaDonDichVus = new HashSet<HoaDonDichVu>();
-        }
-    
         public int MaKH { get; set; }
         public string HoTen { get; set; }
         public string SoDienThoai { get; set; }
         public Nullable<decimal> TongChiTieu { get; set; }
         public Nullable<int> MaLoaiKH { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDonDichVu> HoaDonDichVus { get; set; }
-        public virtual LoaiKhachHang LoaiKhachHang { get; set; }
     }
 }

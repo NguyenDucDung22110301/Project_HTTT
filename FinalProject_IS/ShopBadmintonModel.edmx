@@ -440,8 +440,6 @@
           <Property Name="SoLuongSP" Type="Int32" Nullable="false" />
           <Property Name="DonGia" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="ThanhTien" Type="Decimal" Precision="29" Scale="2" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHD___MaHD__5165187F" FromRole="ChiTietHD_SanPham" ToRole="HoaDon" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietHD___MaSP__52593CB8" FromRole="ChiTietHD_SanPham" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="ChiTietPhieuNhan">
           <Key>
@@ -459,8 +457,6 @@
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="NgayNhan" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PhieuNhan" Relationship="Self.FK__ChiTietPh__MaPhi__6477ECF3" FromRole="ChiTietPhieuNhan" ToRole="PhieuNhan" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietPhi__MaSP__656C112C" FromRole="ChiTietPhieuNhan" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="ChiTietPhieuNhapHang">
           <Key>
@@ -470,8 +466,6 @@
           <Property Name="MaPhieuNhap" Type="Int32" Nullable="false" />
           <Property Name="MaSP" Type="Int32" Nullable="false" />
           <Property Name="SoLuongNhap" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PhieuNhapHang" Relationship="Self.FK__ChiTietPh__MaPhi__5EBF139D" FromRole="ChiTietPhieuNhapHang" ToRole="PhieuNhapHang" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietPhi__MaSP__5FB337D6" FromRole="ChiTietPhieuNhapHang" ToRole="SanPham" />
           <Property Name="TenSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SoLuongThieu" Type="Int32" Nullable="false" />
         </EntityType>
@@ -481,7 +475,6 @@
           </Key>
           <Property Name="MaChucVu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaChuc__403A8C7D" FromRole="ChucVu" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -494,11 +487,6 @@
           <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MaKM" Type="Int32" />
           <Property Name="LoaiHoaDon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ChiTietHD_SanPham" Relationship="Self.FK__ChiTietHD___MaHD__5165187F" FromRole="HoaDon" ToRole="ChiTietHD_SanPham" />
-          <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__4BAC3F29" FromRole="HoaDon" ToRole="KhachHang" />
-          <NavigationProperty Name="KhuyenMai" Relationship="Self.FK__HoaDon__MaKM__4D94879B" FromRole="HoaDon" ToRole="KhuyenMai" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNV__4CA06362" FromRole="HoaDon" ToRole="NhanVien" />
-          <Property Name="SoHD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="HoaDonDichVu">
           <Key>
@@ -515,8 +503,6 @@
           <Property Name="SoKG" Type="Int32" Nullable="false" />
           <Property Name="ThanhTien" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="LoaiPhieu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDonDich__MaKH__5629CD9C" FromRole="HoaDonDichVu" ToRole="KhachHang" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonDich__MaNV__571DF1D5" FromRole="HoaDonDichVu" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="HoaDonLuong">
           <Key>
@@ -527,7 +513,6 @@
           <Property Name="SoGioLam" Type="Int32" />
           <Property Name="NgayXuat" Type="DateTime" Precision="0" />
           <Property Name="TongTien" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDonLuon__MaNV__59FA5E80" FromRole="HoaDonLuong" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -538,9 +523,6 @@
           <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TongChiTieu" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="MaLoaiKH" Type="Int32" />
-          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKH__4BAC3F29" FromRole="KhachHang" ToRole="HoaDon" />
-          <NavigationProperty Name="HoaDonDichVus" Relationship="Self.FK__HoaDonDich__MaKH__5629CD9C" FromRole="KhachHang" ToRole="HoaDonDichVu" />
-          <NavigationProperty Name="LoaiKhachHang" Relationship="Self.FK__KhachHang__MaLoa__3B75D760" FromRole="KhachHang" ToRole="LoaiKhachHang" />
         </EntityType>
         <EntityType Name="KhuyenMai">
           <Key>
@@ -553,7 +535,6 @@
           <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NgayKetThuc" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKM__4D94879B" FromRole="KhuyenMai" ToRole="HoaDon" />
         </EntityType>
         <EntityType Name="LoaiKhachHang">
           <Key>
@@ -563,7 +544,6 @@
           <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ChiTieuToiThieu" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="GiamGiaToiDa" Type="Double" />
-          <NavigationProperty Name="KhachHangs" Relationship="Self.FK__KhachHang__MaLoa__3B75D760" FromRole="LoaiKhachHang" ToRole="KhachHang" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -576,10 +556,6 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MaChucVu" Type="Int32" />
           <Property Name="LuongCoBan" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__MaChuc__403A8C7D" FromRole="NhanVien" ToRole="ChucVu" />
-          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaNV__4CA06362" FromRole="NhanVien" ToRole="HoaDon" />
-          <NavigationProperty Name="HoaDonDichVus" Relationship="Self.FK__HoaDonDich__MaNV__571DF1D5" FromRole="NhanVien" ToRole="HoaDonDichVu" />
-          <NavigationProperty Name="HoaDonLuongs" Relationship="Self.FK__HoaDonLuon__MaNV__59FA5E80" FromRole="NhanVien" ToRole="HoaDonLuong" />
         </EntityType>
         <EntityType Name="PhieuNhan">
           <Key>
@@ -587,7 +563,6 @@
           </Key>
           <Property Name="MaPhieuNhan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ChiTietPhieuNhans" Relationship="Self.FK__ChiTietPh__MaPhi__6477ECF3" FromRole="PhieuNhan" ToRole="ChiTietPhieuNhan" />
         </EntityType>
         <EntityType Name="PhieuNhapHang">
           <Key>
@@ -596,7 +571,6 @@
           <Property Name="MaPhieuNhap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NgayTao" Type="DateTime" Precision="0" />
           <Property Name="TinhTrangPhieuNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietPhieuNhapHangs" Relationship="Self.FK__ChiTietPh__MaPhi__5EBF139D" FromRole="PhieuNhapHang" ToRole="ChiTietPhieuNhapHang" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -612,10 +586,6 @@
           <Property Name="MaTH" Type="Int32" />
           <Property Name="GiaGoc" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietHD_SanPham" Relationship="Self.FK__ChiTietHD___MaSP__52593CB8" FromRole="SanPham" ToRole="ChiTietHD_SanPham" />
-          <NavigationProperty Name="ChiTietPhieuNhans" Relationship="Self.FK__ChiTietPhi__MaSP__656C112C" FromRole="SanPham" ToRole="ChiTietPhieuNhan" />
-          <NavigationProperty Name="ChiTietPhieuNhapHangs" Relationship="Self.FK__ChiTietPhi__MaSP__5FB337D6" FromRole="SanPham" ToRole="ChiTietPhieuNhapHang" />
-          <NavigationProperty Name="ThuongHieu" Relationship="Self.FK__SanPham__MaTH__45F365D3" FromRole="SanPham" ToRole="ThuongHieu" />
         </EntityType>
         <EntityType Name="ThuongHieu">
           <Key>
@@ -623,7 +593,6 @@
           </Key>
           <Property Name="MaTH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenTH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__MaTH__45F365D3" FromRole="ThuongHieu" ToRole="SanPham" />
         </EntityType>
         <Association Name="FK__ChiTietHD___MaHD__5165187F">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
