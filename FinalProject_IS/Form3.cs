@@ -52,7 +52,6 @@ namespace FinalProject_IS
                 if (list.Count >= 1)
                 {
 
-                    MessageBox.Show(list[0].NgayNhan.ToString());
                     PhieuNhanDAO.InsertPhieu(new PhieuNhan
                     {
                         NgayTao = list[0].NgayNhan,
@@ -65,8 +64,11 @@ namespace FinalProject_IS
 
                     for (int i = 0; i < list.Count; i++)
                     {
+                        PhieuNhapHangDAO.UpdateChiTietPhieuNhapHang(list[i].MaSP, list[i].SoLuongNhap);
                         SanPhamDAO.UpdateSanPhamNhan(list[i].MaSP, list[i].SoLuongNhap);
                     }
+
+                    PhieuNhapHangDAO.UpdateTinhTrangPhieuNhap();
                     this.Close();
                 }
             }
@@ -92,9 +94,6 @@ namespace FinalProject_IS
         {
             if (e.ColumnIndex == 2)
             {
-                //DataGridViewCell thirdCell = dtgv_ChiTiet[2, e.RowIndex];
-                //int id = Convert.ToInt32(dtgv_ChiTiet[e.ColumnIndex, e.RowIndex].Value);
-                //thirdCell.Value = SanPhamDAO.GetProductNameByID(id);
                 int id = Convert.ToInt32(dtgv_ChiTiet[2, e.RowIndex].Value);
                 SanPham prod = SanPhamDAO.GetProductByID(id);
                 dtgv_ChiTiet[3, e.RowIndex].Value = prod.TenSP;

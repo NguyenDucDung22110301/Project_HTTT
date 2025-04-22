@@ -42,6 +42,7 @@
           <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar(max)" />
           <Property Name="SoLuongNhap" Type="int" Nullable="false" />
+          <Property Name="SoLuongThieu" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -472,6 +473,7 @@
           <NavigationProperty Name="PhieuNhapHang" Relationship="Self.FK__ChiTietPh__MaPhi__5EBF139D" FromRole="ChiTietPhieuNhapHang" ToRole="PhieuNhapHang" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietPhi__MaSP__5FB337D6" FromRole="ChiTietPhieuNhapHang" ToRole="SanPham" />
           <Property Name="TenSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuongThieu" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -916,6 +918,7 @@
           <EntitySetMapping Name="ChiTietPhieuNhapHangs">
             <EntityTypeMapping TypeName="ShopBadmintonModel.ChiTietPhieuNhapHang">
               <MappingFragment StoreEntitySet="ChiTietPhieuNhapHang">
+                <ScalarProperty Name="SoLuongThieu" ColumnName="SoLuongThieu" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
                 <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />

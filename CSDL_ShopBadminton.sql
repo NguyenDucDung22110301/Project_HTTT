@@ -144,6 +144,7 @@ CREATE TABLE ChiTietPhieuNhapHang (
     MaSP INT,
 	TenSP nvarchar(max) null,
     SoLuongNhap INT NOT NULL,
+	SoLuongThieu INT NOT NULL,
     PRIMARY KEY (MaPhieuNhap, MaSP),
     FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhapHang(MaPhieuNhap),
     FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
