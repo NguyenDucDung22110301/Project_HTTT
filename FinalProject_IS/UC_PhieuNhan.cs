@@ -77,6 +77,4 @@ namespace FinalProject_IS
             form.Show();
         }
     }
-     
-    
 }

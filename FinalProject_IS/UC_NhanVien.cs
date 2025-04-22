@@ -23,5 +23,10 @@ namespace FinalProject_IS
         {
             dtgvNhanVien.DataSource = NhanVienDAO.DsNhanVien();
         }
+
+        private void btn_ThemNV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

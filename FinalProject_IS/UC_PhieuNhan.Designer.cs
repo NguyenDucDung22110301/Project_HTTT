@@ -41,7 +41,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_ThemPhieu = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuNhan)).BeginInit();
@@ -67,21 +66,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1150, 448);
             this.panel2.TabIndex = 49;
-            // 
-            // btn_ThemPhieu
-            // 
-            this.btn_ThemPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.btn_ThemPhieu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.btn_ThemPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ThemPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ThemPhieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
-            this.btn_ThemPhieu.Location = new System.Drawing.Point(888, 94);
-            this.btn_ThemPhieu.Name = "btn_ThemPhieu";
-            this.btn_ThemPhieu.Size = new System.Drawing.Size(205, 27);
-            this.btn_ThemPhieu.TabIndex = 47;
-            this.btn_ThemPhieu.Text = "+Thêm phiếu nhập mới";
-            this.btn_ThemPhieu.UseVisualStyleBackColor = false;
-            this.btn_ThemPhieu.Click += new System.EventHandler(this.btn_ThemPhieu_Click);
             // 
             // numericUpDown1
             // 

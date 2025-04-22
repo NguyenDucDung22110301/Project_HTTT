@@ -40,5 +40,26 @@ namespace FinalProject_IS.DAOs
 
             return dsKhachHang;
         }
+
+        public static void ThemKhachHang(KhachHang kh)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"INSERT INTO KhachHang Values(@MaKH, @HoTen, @SoDienThoai, @TongChiTieu
+                                                                        ,@MaLoaiKH)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaKH", kh.MaKH);
+                    cmd.Parameters.AddWithValue("@HoTen", kh.HoTen);
+                    cmd.Parameters.AddWithValue("@SoDienThoai", kh.SoDienThoai);
+                    cmd.Parameters.AddWithValue("@TongChiTieu", kh.TongChiTieu);
+                    cmd.Parameters.AddWithValue("@MaLoaiKH", kh.MaLoaiKH);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

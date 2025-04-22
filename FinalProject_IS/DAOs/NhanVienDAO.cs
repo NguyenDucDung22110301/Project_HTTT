@@ -41,5 +41,27 @@ namespace FinalProject_IS.DAOs
 
             return dsNhanVien;
         }
+        public static void ThemNhanVien(NhanVien nv)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"INSERT INTO NhanVien Values(@MaNV, @HoTen, @NgaySinh, @GioiTinh,
+                                                                    @Email, @MaChucVu, @LuongCoBan)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaNV", nv.MaNV);
+                    cmd.Parameters.AddWithValue("@HoTen", nv.HoTen);
+                    cmd.Parameters.AddWithValue("@NgaySinh", nv.NgaySinh);
+                    cmd.Parameters.AddWithValue("@GioiTinh", nv.GioiTinh);
+                    cmd.Parameters.AddWithValue("@Email", nv.Email);
+                    cmd.Parameters.AddWithValue("@MaChucVu", nv.MaChucVu);
+                    cmd.Parameters.AddWithValue("@LuongCoBan", nv.LuongCoBan);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
