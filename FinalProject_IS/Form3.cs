@@ -62,6 +62,11 @@ namespace FinalProject_IS
                     {
                         PhieuNhanDAO.InsertChiTietPhieu(list[i]);
                     }
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        SanPhamDAO.UpdateSanPhamNhan(list[i].MaSP, list[i].SoLuongNhap);
+                    }
                     this.Close();
                 }
             }
