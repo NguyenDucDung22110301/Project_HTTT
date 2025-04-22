@@ -140,35 +140,45 @@ namespace FinalProject_IS
 
         private void DsBanChay()
         {
-            string query = @"
-                            SELECT TOP 10 
+            try
+            {
+                string query = @"
+                            SELECT TOP 10
+                                sp.MaSP,
                                 sp.TenSP, 
                                 SUM(ct.SoLuongSP) AS DoanhSo,
                                 SUM(ct.ThanhTien) AS DoanhThu
                             FROM ChiTietHD_SanPham ct
                             JOIN SanPham sp ON ct.MaSP = sp.MaSP
-                            GROUP BY sp.TenSP
+                            GROUP BY sp.MaSP, sp.TenSP
                             ORDER BY DoanhSo DESC";
 
-            DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                    }
                 }
-            }
 
-            dtgvTopSales.DataSource = dt;
+                dtgvTopSales.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion
 
         #region LoiNhuan
         public void DsLoiNhuanCao()
         {
-            string query = @"
+            try
+            {
+                string query = @"
                             WITH GiaNhapTrungBinhCTE AS (
                                 SELECT 
                                     MaSP,
@@ -178,6 +188,7 @@ namespace FinalProject_IS
                                 GROUP BY MaSP, SoLuongNhap, DonGiaNhap
                             )
                             SELECT TOP 10 
+                                sp.MaSP,
                                 sp.TenSP,
                                 SUM(ct.SoLuongSP) AS DoanhSo,
                                 SUM(ct.ThanhTien) AS DoanhThu,
@@ -186,167 +197,185 @@ namespace FinalProject_IS
                             FROM ChiTietHD_SanPham ct
                             JOIN SanPham sp ON ct.MaSP = sp.MaSP
                             LEFT JOIN GiaNhapTrungBinhCTE gntb ON ct.MaSP = gntb.MaSP
-                            GROUP BY sp.TenSP, gntb.DonGiaNhap
+                            GROUP BY sp.MaSP, sp.TenSP, gntb.DonGiaNhap
                             ORDER BY LoiNhuan DESC;";
 
-            DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                    }
                 }
-            }
 
-            dtgvTopSales.DataSource = dt;
+                dtgvTopSales.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void LoadLoiNhuanTheoThang(int month, int year)
         {
-            string query = @"
-                            WITH GiaNhapTrungBinhCTE AS (
-                                SELECT 
-                                    MaSP,
-                                    SoLuongNhap,
-                                    DonGiaNhap
-                                FROM ChiTietPhieuNhan
-                                GROUP BY MaSP, SoLuongNhap, DonGiaNhap
-                            ),
-                            LoiNhuanSanPham AS (
-                                SELECT 
-                                    CAST(hd.NgayGioTao AS DATE) AS Ngay,
-                                    SUM(ct.ThanhTien - gntb.SoLuongNhap * ISNULL(gntb.DonGiaNhap, 0)) AS LoiNhuan
-                                FROM HoaDon hd
-                                JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
-                                LEFT JOIN GiaNhapTrungBinhCTE gntb ON ct.MaSP = gntb.MaSP
-                                WHERE MONTH(hd.NgayGioTao) = @Month AND YEAR(hd.NgayGioTao) = @Year
-                                GROUP BY CAST(hd.NgayGioTao AS DATE)
-                            ),
-                            LoiNhuanDichVu AS (
-                                SELECT 
-                                    CAST(NgayGioTao AS DATE) AS Ngay,
-                                    SUM(ThanhTien) AS LoiNhuan
-                                FROM HoaDonDichVu
-                                WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
-                                GROUP BY CAST(NgayGioTao AS DATE)
-                            )
-                            SELECT 
-                                DAY(Ngay) AS Ngay,
-                                SUM(LoiNhuan) AS LoiNhuan
-                            FROM (
-                                SELECT * FROM LoiNhuanSanPham
-                                UNION ALL
-                                SELECT * FROM LoiNhuanDichVu
-                            ) AS TongHop
-                            GROUP BY DAY(Ngay)
-                            ORDER BY Ngay";
-
-
-            DataTable dt = new DataTable();
-
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = @"
+                                WITH ThongTinNhap AS (
+                                    SELECT 
+                                        MaSP,
+                                        NgayNhan,
+                                        SUM(SoLuongNhap * DonGiaNhap) * 1.0 / NULLIF(SUM(SoLuongNhap), 0) as GiaNhap
+                                    FROM ChiTietPhieuNhan
+                                    GROUP BY MaSP, NgayNhan
+                                ),
+                                LoiNhuanSanPham AS (
+                                    SELECT 
+                                        CAST(hd.NgayGioTao AS DATE) AS Ngay,
+                                        SUM(ct.SoLuongSP * ct.DonGia - ct.SoLuongSP * ISNULL(ttn.GiaNhap, 0)) AS LoiNhuan
+                                    FROM HoaDon hd
+                                    JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
+                                    LEFT JOIN ThongtinNhap ttn ON ct.MaSP = ttn.MaSP
+                                    WHERE MONTH(hd.NgayGioTao) = @Month AND YEAR(hd.NgayGioTao) = @Year
+                                    GROUP BY CAST(hd.NgayGioTao AS DATE)
+                                ),
+                                LoiNhuanDichVu AS (
+                                    SELECT 
+                                        CAST(NgayGioTao AS DATE) AS Ngay,
+                                        SUM(ThanhTien) AS LoiNhuan
+                                    FROM HoaDonDichVu
+                                    WHERE MONTH(NgayGioTao) = @Month AND YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                                    GROUP BY CAST(NgayGioTao AS DATE)
+                                )
+                                SELECT 
+                                    DAY(Ngay) AS Ngay,
+                                    SUM(LoiNhuan) AS LoiNhuan
+                                FROM (
+                                    SELECT * FROM LoiNhuanSanPham
+                                    UNION ALL
+                                    SELECT * FROM LoiNhuanDichVu
+                                ) AS TongHop
+                                GROUP BY DAY(Ngay)
+                                ORDER BY Ngay;";
+
+                DataTable dt = new DataTable();
+
+                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
                 {
-                    cmd.Parameters.AddWithValue("@Month", month);
-                    cmd.Parameters.AddWithValue("@Year", year);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Month", month);
+                        cmd.Parameters.AddWithValue("@Year", year);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                    }
                 }
+
+                chartDoanhThu.Series.Clear();
+                chartDoanhThu.Titles.Clear(); // Clear tiêu đề cũ
+                chartDoanhThu.Titles.Add($"Lợi nhuận tháng {month}/{year}");
+                Series series = new Series("Lợi nhuận theo ngày")
+                {
+                    ChartType = SeriesChartType.Column,
+                    IsValueShownAsLabel = true
+                };
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int ngay = Convert.ToInt32(row["Ngay"]);
+                    decimal loinhuan = row["LoiNhuan"] != DBNull.Value ? Convert.ToDecimal(row["LoiNhuan"]) : 0;
+                    series.Points.AddXY(ngay + "/" + month, loinhuan);
+                }
+
+                chartDoanhThu.Series.Add(series);
             }
-
-            chartDoanhThu.Series.Clear();
-            chartDoanhThu.Titles.Clear(); // Clear tiêu đề cũ
-            chartDoanhThu.Titles.Add($"Lợi nhuận tháng {month}/{year}");
-            Series series = new Series("Lợi nhuận theo ngày")
+            catch (Exception ex)
             {
-                ChartType = SeriesChartType.Column,
-                IsValueShownAsLabel = true
-            };
-
-            foreach (DataRow row in dt.Rows)
-            {
-                int ngay = Convert.ToInt32(row["Ngay"]);
-                decimal loinhuan = row["LoiNhuan"] != DBNull.Value ? Convert.ToDecimal(row["LoiNhuan"]) : 0;
-                series.Points.AddXY(ngay + "/" + month, loinhuan);
+                MessageBox.Show(ex.Message);
             }
-
-            chartDoanhThu.Series.Add(series);
         }
         private void LoadLoiNhuanTheoNam(int year)
         {
-            string query = @"
-                            WITH GiaNhapTrungBinhCTE AS (
-                                SELECT 
-                                    MaSP,
-                                    SoLuongNhap,
-                                    DonGiaNhap
-                                FROM ChiTietPhieuNhan
-                                GROUP BY MaSP, SoLuongNhap, DonGiaNhap
-                            ),
-                            LoiNhuanSanPham AS (
-                                SELECT 
-                                    CAST(hd.NgayGioTao AS DATE) AS Ngay,
-                                    SUM(ct.ThanhTien - gntb.SoLuongNhap * ISNULL(gntb.DonGiaNhap, 0)) AS LoiNhuan
-                                FROM HoaDon hd
-                                JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
-                                LEFT JOIN GiaNhapTrungBinhCTE gntb ON ct.MaSP = gntb.MaSP
-                                WHERE YEAR(hd.NgayGioTao) = @Year
-                                GROUP BY CAST(hd.NgayGioTao AS DATE)
-                            ),
-                            LoiNhuanDichVu AS (
-                                SELECT 
-                                    CAST(NgayGioTao AS DATE) AS Ngay,
-                                    SUM(ThanhTien) AS LoiNhuan
-                                FROM HoaDonDichVu
-                                WHERE YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
-                                GROUP BY CAST(NgayGioTao AS DATE)
-                            )
-                            SELECT 
-                                MONTH(Ngay) AS Thang,
-                                SUM(LoiNhuan) AS LoiNhuan
-                            FROM (
-                                SELECT * FROM LoiNhuanSanPham
-                                UNION ALL
-                                SELECT * FROM LoiNhuanDichVu
-                            ) AS TongHop
-                            GROUP BY MONTH(Ngay)
-                            ORDER BY Thang";
-
-
-            DataTable dt = new DataTable();
-
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            try
             {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                string query = @"
+                                WITH ThongTinNhap AS (
+                                    SELECT 
+                                        MaSP,
+                                        NgayNhan,
+                                        SUM(SoLuongNhap * DonGiaNhap) * 1.0 / NULLIF(SUM(SoLuongNhap), 0) as GiaNhap
+                                    FROM ChiTietPhieuNhan
+                                    GROUP BY MaSP, NgayNhan
+                                ),
+                                LoiNhuanSanPham AS (
+                                    SELECT 
+                                        CAST(hd.NgayGioTao AS DATE) AS Ngay,
+                                        SUM(ct.SoLuongSP * ct.DonGia - ct.SoLuongSP * ISNULL(ttn.GiaNhap, 0)) AS LoiNhuan
+                                    FROM HoaDon hd
+                                    JOIN ChiTietHD_SanPham ct ON hd.MaHD = ct.MaHD
+                                    LEFT JOIN ThongTinNhap ttn ON ct.MaSP = ttn.MaSP
+                                    WHERE YEAR(hd.NgayGioTao) = @Year
+                                    GROUP BY CAST(hd.NgayGioTao AS DATE)
+                                ),
+                                LoiNhuanDichVu AS (
+                                    SELECT 
+                                        CAST(NgayGioTao AS DATE) AS Ngay,
+                                        SUM(ThanhTien) AS LoiNhuan
+                                    FROM HoaDonDichVu
+                                    WHERE YEAR(NgayGioTao) = @Year AND LoaiPhieu = 'DV'
+                                    GROUP BY CAST(NgayGioTao AS DATE)
+                                )
+                                SELECT 
+                                    MONTH(Ngay) AS Thang,
+                                    SUM(LoiNhuan) AS LoiNhuan
+                                FROM (
+                                    SELECT * FROM LoiNhuanSanPham
+                                    UNION ALL
+                                    SELECT * FROM LoiNhuanDichVu
+                                ) AS TongHop
+                                GROUP BY MONTH(Ngay)
+                                ORDER BY Thang";
+
+            
+                DataTable dt = new DataTable();
+
+                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
                 {
-                    cmd.Parameters.AddWithValue("@Year", year);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Year", year);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                    }
                 }
+
+                chartDoanhThu.Series.Clear();
+                chartDoanhThu.Titles.Clear(); // Clear tiêu đề cũ
+                chartDoanhThu.Titles.Add($"Lợi nhuận năm {year}");
+                Series series = new Series("Lợi nhuận theo tháng")
+                {
+                    ChartType = SeriesChartType.Column,
+                    IsValueShownAsLabel = true
+                };
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int thang = Convert.ToInt32(row["Thang"]);
+                    decimal loinhuan = row["LoiNhuan"] != DBNull.Value ? Convert.ToDecimal(row["LoiNhuan"]) : 0;
+                    series.Points.AddXY(thang + "/" + year, loinhuan);
+                }
+
+                chartDoanhThu.Series.Add(series);
             }
-
-            chartDoanhThu.Series.Clear();
-            chartDoanhThu.Titles.Clear(); // Clear tiêu đề cũ
-            chartDoanhThu.Titles.Add($"Lợi nhuận năm {year}");
-            Series series = new Series("Lợi nhuận theo tháng")
+            catch (Exception ex)
             {
-                ChartType = SeriesChartType.Column,
-                IsValueShownAsLabel = true
-            };
-
-            foreach (DataRow row in dt.Rows)
-            {
-                int thang = Convert.ToInt32(row["Thang"]);
-                decimal loinhuan = row["LoiNhuan"] != DBNull.Value ? Convert.ToDecimal(row["LoiNhuan"]) : 0;
-                series.Points.AddXY(thang + "/" + year, loinhuan);
+                MessageBox.Show(ex.Message);
             }
-
-            chartDoanhThu.Series.Add(series);
         }
         #endregion
 
@@ -402,11 +431,15 @@ namespace FinalProject_IS
             int year = dtpMonth.Value.Year;
             if (loaitk == "doanhthu")
             {
+                lbThongKeThang.Text = "Doanh Thu Tháng";
+                lbThongKeNam.Text = "Doanh Thu Năm";
                 DsBanChay();
                 LoadDoanhThuTheoThang(month, year);
             }
             else if (loaitk == "loinhuan")
             {
+                lbThongKeThang.Text = "Lợi Nhuận Tháng";
+                lbThongKeNam.Text = "Lợi Nhuận Năm";
                 DsLoiNhuanCao();
                 LoadLoiNhuanTheoThang(month, year);
             }

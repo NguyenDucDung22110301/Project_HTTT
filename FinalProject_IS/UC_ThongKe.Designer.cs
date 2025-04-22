@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDoanhThu = new System.Windows.Forms.Button();
+            this.btnLoiNhuan = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtpYear = new System.Windows.Forms.DateTimePicker();
             this.dtpMonth = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbThongKeNam = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbThongKeThang = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvTopSales = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLoiNhuan = new System.Windows.Forms.Button();
-            this.btnDoanhThu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
@@ -69,6 +69,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1150, 448);
             this.panel1.TabIndex = 10;
+            // 
+            // btnDoanhThu
+            // 
+            this.btnDoanhThu.Location = new System.Drawing.Point(1003, 27);
+            this.btnDoanhThu.Name = "btnDoanhThu";
+            this.btnDoanhThu.Size = new System.Drawing.Size(103, 41);
+            this.btnDoanhThu.TabIndex = 24;
+            this.btnDoanhThu.Text = "DoanhThu";
+            this.btnDoanhThu.UseVisualStyleBackColor = true;
+            this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
+            // 
+            // btnLoiNhuan
+            // 
+            this.btnLoiNhuan.Location = new System.Drawing.Point(882, 27);
+            this.btnLoiNhuan.Name = "btnLoiNhuan";
+            this.btnLoiNhuan.Size = new System.Drawing.Size(103, 41);
+            this.btnLoiNhuan.TabIndex = 23;
+            this.btnLoiNhuan.Text = "Lợi Nhuận";
+            this.btnLoiNhuan.UseVisualStyleBackColor = true;
+            this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);
             // 
             // label2
             // 
@@ -96,10 +116,10 @@
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.dtpYear);
             this.panel2.Controls.Add(this.dtpMonth);
-            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.lbThongKeNam);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.chartDoanhThu);
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.lbThongKeThang);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(19, 360);
             this.panel2.Name = "panel2";
@@ -126,17 +146,17 @@
             this.dtpMonth.TabIndex = 41;
             this.dtpMonth.ValueChanged += new System.EventHandler(this.dtpMonth_ValueChanged);
             // 
-            // label6
+            // lbThongKeNam
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(583, 36);
-            this.label6.Margin = new System.Windows.Forms.Padding(0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(196, 31);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Doanh thu năm";
+            this.lbThongKeNam.AutoSize = true;
+            this.lbThongKeNam.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbThongKeNam.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbThongKeNam.Location = new System.Drawing.Point(583, 36);
+            this.lbThongKeNam.Margin = new System.Windows.Forms.Padding(0);
+            this.lbThongKeNam.Name = "lbThongKeNam";
+            this.lbThongKeNam.Size = new System.Drawing.Size(196, 31);
+            this.lbThongKeNam.TabIndex = 40;
+            this.lbThongKeNam.Text = "Doanh thu năm";
             // 
             // label4
             // 
@@ -150,31 +170,31 @@
             // chartDoanhThu
             // 
             this.chartDoanhThu.BorderlineColor = System.Drawing.Color.Black;
-            chartArea4.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend1);
             this.chartDoanhThu.Location = new System.Drawing.Point(21, 109);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series1);
             this.chartDoanhThu.Size = new System.Drawing.Size(1011, 300);
             this.chartDoanhThu.TabIndex = 38;
             this.chartDoanhThu.Text = "chart1";
             // 
-            // label3
+            // lbThongKeThang
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(15, 36);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(218, 31);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Doanh thu tháng ";
+            this.lbThongKeThang.AutoSize = true;
+            this.lbThongKeThang.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbThongKeThang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbThongKeThang.Location = new System.Drawing.Point(15, 36);
+            this.lbThongKeThang.Margin = new System.Windows.Forms.Padding(0);
+            this.lbThongKeThang.Name = "lbThongKeThang";
+            this.lbThongKeThang.Size = new System.Drawing.Size(218, 31);
+            this.lbThongKeThang.TabIndex = 36;
+            this.lbThongKeThang.Text = "Doanh thu tháng ";
             // 
             // panel3
             // 
@@ -216,26 +236,6 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 
-            // btnLoiNhuan
-            // 
-            this.btnLoiNhuan.Location = new System.Drawing.Point(882, 27);
-            this.btnLoiNhuan.Name = "btnLoiNhuan";
-            this.btnLoiNhuan.Size = new System.Drawing.Size(103, 41);
-            this.btnLoiNhuan.TabIndex = 23;
-            this.btnLoiNhuan.Text = "Lợi Nhuận";
-            this.btnLoiNhuan.UseVisualStyleBackColor = true;
-            this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);
-            // 
-            // btnDoanhThu
-            // 
-            this.btnDoanhThu.Location = new System.Drawing.Point(1003, 27);
-            this.btnDoanhThu.Name = "btnDoanhThu";
-            this.btnDoanhThu.Size = new System.Drawing.Size(103, 41);
-            this.btnDoanhThu.TabIndex = 24;
-            this.btnDoanhThu.Text = "DoanhThu";
-            this.btnDoanhThu.UseVisualStyleBackColor = true;
-            this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
-            // 
             // UC_ThongKe
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -267,8 +267,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbThongKeThang;
+        private System.Windows.Forms.Label lbThongKeNam;
         private System.Windows.Forms.DateTimePicker dtpYear;
         private System.Windows.Forms.DateTimePicker dtpMonth;
         private System.Windows.Forms.Button btnDoanhThu;
