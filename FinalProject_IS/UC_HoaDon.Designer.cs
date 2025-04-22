@@ -105,6 +105,7 @@
             this.dtgvHoaDon.RowHeadersWidth = 51;
             this.dtgvHoaDon.Size = new System.Drawing.Size(1059, 424);
             this.dtgvHoaDon.TabIndex = 41;
+            this.dtgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvHoaDon_CellContentClick);
             // 
             // button1
             // 

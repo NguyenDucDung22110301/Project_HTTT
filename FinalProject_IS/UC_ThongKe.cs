@@ -431,6 +431,7 @@ namespace FinalProject_IS
             int year = dtpMonth.Value.Year;
             if (loaitk == "doanhthu")
             {
+                lb_TopSanPham.Text = "Sản phẩm bán chạy nhất";
                 lbThongKeThang.Text = "Doanh Thu Tháng";
                 lbThongKeNam.Text = "Doanh Thu Năm";
                 DsBanChay();
@@ -438,6 +439,7 @@ namespace FinalProject_IS
             }
             else if (loaitk == "loinhuan")
             {
+                lb_TopSanPham.Text = "Sản phẩm có lợi nhuận cao nhất";
                 lbThongKeThang.Text = "Lợi Nhuận Tháng";
                 lbThongKeNam.Text = "Lợi Nhuận Năm";
                 DsLoiNhuanCao();

@@ -22,6 +22,23 @@ namespace FinalProject_IS
         public void LoadDsHoaDon()
         {
             dtgvHoaDon.DataSource = HoaDonDAO.DSHoaDon();
+            DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+            btnColumn.Name = "Action";
+            btnColumn.HeaderText = "Action";
+            btnColumn.Text = "View";
+            btnColumn.UseColumnTextForButtonValue = true;
+
+            dtgvHoaDon.Columns.Add(btnColumn);
+        }
+
+        private void dtgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgvHoaDon.Columns[e.ColumnIndex].Name == "Action" && e.RowIndex >= 0)
+            {
+                int idhoadon = Convert.ToInt32(dtgvHoaDon.Rows[e.RowIndex].Cells["MaHD"].Value);
+                F_ChiTietHD_SanPham form = new F_ChiTietHD_SanPham(idhoadon);
+                form.Show();
+            }
         }
     }
 }

@@ -34,13 +34,44 @@ namespace FinalProject_IS.DAOs
                         MaNV = Convert.ToInt32(row["MaNV"]),
                         TongTien = Convert.ToInt32(row["TongTien"]),
                         MaKM = row["MaKM"] != DBNull.Value ? Convert.ToInt32(row["MaKM"]) : (int?)null,
-                        LoaiHoaDon = row["LoaiHoaDon"].ToString()
+                        LoaiHoaDon = row["LoaiHoaDon"].ToString(),
+                        SoHD = row["SoHD"].ToString()
                     };
                     dsHoaDon.Add(hd);
                 }
             }
 
             return dsHoaDon;
+        }
+        public static List<ChiTietHD_SanPham> LayChiTietTheoMaHD(int id)
+        {
+            List<ChiTietHD_SanPham> ChiTietHD_SanPham = new List<ChiTietHD_SanPham>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"SELECT MaSP, SoLuongSP, DonGia, ThanhTien FROM ChiTietHD_SanPham where MaHD = @id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+
+                    dataAdapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        ChiTietHD_SanPham chitiet = new ChiTietHD_SanPham();
+                        chitiet.MaHD = id;
+                        chitiet.MaSP = Convert.ToInt32(row["MaSP"]);
+                        chitiet.SoLuongSP = Convert.ToInt32(row["SoLuongSP"]);
+                        chitiet.DonGia = Convert.ToDecimal(row["DonGia"]);
+                        chitiet.ThanhTien = Convert.ToDecimal(row["ThanhTien"]);
+                        ChiTietHD_SanPham.Add(chitiet);
+                    }
+                    return ChiTietHD_SanPham;
+                }
+            }
+
         }
     }
 }

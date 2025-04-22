@@ -10,7 +10,7 @@
             <PropertyRef Name="MaHD" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaHD" Type="int" Nullable="false" />
+          <Property Name="MaHD" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="SoLuongSP" Type="int" Nullable="false" />
           <Property Name="DonGia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -61,6 +61,7 @@
           <Property Name="TongTien" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MaKM" Type="int" />
           <Property Name="LoaiHoaDon" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SoHD" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="HoaDonDichVu">
           <Key>
@@ -168,19 +169,10 @@
           <Property Name="MaTH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTH" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK__ChiTietHD___MaHD__3E52440B">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-          <End Role="ChiTietHD_SanPham" Type="Self.ChiTietHD_SanPham" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HoaDon">
-              <PropertyRef Name="MaHD" />
-            </Principal>
-            <Dependent Role="ChiTietHD_SanPham">
-              <PropertyRef Name="MaHD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietHD___MaSP__3F466844">
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__ChiTietHD___MaHD__70DDC3D8" />-->
+        <Association Name="FK__ChiTietHD___MaSP__71D1E811">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietHD_SanPham" Type="Self.ChiTietHD_SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -364,11 +356,7 @@
           <EntitySet Name="PhieuNhapHang" EntityType="Self.PhieuNhapHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietHD___MaHD__3E52440B" Association="Self.FK__ChiTietHD___MaHD__3E52440B">
-            <End Role="HoaDon" EntitySet="HoaDon" />
-            <End Role="ChiTietHD_SanPham" EntitySet="ChiTietHD_SanPham" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHD___MaSP__3F466844" Association="Self.FK__ChiTietHD___MaSP__3F466844">
+          <AssociationSet Name="FK__ChiTietHD___MaSP__71D1E811" Association="Self.FK__ChiTietHD___MaSP__71D1E811">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietHD_SanPham" EntitySet="ChiTietHD_SanPham" />
           </AssociationSet>
@@ -496,6 +484,7 @@
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__4BAC3F29" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="KhuyenMai" Relationship="Self.FK__HoaDon__MaKM__4D94879B" FromRole="HoaDon" ToRole="KhuyenMai" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNV__4CA06362" FromRole="HoaDon" ToRole="NhanVien" />
+          <Property Name="SoHD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="HoaDonDichVu">
           <Key>
@@ -934,6 +923,7 @@
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="ShopBadmintonModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="NgayGioTao" ColumnName="NgayGioTao" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />

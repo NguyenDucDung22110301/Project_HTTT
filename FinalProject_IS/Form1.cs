@@ -97,5 +97,10 @@ namespace FinalProject_IS
             uc.Location = new Point(0, 83);
             panel_Main.Controls.Add(uc);
         }
+
+        private void panel_banHang_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace FinalProject_IS
             LoadSP();
         }
 
-        public void LoadSP()
+        public void LoadSP()    
         {
             dtgvKhoSP.DataSource = SanPhamDAO.DSSanPham();
         }

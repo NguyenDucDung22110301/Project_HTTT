@@ -34,7 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnLoiNhuan = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lb_TopSanPham = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtpYear = new System.Windows.Forms.DateTimePicker();
@@ -60,7 +60,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnDoanhThu);
             this.panel1.Controls.Add(this.btnLoiNhuan);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lb_TopSanPham);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dtgvTopSales);
@@ -90,17 +90,17 @@
             this.btnLoiNhuan.UseVisualStyleBackColor = true;
             this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);
             // 
-            // label2
+            // lb_TopSanPham
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(13, 20);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(303, 31);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Sản phẩm bán chạy nhất";
+            this.lb_TopSanPham.AutoSize = true;
+            this.lb_TopSanPham.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_TopSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_TopSanPham.Location = new System.Drawing.Point(13, 20);
+            this.lb_TopSanPham.Margin = new System.Windows.Forms.Padding(0);
+            this.lb_TopSanPham.Name = "lb_TopSanPham";
+            this.lb_TopSanPham.Size = new System.Drawing.Size(303, 31);
+            this.lb_TopSanPham.TabIndex = 22;
+            this.lb_TopSanPham.Text = "Sản phẩm bán chạy nhất";
             // 
             // label14
             // 
@@ -264,7 +264,7 @@
         private System.Windows.Forms.DataGridView dtgvTopSales;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_TopSanPham;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
         private System.Windows.Forms.Label lbThongKeThang;
