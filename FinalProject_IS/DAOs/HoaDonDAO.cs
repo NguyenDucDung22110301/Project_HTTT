@@ -34,8 +34,7 @@ namespace FinalProject_IS.DAOs
                         MaNV = Convert.ToInt32(row["MaNV"]),
                         TongTien = Convert.ToInt32(row["TongTien"]),
                         MaKM = row["MaKM"] != DBNull.Value ? Convert.ToInt32(row["MaKM"]) : (int?)null,
-                        LoaiHoaDon = row["LoaiHoaDon"].ToString(),
-                        SoHD = row["SoHD"].ToString()
+                        LoaiHoaDon = row["LoaiHoaDon"].ToString()
                     };
                     dsHoaDon.Add(hd);
                 }
@@ -71,7 +70,6 @@ namespace FinalProject_IS.DAOs
                     return ChiTietHD_SanPham;
                 }
             }
-
         }
     }
 }

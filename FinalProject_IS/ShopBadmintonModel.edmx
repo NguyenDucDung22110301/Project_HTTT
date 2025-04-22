@@ -10,7 +10,7 @@
             <PropertyRef Name="MaHD" />
             <PropertyRef Name="MaSP" />
           </Key>
-          <Property Name="MaHD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaHD" Type="int" Nullable="false" />
           <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="SoLuongSP" Type="int" Nullable="false" />
           <Property Name="DonGia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -42,6 +42,7 @@
           <Property Name="MaSP" Type="int" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar(max)" />
           <Property Name="SoLuongNhap" Type="int" Nullable="false" />
+          <Property Name="SoLuongThieu" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -61,7 +62,6 @@
           <Property Name="TongTien" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MaKM" Type="int" />
           <Property Name="LoaiHoaDon" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="SoHD" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="HoaDonDichVu">
           <Key>
@@ -169,10 +169,19 @@
           <Property Name="MaTH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTH" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK__ChiTietHD___MaHD__70DDC3D8" />-->
-        <Association Name="FK__ChiTietHD___MaSP__71D1E811">
+        <Association Name="FK__ChiTietHD___MaHD__5070F446">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="ChiTietHD_SanPham" Type="Self.ChiTietHD_SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="MaHD" />
+            </Principal>
+            <Dependent Role="ChiTietHD_SanPham">
+              <PropertyRef Name="MaHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietHD___MaSP__5165187F">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietHD_SanPham" Type="Self.ChiTietHD_SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,7 +193,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPh__MaPhi__4BAC3F29">
+        <Association Name="FK__ChiTietPh__MaPhi__5DCAEF64">
           <End Role="PhieuNhapHang" Type="Self.PhieuNhapHang" Multiplicity="1" />
           <End Role="ChiTietPhieuNhapHang" Type="Self.ChiTietPhieuNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +205,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPh__MaPhi__5165187F">
+        <Association Name="FK__ChiTietPh__MaPhi__6383C8BA">
           <End Role="PhieuNhan" Type="Self.PhieuNhan" Multiplicity="1" />
           <End Role="ChiTietPhieuNhan" Type="Self.ChiTietPhieuNhan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +217,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPhi__MaSP__4CA06362">
+        <Association Name="FK__ChiTietPhi__MaSP__5EBF139D">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietPhieuNhapHang" Type="Self.ChiTietPhieuNhapHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +229,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPhi__MaSP__52593CB8">
+        <Association Name="FK__ChiTietPhi__MaSP__6477ECF3">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietPhieuNhan" Type="Self.ChiTietPhieuNhan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,7 +241,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__MaKH__38996AB5">
+        <Association Name="FK__HoaDon__MaKH__4AB81AF0">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -244,7 +253,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__MaKM__3A81B327">
+        <Association Name="FK__HoaDon__MaKM__4CA06362">
           <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -256,7 +265,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__MaNV__398D8EEE">
+        <Association Name="FK__HoaDon__MaNV__4BAC3F29">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +277,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonDich__MaKH__4316F928">
+        <Association Name="FK__HoaDonDich__MaKH__5535A963">
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
           <End Role="HoaDonDichVu" Type="Self.HoaDonDichVu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -280,7 +289,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonDich__MaNV__440B1D61">
+        <Association Name="FK__HoaDonDich__MaNV__5629CD9C">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
           <End Role="HoaDonDichVu" Type="Self.HoaDonDichVu" Multiplicity="*" />
           <ReferentialConstraint>
@@ -292,7 +301,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDonLuon__MaNV__46E78A0C">
+        <Association Name="FK__HoaDonLuon__MaNV__59063A47">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="HoaDonLuong" Type="Self.HoaDonLuong" Multiplicity="*" />
           <ReferentialConstraint>
@@ -304,7 +313,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KhachHang__MaLoa__286302EC">
+        <Association Name="FK__KhachHang__MaLoa__3A81B327">
           <End Role="LoaiKhachHang" Type="Self.LoaiKhachHang" Multiplicity="0..1" />
           <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -316,7 +325,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NhanVien__MaChuc__2D27B809">
+        <Association Name="FK__NhanVien__MaChuc__3F466844">
           <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,7 +337,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SanPham__MaTH__32E0915F">
+        <Association Name="FK__SanPham__MaTH__44FF419A">
           <End Role="ThuongHieu" Type="Self.ThuongHieu" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -356,59 +365,63 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
           <EntitySet Name="PhieuNhapHang" EntityType="Self.PhieuNhapHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietHD___MaSP__71D1E811" Association="Self.FK__ChiTietHD___MaSP__71D1E811">
+          <AssociationSet Name="FK__ChiTietHD___MaHD__5070F446" Association="Self.FK__ChiTietHD___MaHD__5070F446">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="ChiTietHD_SanPham" EntitySet="ChiTietHD_SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietHD___MaSP__5165187F" Association="Self.FK__ChiTietHD___MaSP__5165187F">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietHD_SanPham" EntitySet="ChiTietHD_SanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__MaPhi__4BAC3F29" Association="Self.FK__ChiTietPh__MaPhi__4BAC3F29">
+          <AssociationSet Name="FK__ChiTietPh__MaPhi__5DCAEF64" Association="Self.FK__ChiTietPh__MaPhi__5DCAEF64">
             <End Role="PhieuNhapHang" EntitySet="PhieuNhapHang" />
             <End Role="ChiTietPhieuNhapHang" EntitySet="ChiTietPhieuNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__MaPhi__5165187F" Association="Self.FK__ChiTietPh__MaPhi__5165187F">
+          <AssociationSet Name="FK__ChiTietPh__MaPhi__6383C8BA" Association="Self.FK__ChiTietPh__MaPhi__6383C8BA">
             <End Role="PhieuNhan" EntitySet="PhieuNhan" />
             <End Role="ChiTietPhieuNhan" EntitySet="ChiTietPhieuNhan" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPhi__MaSP__4CA06362" Association="Self.FK__ChiTietPhi__MaSP__4CA06362">
+          <AssociationSet Name="FK__ChiTietPhi__MaSP__5EBF139D" Association="Self.FK__ChiTietPhi__MaSP__5EBF139D">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietPhieuNhapHang" EntitySet="ChiTietPhieuNhapHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPhi__MaSP__52593CB8" Association="Self.FK__ChiTietPhi__MaSP__52593CB8">
+          <AssociationSet Name="FK__ChiTietPhi__MaSP__6477ECF3" Association="Self.FK__ChiTietPhi__MaSP__6477ECF3">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietPhieuNhan" EntitySet="ChiTietPhieuNhan" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__MaKH__38996AB5" Association="Self.FK__HoaDon__MaKH__38996AB5">
+          <AssociationSet Name="FK__HoaDon__MaKH__4AB81AF0" Association="Self.FK__HoaDon__MaKH__4AB81AF0">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__MaKM__3A81B327" Association="Self.FK__HoaDon__MaKM__3A81B327">
+          <AssociationSet Name="FK__HoaDon__MaKM__4CA06362" Association="Self.FK__HoaDon__MaKM__4CA06362">
             <End Role="KhuyenMai" EntitySet="KhuyenMai" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__MaNV__398D8EEE" Association="Self.FK__HoaDon__MaNV__398D8EEE">
+          <AssociationSet Name="FK__HoaDon__MaNV__4BAC3F29" Association="Self.FK__HoaDon__MaNV__4BAC3F29">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonDich__MaKH__4316F928" Association="Self.FK__HoaDonDich__MaKH__4316F928">
+          <AssociationSet Name="FK__HoaDonDich__MaKH__5535A963" Association="Self.FK__HoaDonDich__MaKH__5535A963">
             <End Role="KhachHang" EntitySet="KhachHang" />
             <End Role="HoaDonDichVu" EntitySet="HoaDonDichVu" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonDich__MaNV__440B1D61" Association="Self.FK__HoaDonDich__MaNV__440B1D61">
+          <AssociationSet Name="FK__HoaDonDich__MaNV__5629CD9C" Association="Self.FK__HoaDonDich__MaNV__5629CD9C">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonDichVu" EntitySet="HoaDonDichVu" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDonLuon__MaNV__46E78A0C" Association="Self.FK__HoaDonLuon__MaNV__46E78A0C">
+          <AssociationSet Name="FK__HoaDonLuon__MaNV__59063A47" Association="Self.FK__HoaDonLuon__MaNV__59063A47">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="HoaDonLuong" EntitySet="HoaDonLuong" />
           </AssociationSet>
-          <AssociationSet Name="FK__KhachHang__MaLoa__286302EC" Association="Self.FK__KhachHang__MaLoa__286302EC">
+          <AssociationSet Name="FK__KhachHang__MaLoa__3A81B327" Association="Self.FK__KhachHang__MaLoa__3A81B327">
             <End Role="LoaiKhachHang" EntitySet="LoaiKhachHang" />
             <End Role="KhachHang" EntitySet="KhachHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__NhanVien__MaChuc__2D27B809" Association="Self.FK__NhanVien__MaChuc__2D27B809">
+          <AssociationSet Name="FK__NhanVien__MaChuc__3F466844" Association="Self.FK__NhanVien__MaChuc__3F466844">
             <End Role="ChucVu" EntitySet="ChucVu" />
             <End Role="NhanVien" EntitySet="NhanVien" />
           </AssociationSet>
-          <AssociationSet Name="FK__SanPham__MaTH__32E0915F" Association="Self.FK__SanPham__MaTH__32E0915F">
+          <AssociationSet Name="FK__SanPham__MaTH__44FF419A" Association="Self.FK__SanPham__MaTH__44FF419A">
             <End Role="ThuongHieu" EntitySet="ThuongHieu" />
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
@@ -460,6 +473,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
           <NavigationProperty Name="PhieuNhapHang" Relationship="Self.FK__ChiTietPh__MaPhi__5EBF139D" FromRole="ChiTietPhieuNhapHang" ToRole="PhieuNhapHang" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietPhi__MaSP__5FB337D6" FromRole="ChiTietPhieuNhapHang" ToRole="SanPham" />
           <Property Name="TenSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuongThieu" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -905,6 +919,7 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
           <EntitySetMapping Name="ChiTietPhieuNhapHangs">
             <EntityTypeMapping TypeName="ShopBadmintonModel.ChiTietPhieuNhapHang">
               <MappingFragment StoreEntitySet="ChiTietPhieuNhapHang">
+                <ScalarProperty Name="SoLuongThieu" ColumnName="SoLuongThieu" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
                 <ScalarProperty Name="MaPhieuNhap" ColumnName="MaPhieuNhap" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
@@ -923,7 +938,6 @@ warning 6035: The relationship 'FK__ChiTietHD___MaHD__70DDC3D8' has columns that
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="ShopBadmintonModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
-                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="NgayGioTao" ColumnName="NgayGioTao" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
