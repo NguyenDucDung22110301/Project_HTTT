@@ -26,7 +26,8 @@ namespace FinalProject_IS
         }
     
         public virtual DbSet<ChiTietHD_SanPham> ChiTietHD_SanPham { get; set; }
-        public virtual DbSet<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
+        public virtual DbSet<ChiTietPhieuNhan> ChiTietPhieuNhans { get; set; }
+        public virtual DbSet<ChiTietPhieuNhapHang> ChiTietPhieuNhapHangs { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
         public virtual DbSet<HoaDonDichVu> HoaDonDichVus { get; set; }
@@ -35,9 +36,9 @@ namespace FinalProject_IS
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<LoaiKhachHang> LoaiKhachHangs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
-        public virtual DbSet<PhieuNhap> PhieuNhaps { get; set; }
+        public virtual DbSet<PhieuNhan> PhieuNhans { get; set; }
+        public virtual DbSet<PhieuNhapHang> PhieuNhapHangs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieux { get; set; }
     }
 }

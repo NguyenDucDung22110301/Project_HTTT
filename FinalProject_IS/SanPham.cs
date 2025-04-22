@@ -18,7 +18,8 @@ namespace FinalProject_IS
         public SanPham()
         {
             this.ChiTietHD_SanPham = new HashSet<ChiTietHD_SanPham>();
-            this.ChiTietPhieuNhaps = new HashSet<ChiTietPhieuNhap>();
+            this.ChiTietPhieuNhans = new HashSet<ChiTietPhieuNhan>();
+            this.ChiTietPhieuNhapHangs = new HashSet<ChiTietPhieuNhapHang>();
         }
     
         public int MaSP { get; set; }
@@ -35,7 +36,9 @@ namespace FinalProject_IS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHD_SanPham> ChiTietHD_SanPham { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
+        public virtual ICollection<ChiTietPhieuNhan> ChiTietPhieuNhans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietPhieuNhapHang> ChiTietPhieuNhapHangs { get; set; }
         public virtual ThuongHieu ThuongHieu { get; set; }
     }
 }

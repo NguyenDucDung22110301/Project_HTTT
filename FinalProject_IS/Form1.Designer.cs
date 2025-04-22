@@ -62,7 +62,7 @@
             this.panel_taskBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_taskBar.Location = new System.Drawing.Point(0, 0);
             this.panel_taskBar.Name = "panel_taskBar";
-            this.panel_taskBar.Size = new System.Drawing.Size(1184, 63);
+            this.panel_taskBar.Size = new System.Drawing.Size(1502, 57);
             this.panel_taskBar.TabIndex = 0;
             // 
             // button4
@@ -128,18 +128,19 @@
             this.panel_Main.Controls.Add(this.panel_banHang);
             this.panel_Main.Controls.Add(this.fpanel_nav);
             this.panel_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Main.Location = new System.Drawing.Point(0, 63);
+            this.panel_Main.Location = new System.Drawing.Point(0, 57);
             this.panel_Main.Name = "panel_Main";
-            this.panel_Main.Size = new System.Drawing.Size(1184, 598);
+            this.panel_Main.Size = new System.Drawing.Size(1502, 756);
             this.panel_Main.TabIndex = 1;
             // 
             // panel_banHang
             // 
             this.panel_banHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_banHang.Location = new System.Drawing.Point(0, 83);
+            this.panel_banHang.Location = new System.Drawing.Point(0, 64);
             this.panel_banHang.Name = "panel_banHang";
-            this.panel_banHang.Size = new System.Drawing.Size(1184, 515);
+            this.panel_banHang.Size = new System.Drawing.Size(1502, 692);
             this.panel_banHang.TabIndex = 1;
+            this.panel_banHang.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_banHang_Paint);
             // 
             // fpanel_nav
             // 
@@ -159,7 +160,7 @@
             this.fpanel_nav.Location = new System.Drawing.Point(0, 0);
             this.fpanel_nav.Name = "fpanel_nav";
             this.fpanel_nav.Padding = new System.Windows.Forms.Padding(1, 1, 1, 5);
-            this.fpanel_nav.Size = new System.Drawing.Size(1184, 83);
+            this.fpanel_nav.Size = new System.Drawing.Size(1502, 64);
             this.fpanel_nav.TabIndex = 0;
             // 
             // btn_BanHang
@@ -184,7 +185,7 @@
             this.btn_DoanhThu.Name = "btn_DoanhThu";
             this.btn_DoanhThu.Size = new System.Drawing.Size(100, 68);
             this.btn_DoanhThu.TabIndex = 1;
-            this.btn_DoanhThu.Text = "Doanh Thu";
+            this.btn_DoanhThu.Text = "Thống Kê";
             this.btn_DoanhThu.UseVisualStyleBackColor = true;
             this.btn_DoanhThu.Click += new System.EventHandler(this.btn_DoanhThu_Click);
             // 
@@ -309,7 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1502, 813);
             this.Controls.Add(this.panel_Main);
             this.Controls.Add(this.panel_taskBar);
             this.ForeColor = System.Drawing.SystemColors.ControlText;

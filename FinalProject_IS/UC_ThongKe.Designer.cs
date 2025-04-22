@@ -1,6 +1,6 @@
 ﻿namespace FinalProject_IS
 {
-    partial class UC_DoanhThu
+    partial class UC_ThongKe
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dtpYear = new System.Windows.Forms.DateTimePicker();
+            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -43,8 +45,8 @@
             this.dtgvTopSales = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtpYear = new System.Windows.Forms.DateTimePicker();
-            this.dtpMonth = new System.Windows.Forms.DateTimePicker();
+            this.btnLoiNhuan = new System.Windows.Forms.Button();
+            this.btnDoanhThu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
@@ -56,6 +58,8 @@
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnDoanhThu);
+            this.panel1.Controls.Add(this.btnLoiNhuan);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.panel2);
@@ -90,8 +94,8 @@
             // panel2
             // 
             this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.dtpMonth);
             this.panel2.Controls.Add(this.dtpYear);
+            this.panel2.Controls.Add(this.dtpMonth);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.chartDoanhThu);
@@ -102,16 +106,36 @@
             this.panel2.Size = new System.Drawing.Size(1087, 329);
             this.panel2.TabIndex = 20;
             // 
+            // dtpYear
+            // 
+            this.dtpYear.CustomFormat = "yyyy";
+            this.dtpYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpYear.Location = new System.Drawing.Point(804, 42);
+            this.dtpYear.Name = "dtpYear";
+            this.dtpYear.Size = new System.Drawing.Size(200, 22);
+            this.dtpYear.TabIndex = 42;
+            this.dtpYear.ValueChanged += new System.EventHandler(this.dtpYear_ValueChanged);
+            // 
+            // dtpMonth
+            // 
+            this.dtpMonth.CustomFormat = "MM/yyyy";
+            this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMonth.Location = new System.Drawing.Point(236, 42);
+            this.dtpMonth.Name = "dtpMonth";
+            this.dtpMonth.Size = new System.Drawing.Size(200, 22);
+            this.dtpMonth.TabIndex = 41;
+            this.dtpMonth.ValueChanged += new System.EventHandler(this.dtpMonth_ValueChanged);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(15, 75);
+            this.label6.Location = new System.Drawing.Point(583, 36);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(196, 31);
-            this.label6.TabIndex = 41;
+            this.label6.TabIndex = 40;
             this.label6.Text = "Doanh thu năm";
             // 
             // label4
@@ -126,16 +150,16 @@
             // chartDoanhThu
             // 
             this.chartDoanhThu.BorderlineColor = System.Drawing.Color.Black;
-            chartArea6.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend6);
+            chartArea4.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend4);
             this.chartDoanhThu.Location = new System.Drawing.Point(21, 109);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series6);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series4);
             this.chartDoanhThu.Size = new System.Drawing.Size(1011, 300);
             this.chartDoanhThu.TabIndex = 38;
             this.chartDoanhThu.Text = "chart1";
@@ -192,33 +216,34 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 
-            // dtpYear
+            // btnLoiNhuan
             // 
-            this.dtpYear.CustomFormat = "yyyy";
-            this.dtpYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpYear.Location = new System.Drawing.Point(237, 83);
-            this.dtpYear.Name = "dtpYear";
-            this.dtpYear.Size = new System.Drawing.Size(200, 22);
-            this.dtpYear.TabIndex = 45;
-            this.dtpYear.ValueChanged += new System.EventHandler(this.dtpYear_ValueChanged);
+            this.btnLoiNhuan.Location = new System.Drawing.Point(882, 27);
+            this.btnLoiNhuan.Name = "btnLoiNhuan";
+            this.btnLoiNhuan.Size = new System.Drawing.Size(103, 41);
+            this.btnLoiNhuan.TabIndex = 23;
+            this.btnLoiNhuan.Text = "Lợi Nhuận";
+            this.btnLoiNhuan.UseVisualStyleBackColor = true;
+            this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);
             // 
-            // dtpMonth
+            // btnDoanhThu
             // 
-            this.dtpMonth.CustomFormat = "MM/yyyy";
-            this.dtpMonth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMonth.Location = new System.Drawing.Point(237, 42);
-            this.dtpMonth.Name = "dtpMonth";
-            this.dtpMonth.Size = new System.Drawing.Size(200, 22);
-            this.dtpMonth.TabIndex = 46;
-            this.dtpMonth.ValueChanged += new System.EventHandler(this.dtpMonth_ValueChanged);
+            this.btnDoanhThu.Location = new System.Drawing.Point(1003, 27);
+            this.btnDoanhThu.Name = "btnDoanhThu";
+            this.btnDoanhThu.Size = new System.Drawing.Size(103, 41);
+            this.btnDoanhThu.TabIndex = 24;
+            this.btnDoanhThu.Text = "DoanhThu";
+            this.btnDoanhThu.UseVisualStyleBackColor = true;
+            this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
-            // UC_DoanhThu
+            // UC_ThongKe
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Name = "UC_DoanhThu";
+            this.Name = "UC_ThongKe";
             this.Size = new System.Drawing.Size(1182, 513);
+            this.Load += new System.EventHandler(this.UC_ThongKe_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -244,7 +269,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpMonth;
         private System.Windows.Forms.DateTimePicker dtpYear;
+        private System.Windows.Forms.DateTimePicker dtpMonth;
+        private System.Windows.Forms.Button btnDoanhThu;
+        private System.Windows.Forms.Button btnLoiNhuan;
     }
 }

@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FinalProject_IS.DAO;
+using FinalProject_IS.DAOs;
 
 namespace FinalProject_IS
 {
@@ -16,16 +18,12 @@ namespace FinalProject_IS
         public UC_Kho()
         {
             InitializeComponent();
-            LoadSanPham();
+            LoadSP();
         }
 
-        public void LoadSanPham()
+        public void LoadSP()    
         {
-            using (var context = new ShopBadmintonEntities())
-            {
-                var dssanpham = SanPhamDAO.LoadSanPham();
-                dtgvSanPham.DataSource = dssanpham;
-            }
+            dtgvKhoSP.DataSource = SanPhamDAO.DSSanPham();
         }
     }
 }

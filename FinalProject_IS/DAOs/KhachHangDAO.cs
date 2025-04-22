@@ -40,5 +40,59 @@ namespace FinalProject_IS.DAOs
 
             return dsKhachHang;
         }
+        public static KhachHang TimKiemKhachHangTheoSDT(string soDienThoai)
+        {
+            KhachHang khachHang = null;
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open(); // Mở kết nối đến database
+
+                string query = "SELECT * FROM KhachHang WHERE SoDienThoai LIKE @SoDienThoai";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@SoDienThoai", "%" + soDienThoai + "%"); // Tìm kiếm gần đúng
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read()) // Nếu có dữ liệu
+                        {
+                            khachHang = new KhachHang
+                            {
+                                MaKH = Convert.ToInt32(reader["MaKH"]),
+                                HoTen = reader["HoTen"].ToString(),
+                                SoDienThoai = reader["SoDienThoai"].ToString(),
+                                TongChiTieu = reader["TongChiTieu"] as decimal?,
+                                MaLoaiKH = reader["MaLoaiKH"] as int?
+                            };
+                        }
+                    }
+                }
+            }
+
+            return khachHang; // Trả về khách hàng hoặc null nếu không tìm thấy
+        }
+        public static bool ThemKhachHang(KhachHang khachHang)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open(); // Mở kết nối đến cơ sở dữ liệu
+
+                string query = "INSERT INTO KhachHang (HoTen, SoDienThoai, TongChiTieu, MaLoaiKH) " +
+                               "VALUES (@HoTen, @SoDienThoai, @TongChiTieu, @MaLoaiKH);";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@HoTen", khachHang.HoTen);
+                    cmd.Parameters.AddWithValue("@SoDienThoai", khachHang.SoDienThoai);
+                    cmd.Parameters.AddWithValue("@TongChiTieu", khachHang.TongChiTieu ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@MaLoaiKH", khachHang.MaLoaiKH ?? (object)DBNull.Value);
+
+                    int rowsAffected = cmd.ExecuteNonQuery(); // Thực thi câu lệnh INSERT
+
+                    return rowsAffected > 0; // Trả về true nếu thêm thành công
+                }
+            }
+        }
     }
 }
