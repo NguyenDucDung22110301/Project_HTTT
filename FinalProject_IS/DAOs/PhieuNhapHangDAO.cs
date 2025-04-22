@@ -134,6 +134,34 @@ namespace FinalProject_IS.DAOs
             return dsPhieuNhapHang;
         }
 
+        public static List<ChiTietPhieuNhapHang> GetChiTietByID(int id)
+        {
+            List<ChiTietPhieuNhapHang> ChitietPhieuNhapHang = new List<ChiTietPhieuNhapHang>();
 
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"SELECT MaSP, TenSP, SoLuongNhap FROM ChiTietPhieuNhapHang where MaPhieuNhap = @id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+
+                    dataAdapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        ChiTietPhieuNhapHang chitiet = new ChiTietPhieuNhapHang();
+                        chitiet.MaPhieuNhap = id;
+                        chitiet.MaSP = Convert.ToInt32(row["MaSP"]);
+                        chitiet.TenSP = row["TenSP"].ToString();
+                        chitiet.SoLuongNhap = Convert.ToInt32(row["SoLuongNhap"]);
+                        ChitietPhieuNhapHang.Add(chitiet);
+                    }
+                    return ChitietPhieuNhapHang;
+                }
+            }
+            
+        }
     }
 }

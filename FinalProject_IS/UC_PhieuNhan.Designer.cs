@@ -40,6 +40,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_ThemPhieu = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvPhieuNhan)).BeginInit();
@@ -50,6 +51,7 @@
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btn_ThemPhieu);
             this.panel2.Controls.Add(this.numericUpDown1);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -190,6 +192,21 @@
             this.label1.TabIndex = 50;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 
+            // btn_ThemPhieu
+            // 
+            this.btn_ThemPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btn_ThemPhieu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btn_ThemPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ThemPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ThemPhieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
+            this.btn_ThemPhieu.Location = new System.Drawing.Point(888, 94);
+            this.btn_ThemPhieu.Name = "btn_ThemPhieu";
+            this.btn_ThemPhieu.Size = new System.Drawing.Size(205, 27);
+            this.btn_ThemPhieu.TabIndex = 47;
+            this.btn_ThemPhieu.Text = "+Thêm phiếu nhận mới";
+            this.btn_ThemPhieu.UseVisualStyleBackColor = false;
+            this.btn_ThemPhieu.Click += new System.EventHandler(this.btn_ThemPhieu_Click);
+            // 
             // UC_PhieuNhan
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -220,5 +237,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_ThemPhieu;
     }
 }

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing.Printing;
 
 namespace FinalProject_IS.DAOs
 {
@@ -72,11 +73,49 @@ namespace FinalProject_IS.DAOs
                 {
                     cmd.Parameters.AddWithValue("@productID", productID);
                     object result = cmd.ExecuteScalar();
-                    string maxID = result.ToString();
-                    return maxID;
+                    string name = result.ToString();
+                    return name;
                 }
             }
         }
+
+        public static SanPham GetProductByID(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM SanPham WHERE MaSP = @productID;";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@productID", id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            SanPham product = new SanPham();
+                            product.MaSP = reader.GetInt32(reader.GetOrdinal("MaSP"));
+                            product.TenSP = reader.GetString(reader.GetOrdinal("TenSP"));
+                            product.LoaiSP = reader.GetString(reader.GetOrdinal("LoaiSP"));
+                            product.GiaBan = reader.GetDecimal(reader.GetOrdinal("GiaBan"));
+                            product.SoLuongTon = reader.GetInt32(reader.GetOrdinal("SoLuongTon"));
+                            product.NgayNhapKho = reader.GetDateTime(reader.GetOrdinal("NgayNhapKho"));
+                            product.ThoiGianBaoHanh = reader.GetInt32(reader.GetOrdinal("ThoiGianBaoHanh"));
+                            product.MaTH = reader.GetInt32(reader.GetOrdinal("MaTH"));
+                            product.GiaGoc = reader.GetDecimal(reader.GetOrdinal("GiaGoc"));
+                            product.MoTa = reader.GetString(reader.GetOrdinal("MoTa"));
+                            return product;
+                        }
+                        else
+                        {
+                            return null; // or throw an exception, depending on your needs
+                        }
+                    }
+                }
+            }
+        }
+
 
     }
 }

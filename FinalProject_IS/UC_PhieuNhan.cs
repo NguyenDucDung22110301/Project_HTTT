@@ -23,5 +23,12 @@ namespace FinalProject_IS
         {
             dtgvPhieuNhan.DataSource = PhieuNhanDAO.DSPhieuNhan();
         }
+
+        private void btn_ThemPhieu_Click(object sender, EventArgs e)
+        {
+            int id = PhieuNhanDAO.GetNewPhieuNhanID();
+            Form3 form = new Form3(id);
+            form.Show();
+        }
     }
 }
