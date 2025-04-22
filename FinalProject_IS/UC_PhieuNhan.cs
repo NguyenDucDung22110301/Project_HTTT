@@ -24,6 +24,13 @@ namespace FinalProject_IS
         public void LoadDsPhieuNhan()
         {
             dtgvPhieuNhan.DataSource = PhieuNhanDAO.DSPhieuNhan();
+            DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+            btnColumn.Name = "Action";
+            btnColumn.HeaderText = "Action";
+            btnColumn.Text = "View";
+            btnColumn.UseColumnTextForButtonValue = true;
+
+            dtgvPhieuNhan.Columns.Add(btnColumn);
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
@@ -75,6 +82,18 @@ namespace FinalProject_IS
             int id = PhieuNhanDAO.GetNewPhieuNhanID();
             Form3 form = new Form3(id);
             form.Show();
+        }
+
+        private void dtgvPhieuNhan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgvPhieuNhan.Columns[e.ColumnIndex].Name == "Action" && e.RowIndex >= 0)
+            {
+                MessageBox.Show(dtgvPhieuNhan.Rows[e.RowIndex].Cells["MaPhieuNhan"].Value.ToString());
+                int idphieu = Convert.ToInt32(dtgvPhieuNhan.Rows[e.RowIndex].Cells["MaPhieuNhan"].Value);
+                F_ChiTietPhieuNhan form = new F_ChiTietPhieuNhan(idphieu);
+                form.Show();
+
+            }
         }
     }
 }

@@ -67,6 +67,21 @@
             this.panel2.Size = new System.Drawing.Size(1150, 448);
             this.panel2.TabIndex = 49;
             // 
+            // btn_ThemPhieu
+            // 
+            this.btn_ThemPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btn_ThemPhieu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btn_ThemPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ThemPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ThemPhieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
+            this.btn_ThemPhieu.Location = new System.Drawing.Point(888, 94);
+            this.btn_ThemPhieu.Name = "btn_ThemPhieu";
+            this.btn_ThemPhieu.Size = new System.Drawing.Size(205, 27);
+            this.btn_ThemPhieu.TabIndex = 47;
+            this.btn_ThemPhieu.Text = "+Thêm phiếu nhận mới";
+            this.btn_ThemPhieu.UseVisualStyleBackColor = false;
+            this.btn_ThemPhieu.Click += new System.EventHandler(this.btn_ThemPhieu_Click);
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,12 +116,14 @@
             // 
             // dtgvPhieuNhan
             // 
+            this.dtgvPhieuNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvPhieuNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvPhieuNhan.Location = new System.Drawing.Point(34, 127);
             this.dtgvPhieuNhan.Name = "dtgvPhieuNhan";
             this.dtgvPhieuNhan.RowHeadersWidth = 51;
             this.dtgvPhieuNhan.Size = new System.Drawing.Size(1059, 424);
             this.dtgvPhieuNhan.TabIndex = 41;
+            this.dtgvPhieuNhan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuNhan_CellContentClick);
             // 
             // btn_Search
             // 
@@ -194,21 +211,6 @@
             this.label1.Size = new System.Drawing.Size(393, 31);
             this.label1.TabIndex = 50;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
-            // 
-            // btn_ThemPhieu
-            // 
-            this.btn_ThemPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.btn_ThemPhieu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.btn_ThemPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ThemPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ThemPhieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
-            this.btn_ThemPhieu.Location = new System.Drawing.Point(888, 94);
-            this.btn_ThemPhieu.Name = "btn_ThemPhieu";
-            this.btn_ThemPhieu.Size = new System.Drawing.Size(205, 27);
-            this.btn_ThemPhieu.TabIndex = 47;
-            this.btn_ThemPhieu.Text = "+Thêm phiếu nhận mới";
-            this.btn_ThemPhieu.UseVisualStyleBackColor = false;
-            this.btn_ThemPhieu.Click += new System.EventHandler(this.btn_ThemPhieu_Click);
             // 
             // UC_PhieuNhan
             // 

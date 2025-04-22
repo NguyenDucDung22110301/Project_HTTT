@@ -150,6 +150,27 @@ namespace FinalProject_IS.DAOs
                 }
             }
 
+        public static void UpdateSanPhamNhan(int id, int soluong)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"UPDATE SanPham
+                        SET SoLuongTon = SoLuongTon + @soluong
+                        WHERE MaSP = @id;
+                        ";
+
+
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@soluong", soluong);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
             return sanPham; // Trả về sản phẩm hoặc null nếu không tìm thấy
         }
