@@ -101,5 +101,41 @@ namespace FinalProject_IS.DAOs
                 }
             }
         }
+
+        public static List<ChiTietPhieuNhan> GetChiTietByID(int id)
+        {
+            List<ChiTietPhieuNhan> ChitietPhieuNhanHang = new List<ChiTietPhieuNhan>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"SELECT * FROM ChiTietPhieuNhan where MaPhieuNhan = @id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+
+                    dataAdapter.Fill(dataTable);
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        ChiTietPhieuNhan chitiet = new ChiTietPhieuNhan();
+                        chitiet.MaPhieuNhan = id;
+                        chitiet.MaSP = Convert.ToInt32(row["MaSP"]);
+                        chitiet.TenSP = row["TenSP"].ToString();
+                        chitiet.LoaiSP = row["LoaiSP"].ToString();
+                        chitiet.SoLuongNhap = Convert.ToInt32(row["SoLuongNhap"]);
+                        chitiet.DonGiaNhap = Convert.ToDecimal(row["DonGiaNhap"]);
+                        chitiet.ThuongHieu = row["ThuongHieu"].ToString();
+                        chitiet.ThoiGianBaoHanh = Convert.ToInt32(row["ThoiGianBaoHanh"]);
+                        chitiet.MoTa = row["Mota"].ToString();
+                        chitiet.TongTien = Convert.ToDecimal(row["TongTien"]);
+                        ChitietPhieuNhanHang.Add(chitiet);
+                    }
+                    return ChitietPhieuNhanHang;
+                }
+            }
+
+        }
     }
 }

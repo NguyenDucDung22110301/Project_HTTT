@@ -116,6 +116,7 @@
             // 
             // dtgvPhieuNhap
             // 
+            this.dtgvPhieuNhap.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvPhieuNhap.Location = new System.Drawing.Point(34, 127);
             this.dtgvPhieuNhap.Name = "dtgvPhieuNhap";

@@ -68,6 +68,7 @@
             this.Name = "F_ChiTietPhieuNhan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "F_ChiTietPhieuNhan";
+            this.Load += new System.EventHandler(this.F_ChiTietPhieuNhan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_ChiTiet)).EndInit();
             this.ResumeLayout(false);
 
