@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_ThemPhieu = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dtgvPhieuNhan = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
-            this.button21 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.rtxb_SearchBox = new System.Windows.Forms.RichTextBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.cb_Box_Filter = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,16 +57,31 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.dtgvPhieuNhan);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.richTextBox8);
-            this.panel2.Controls.Add(this.button21);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.btn_Search);
+            this.panel2.Controls.Add(this.rtxb_SearchBox);
+            this.panel2.Controls.Add(this.btnFilter);
+            this.panel2.Controls.Add(this.cb_Box_Filter);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(16, 52);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1150, 448);
             this.panel2.TabIndex = 49;
+            // 
+            // btn_ThemPhieu
+            // 
+            this.btn_ThemPhieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btn_ThemPhieu.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btn_ThemPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ThemPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ThemPhieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
+            this.btn_ThemPhieu.Location = new System.Drawing.Point(888, 94);
+            this.btn_ThemPhieu.Name = "btn_ThemPhieu";
+            this.btn_ThemPhieu.Size = new System.Drawing.Size(205, 27);
+            this.btn_ThemPhieu.TabIndex = 47;
+            this.btn_ThemPhieu.Text = "+Thêm phiếu nhập mới";
+            this.btn_ThemPhieu.UseVisualStyleBackColor = false;
+            this.btn_ThemPhieu.Click += new System.EventHandler(this.btn_ThemPhieu_Click);
             // 
             // numericUpDown1
             // 
@@ -108,60 +124,63 @@
             this.dtgvPhieuNhan.Size = new System.Drawing.Size(1059, 424);
             this.dtgvPhieuNhan.TabIndex = 41;
             // 
-            // button1
+            // btn_Search
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.button1.Location = new System.Drawing.Point(960, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 35);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "⌕";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.btn_Search.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btn_Search.Location = new System.Drawing.Point(960, 28);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(57, 35);
+            this.btn_Search.TabIndex = 40;
+            this.btn_Search.Text = "⌕";
+            this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // richTextBox8
+            // rtxb_SearchBox
             // 
-            this.richTextBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.richTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            this.richTextBox8.Location = new System.Drawing.Point(424, 28);
-            this.richTextBox8.Name = "richTextBox8";
-            this.richTextBox8.Size = new System.Drawing.Size(530, 35);
-            this.richTextBox8.TabIndex = 39;
-            this.richTextBox8.Text = "Nhập mã phiếu nhận";
+            this.rtxb_SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.rtxb_SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtxb_SearchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.rtxb_SearchBox.Location = new System.Drawing.Point(424, 28);
+            this.rtxb_SearchBox.Name = "rtxb_SearchBox";
+            this.rtxb_SearchBox.Size = new System.Drawing.Size(530, 35);
+            this.rtxb_SearchBox.TabIndex = 39;
+            this.rtxb_SearchBox.Text = "Nhập mã phiếu nhận";
             // 
-            // button21
+            // btnFilter
             // 
-            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.Location = new System.Drawing.Point(212, 28);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(57, 26);
-            this.button21.TabIndex = 24;
-            this.button21.Text = "↑↓";
-            this.button21.UseVisualStyleBackColor = false;
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.White;
+            this.btnFilter.Location = new System.Drawing.Point(212, 28);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(57, 26);
+            this.btnFilter.TabIndex = 24;
+            this.btnFilter.Text = "↑↓";
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // comboBox1
+            // cb_Box_Filter
             // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.cb_Box_Filter.AutoCompleteCustomSource.AddRange(new string[] {
             "Lọc theo tên"});
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Lọc theo tên",
-            "Lọc theo giá"});
-            this.comboBox1.Location = new System.Drawing.Point(29, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(177, 26);
-            this.comboBox1.TabIndex = 22;
-            this.comboBox1.Text = "Lọc theo tên mã";
+            this.cb_Box_Filter.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cb_Box_Filter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_Box_Filter.FormattingEnabled = true;
+            this.cb_Box_Filter.Items.AddRange(new object[] {
+            "Sắp xếp theo ngày",
+            "Sắp xếp theo mã"});
+            this.cb_Box_Filter.Location = new System.Drawing.Point(29, 28);
+            this.cb_Box_Filter.Name = "cb_Box_Filter";
+            this.cb_Box_Filter.Size = new System.Drawing.Size(177, 26);
+            this.cb_Box_Filter.TabIndex = 22;
+            this.cb_Box_Filter.Text = "Lọc theo tên mã";
+            this.cb_Box_Filter.SelectedIndexChanged += new System.EventHandler(this.cb_Box_Filter_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -230,10 +249,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dtgvPhieuNhan;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox8;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.RichTextBox rtxb_SearchBox;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.ComboBox cb_Box_Filter;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
