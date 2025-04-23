@@ -35,7 +35,7 @@ namespace FinalProject_IS
         {
             if (dtgvHoaDon.Columns[e.ColumnIndex].Name == "Action" && e.RowIndex >= 0)
             {
-                int idhoadon = Convert.ToInt32(dtgvHoaDon.Rows[e.RowIndex].Cells["MaHD"].Value);
+                string idhoadon = dtgvHoaDon.Rows[e.RowIndex].Cells["MaHD"].Value.ToString();
                 F_ChiTietHD_SanPham form = new F_ChiTietHD_SanPham(idhoadon);
                 form.Show();
             }

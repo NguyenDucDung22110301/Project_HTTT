@@ -25,6 +25,7 @@ namespace FinalProject_IS
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ChiTiet_HoaDonDichVu> ChiTiet_HoaDonDichVu { get; set; }
         public virtual DbSet<ChiTietHD_SanPham> ChiTietHD_SanPham { get; set; }
         public virtual DbSet<ChiTietPhieuNhan> ChiTietPhieuNhans { get; set; }
         public virtual DbSet<ChiTietPhieuNhapHang> ChiTietPhieuNhapHangs { get; set; }
@@ -39,6 +40,7 @@ namespace FinalProject_IS
         public virtual DbSet<PhieuNhan> PhieuNhans { get; set; }
         public virtual DbSet<PhieuNhapHang> PhieuNhapHangs { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieux { get; set; }
     }
 }

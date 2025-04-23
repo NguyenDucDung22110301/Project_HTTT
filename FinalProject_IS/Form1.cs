@@ -22,6 +22,8 @@ namespace FinalProject_IS
         //private bool isNhanVien = false;
         //private bool isHoaDon = false;
         //private bool isDichVu = false;
+        public UC_BanHang ucBanHang;
+
         public Form1()
         {
             InitializeComponent();
@@ -29,10 +31,12 @@ namespace FinalProject_IS
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ucBanHang = new UC_BanHang();
+            panel_Main.Controls.Add(ucBanHang);
             panel_banHang.Dispose();
             UC_BanHang uc = new UC_BanHang();
-            uc.Location = new Point(0, 83);
-            panel_Main.Controls.Add(uc);
+            ucBanHang.Location = new Point(0, 83);
+            panel_Main.Controls.Add(ucBanHang);
         }
 
         private void btn_BanHang_Click(object sender, EventArgs e)
@@ -102,5 +106,24 @@ namespace FinalProject_IS
         {
 
         }
-    }
+
+        private void btn_ThemPhieuDanVot_Click(object sender, EventArgs e)
+        {
+            // Truy cập vào UC_BanHang để lấy các dòng được chọn
+            List<string[]> danhSachDongDuocChon = ucBanHang.LayDanhSachTenVaGiaSanPham();
+            string tenNV = ucBanHang.TenNV;
+            string sdt = ucBanHang.SDTKH;
+            string hoTen = ucBanHang.HoTenKH;
+
+            // Kiểm tra nếu chưa chọn dòng nào
+            if (danhSachDongDuocChon.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất một dòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            // Mở form Phiếu và truyền dữ liệu đã chọn
+            FormHoaDonDichVu formPhieu = new FormHoaDonDichVu(tenNV, sdt,hoTen, danhSachDongDuocChon);
+            formPhieu.Show();
+        }
+}
 }

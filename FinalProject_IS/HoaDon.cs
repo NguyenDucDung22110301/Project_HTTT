@@ -14,12 +14,12 @@ namespace FinalProject_IS
     
     public partial class HoaDon
     {
-        public int MaHD { get; set; }
         public Nullable<System.DateTime> NgayGioTao { get; set; }
         public Nullable<int> MaKH { get; set; }
         public Nullable<int> MaNV { get; set; }
         public decimal TongTien { get; set; }
         public Nullable<int> MaKM { get; set; }
         public string LoaiHoaDon { get; set; }
+        public string MaHD { get; set; }
     }
 }

@@ -13,20 +13,20 @@ namespace FinalProject_IS
 {
     public partial class F_ChiTietHD_SanPham : Form
     {
-        private int maphieu;
-        public F_ChiTietHD_SanPham(int maphieu)
+        private string mahd;
+        public F_ChiTietHD_SanPham(string mahd)
         {
             InitializeComponent();
-            this.maphieu = maphieu;
+            this.mahd = mahd;
         }
-        private void LoadBang(int id)
+        private void LoadBang(string id)
         {
             dtgv_ChiTietHD_SP.DataSource = HoaDonDAO.LayChiTietTheoMaHD(id);
         }
 
         private void F_ChiTietHD_SanPham_Load(object sender, EventArgs e)
         {
-            LoadBang(this.maphieu);
+            LoadBang(this.mahd);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace FinalProject_IS.DAOs
                 {
                     HoaDon hd = new HoaDon
                     {
-                        MaHD = Convert.ToInt32(row["MaHD"]),
+                        MaHD = row["MaHD"].ToString(),
                         NgayGioTao = Convert.ToDateTime(row["NgayGioTao"]),
                         MaKH = Convert.ToInt32(row["MaKH"]),
                         MaNV = Convert.ToInt32(row["MaNV"]),
@@ -42,7 +42,7 @@ namespace FinalProject_IS.DAOs
 
             return dsHoaDon;
         }
-        public static List<ChiTietHD_SanPham> LayChiTietTheoMaHD(int id)
+        public static List<ChiTietHD_SanPham> LayChiTietTheoMaHD(string id)
         {
             List<ChiTietHD_SanPham> ChiTietHD_SanPham = new List<ChiTietHD_SanPham>();
 

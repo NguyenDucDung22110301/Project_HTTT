@@ -32,10 +32,10 @@ namespace FinalProject_IS.DAOs
                         MaKH = row["MaKH"] != DBNull.Value ? Convert.ToInt32(row["MaKH"]) : (int?)null,
                         SoDienThoai = row["SoDienThoai"].ToString(),
                         MaNV = Convert.ToInt32(row["MaNV"]),
-                        TenVot = row["TenVot"].ToString(),
-                        LoaiDay = row["LoaiDay"].ToString(),
+                        //TenVot = row["TenVot"].ToString(),
+                        //LoaiDay = row["LoaiDay"].ToString(),
                         NgayGioLayVot = row["NgayGioLayVot"] != DBNull.Value ? Convert.ToDateTime(row["NgayGioLayVot"]) : (DateTime?)null,
-                        SoKG = Convert.ToInt32(row["SoKG"]),
+                        //SoKG = Convert.ToInt32(row["SoKG"]),
                         ThanhTien = row["ThanhTien"] != DBNull.Value ? Convert.ToDecimal(row["ThanhTien"]) : (decimal?)null,
                         LoaiPhieu = row["LoaiPhieu"].ToString()
                     };

@@ -19,10 +19,7 @@ namespace FinalProject_IS
         public Nullable<int> MaKH { get; set; }
         public string SoDienThoai { get; set; }
         public int MaNV { get; set; }
-        public string TenVot { get; set; }
-        public string LoaiDay { get; set; }
         public Nullable<System.DateTime> NgayGioLayVot { get; set; }
-        public int SoKG { get; set; }
         public Nullable<decimal> ThanhTien { get; set; }
         public string LoaiPhieu { get; set; }
     }

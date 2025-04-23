@@ -14,7 +14,7 @@ namespace FinalProject_IS
     
     public partial class ChiTietHD_SanPham
     {
-        public int MaHD { get; set; }
+        public string MaHD { get; set; }
         public int MaSP { get; set; }
         public int SoLuongSP { get; set; }
         public decimal DonGia { get; set; }

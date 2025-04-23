@@ -19,25 +19,35 @@ namespace FinalProject_IS
         private KhachHang khachHang;
         private SanPham sp;
         private DataTable dtTemp;
+        public DataGridView SanPhamGridView
+        {
+            get { return this.dtgvDSSanPham; }
+        }
+
+        public string TenNhanVien => txt_TenNhanVien.Text;
+        public string SDT => txt_SDT.Text;
+        public string HoTen => txt_HoTen.Text;
+
         public UC_BanHang()
         {
             InitializeComponent();
             dtgvDSSanPham.CellClick += dtgvDSSanPham_CellClick;
         }
 
-       
+
 
         private void txtSDT_TextChanged(object sender, EventArgs e)
         {
-            khachHang = KhachHangDAO.TimKiemKhachHangTheoSDT(txtSDT.Text);
+            khachHang = KhachHangDAO.TimKiemKhachHangTheoSDT(txt_SDT.Text);
             if (khachHang == null)
             {
-                txtHoTen.Text = "Không thấy khách hàng";
+                txt_HoTen.Text = "Không thấy khách hàng";
             }
-            else {
-                txtHoTen.Text = khachHang.HoTen.ToString();
+            else
+            {
+                txt_HoTen.Text = khachHang.HoTen.ToString();
             }
-            
+
         }
 
         private void txtHoTen_KeyDown(object sender, KeyEventArgs e)
@@ -46,8 +56,8 @@ namespace FinalProject_IS
             {
                 khachHang = new KhachHang
                 {
-                    HoTen = txtHoTen.Text,
-                    SoDienThoai = txtSDT.Text,
+                    HoTen = txt_HoTen.Text,
+                    SoDienThoai = txt_SDT.Text,
                     TongChiTieu = 0, // Có thể là null nếu không cần
                     MaLoaiKH = 1    // Có thể là null nếu không cần
                 };
@@ -75,16 +85,18 @@ namespace FinalProject_IS
                     txtGia.Text = sp.GiaBan.ToString();
                     txtGiaGoc.Text = sp.GiaGoc.ToString();
                 }
-                else {
+                else
+                {
                     txtTenSP.Text = "";
                     txtGia.Text = "";
                     txtGiaGoc.Text = "";
                 }
-            }          
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+       
             int rowIndex = dtgvDSSanPham.Rows.Add(
                 sp.MaSP,       // Cột 1: Mã sản phẩm
                 sp.TenSP,      // Cột 2: Tên sản phẩm
@@ -93,6 +105,7 @@ namespace FinalProject_IS
                 txtGia.Text, // Cột 5: GIá bán
                 Convert.ToDecimal(txtGia.Text) * Convert.ToInt64(txtSoLuong.Text),// Cột 6: Thành Tiền
                 "",// Cột 7: Ghi chú
+                "",
                 "Xóa" // Tạm thời gán giá trị cho cột Button
             );
             // Chuyển cột cuối cùng thành Button
@@ -130,6 +143,7 @@ namespace FinalProject_IS
                 }
             }
         }
+       
         private void CapNhatTongTien()
         {
             decimal tongTien = 0;
@@ -165,7 +179,7 @@ namespace FinalProject_IS
             }
         }
         private void CapNhatSoTienConThieu(bool laTienMat)
-        {   
+        {
             // Lấy giá trị tổng tiền hàng
             decimal tongTien = 0, tienMat = 0, chuyenKhoan = 0;
 
@@ -192,7 +206,7 @@ namespace FinalProject_IS
                 txt_ChuyenKhoan.Text = "0";
                 //txt_TienThoi.Text = (tienMat - tongTien).ToString("N0"); // Hiển thị tiền thối
             }
-            
+
         }
         private void InitTempTable()
         {
@@ -223,21 +237,21 @@ namespace FinalProject_IS
         }
 
         // 6) Hàm thêm 1 dòng vào dtTemp
-        private void AddRowToTemp( String MaSP,string ten, int sl, decimal gia)
+        private void AddRowToTemp(String MaSP, string ten, int sl, decimal gia)
         {
-            dtTemp.Rows.Add(MaSP,ten, sl, gia);
+            dtTemp.Rows.Add(MaSP, ten, sl, gia);
         }
         // 7) Hàm tính subtotal và cập nhật các label còn lại
         private void UpdateSubtotal()
         {
-            lbl_SDTKH.Text = txtSDT.Text;
-            if (string.IsNullOrWhiteSpace(txtHoTen.Text) || txtHoTen.Text.Equals("Không thấy khách hàng"))
+            lbl_SDTKH.Text = txt_SDT.Text;
+            if (string.IsNullOrWhiteSpace(txt_HoTen.Text) || txt_HoTen.Text.Equals("Không thấy khách hàng"))
             {
                 MessageBox.Show("Khách hàng chưa có thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                lbl_TenKH.Text = txtHoTen.Text; // Gán giá trị nếu có
+                lbl_TenKH.Text = txt_HoTen.Text; // Gán giá trị nếu có
             }
 
             lbl_TenNV.Text = txt_TenNhanVien.Text;
@@ -267,6 +281,10 @@ namespace FinalProject_IS
             // Tiền thối
             lbl_TienThoi.Text = (paid - totalAfterDiscount).ToString("N0");
         }
+        private void btn_LuuHoaDon_Click_1(object sender, EventArgs e)
+        {
+            LuuHoaDon();
+        }
         private void button31_Click(object sender, EventArgs e)
         {
             lbl_TenNV.Text = txt_TenNhanVien.Text;
@@ -278,7 +296,7 @@ namespace FinalProject_IS
             foreach (DataGridViewRow src in dtgvDSSanPham.Rows)
             {
                 if (src.IsNewRow) continue;
-                string MaSP = src.Cells["MaSP"].Value?.ToString();
+               string MaSP = src.Cells["MaSP"].Value?.ToString();
                 string ten = src.Cells["TenSP"].Value?.ToString();
                 int sl = int.Parse(src.Cells["SoLuong"].Value?.ToString() ?? "0");
                 decimal gia = decimal.Parse(src.Cells["GiaBan"].Value?.ToString() ?? "0");
@@ -301,7 +319,7 @@ namespace FinalProject_IS
                 {
                     soHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmm") + rnd.Next(10, 99);
 
-                    string sql = "SELECT COUNT(*) FROM HoaDon WHERE SoHD = @soHD";
+                    string sql = "SELECT COUNT(*) FROM HoaDon WHERE MaHD = @soHD";
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@soHD", soHD);
@@ -321,29 +339,30 @@ namespace FinalProject_IS
 
                 try
                 {
-                    string soHD = lbl_SoHD.Text;
-                    int maKH = LayMaKH_TuSDT(txtSDT.Text); // tự viết hàm này nếu chưa có
+                    string MaHD = lbl_SoHD.Text;
+                    int maKH = LayMaKH_TuSDT(txt_SDT.Text); // tự viết hàm này nếu chưa có
                     int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text); // hoặc lấy từ user đăng nhập
 
-                    string sqlHD = @"INSERT INTO HoaDon (NgayGioTao, MaKH, MaNV, TongTien, LoaiHoaDon, SoHD)
+
+                    string sqlHD = @"INSERT INTO HoaDon (NgayGioTao, MaKH, MaNV, TongTien, LoaiHoaDon, MaHD)
                              OUTPUT INSERTED.MaHD
-                             VALUES (@Ngay, @MaKH, @MaNV, @TongTien, @LoaiHD, @SoHD)";
+                             VALUES (@Ngay, @MaKH, @MaNV, @TongTien, @LoaiHD, @MaHD)";
                     SqlCommand cmdHD = new SqlCommand(sqlHD, conn, tran);
                     cmdHD.Parameters.AddWithValue("@Ngay", DateTime.Now);
                     cmdHD.Parameters.AddWithValue("@MaKH", maKH);
                     cmdHD.Parameters.AddWithValue("@MaNV", maNV);
                     cmdHD.Parameters.AddWithValue("@TongTien", decimal.Parse(lbl_TongCuoi.Text));
                     cmdHD.Parameters.AddWithValue("@LoaiHD", "SP");
-                    cmdHD.Parameters.AddWithValue("@SoHD", soHD);
+                    cmdHD.Parameters.AddWithValue("@MaHD", MaHD);
 
-                    int maHD = (int)cmdHD.ExecuteScalar();
+                    string maHD_inserted = (string)cmdHD.ExecuteScalar();
 
                     foreach (DataRow r in dtTemp.Rows)
                     {
                         string sqlCT = @"INSERT INTO ChiTietHD_SanPham (MaHD, MaSP, SoLuongSP, DonGia)
                                  VALUES (@MaHD, @MaSP, @SL, @Gia)";
                         SqlCommand cmdCT = new SqlCommand(sqlCT, conn, tran);
-                        cmdCT.Parameters.AddWithValue("@MaHD", soHD);
+                        cmdCT.Parameters.AddWithValue("@MaHD", MaHD);
                         cmdCT.Parameters.AddWithValue("@MaSP", r["MaSP"]); // bạn cần viết
                         cmdCT.Parameters.AddWithValue("@SL", r["SoLuong"]);
                         cmdCT.Parameters.AddWithValue("@Gia", r["GiaBan"]);
@@ -351,7 +370,7 @@ namespace FinalProject_IS
                     }
 
                     tran.Commit();
-                    MessageBox.Show($"Hóa đơn {soHD} đã được lưu thành công!", "Thông báo");
+                    MessageBox.Show($"Hóa đơn {MaHD} đã được lưu thành công!", "Thông báo");
                 }
                 catch (Exception ex)
                 {
@@ -505,7 +524,8 @@ namespace FinalProject_IS
             }
 
             y += 10;
-            g.DrawString("Số tiền phải thanh toán: " + lbl_TongCuoi.Text, font, Brushes.Black, 10, y); y += 20;
+            g.DrawString("Tạm tính: " + lbl_TongTam.Text, font, Brushes.Black, 10, y); y += 20;
+            g.DrawString("Số tiền phải thanh to: " + lbl_TongCuoi.Text, font, Brushes.Black, 10, y); y += 20;
             g.DrawString("Tiền khách đưa: " + lbl_TienKhachDua.Text, font, Brushes.Black, 10, y); y += 20;
             g.DrawString("Tiền thối lại: " + lbl_TienThoi.Text, font, Brushes.Black, 10, y); y += 30;
 
@@ -513,5 +533,59 @@ namespace FinalProject_IS
             g.DrawString("Hẹn gặp lại!", font, Brushes.Black, 90, y);
         }
 
+        private void dtg_TinhTien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public List<string[]> LayDanhSachTenVaGiaSanPham()
+        {
+            List<string[]> danhSachTenVaGiaSanPham = new List<string[]>();
+
+            foreach (DataGridViewRow row in dtgvDSSanPham.SelectedRows)
+            {
+                // Lấy giá trị từ cột "TenSP" và "GiaSP"
+                string tenSP = row.Cells["TenSP"].Value?.ToString(); // Lấy Tên SP
+                string giaSP = row.Cells["GiaBan"].Value?.ToString(); // Lấy Giá SP
+
+                // Kiểm tra nếu cả hai giá trị đều không null hoặc rỗng
+                if (!string.IsNullOrEmpty(tenSP) && !string.IsNullOrEmpty(giaSP))
+                {
+                    danhSachTenVaGiaSanPham.Add(new string[] { tenSP, giaSP });
+                }
+            }
+            return danhSachTenVaGiaSanPham;
+        }
+
+
+        public string TenNV => txt_TenNhanVien.Text; // Lấy giá trị Tên Nhân Viên
+        public string SDTKH => txt_SDT.Text;                 // Lấy giá trị SĐT
+        public string HoTenKH => txt_HoTen.Text;             // Lấy giá trị Họ Tên
+     
+
+        private void dtgvDSSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Kiểm tra nếu không phải tiêu đề cột và dòng hợp lệ
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy dòng hiện tại
+                DataGridViewRow selectedRow = dtgvDSSanPham.Rows[e.RowIndex];
+
+                // Lặp qua các ô trong dòng
+                for (int i = 0; i < selectedRow.Cells.Count; i++)
+                {
+                    if (i == dtgvDSSanPham.ColumnCount - 1) // Kiểm tra cột cuối cùng (cột Button Xóa)
+                    {
+                        selectedRow.Cells[i].Style.BackColor = Color.White; // Không tô màu (giữ màu mặc định)
+                    }
+                    else
+                    {
+                        selectedRow.Cells[i].Style.BackColor = Color.LightGreen; // Tô xanh các ô còn lại
+                    }
+                }
+            }
+
+        }
+
+       
     }
 }

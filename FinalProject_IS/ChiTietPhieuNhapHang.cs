@@ -16,8 +16,8 @@ namespace FinalProject_IS
     {
         public int MaPhieuNhap { get; set; }
         public int MaSP { get; set; }
-        public int SoLuongNhap { get; set; }
         public string TenSP { get; set; }
+        public int SoLuongNhap { get; set; }
         public int SoLuongThieu { get; set; }
     }
 }
