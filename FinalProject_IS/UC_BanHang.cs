@@ -301,7 +301,7 @@ namespace FinalProject_IS
                 {
                     soHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmm") + rnd.Next(10, 99);
 
-                    string sql = "SELECT COUNT(*) FROM HoaDon WHERE SoHD = @soHD";
+                    string sql = "SELECT COUNT(*) FROM HoaDon WHERE MaHD = @soHD";
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@soHD", soHD);
@@ -321,29 +321,30 @@ namespace FinalProject_IS
 
                 try
                 {
-                    string soHD = lbl_SoHD.Text;
+                    string MaHD = lbl_SoHD.Text;
                     int maKH = LayMaKH_TuSDT(txtSDT.Text); // tự viết hàm này nếu chưa có
                     int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text); // hoặc lấy từ user đăng nhập
 
-                    string sqlHD = @"INSERT INTO HoaDon (NgayGioTao, MaKH, MaNV, TongTien, LoaiHoaDon, SoHD)
+
+                    string sqlHD = @"INSERT INTO HoaDon (NgayGioTao, MaKH, MaNV, TongTien, LoaiHoaDon, MaHD)
                              OUTPUT INSERTED.MaHD
-                             VALUES (@Ngay, @MaKH, @MaNV, @TongTien, @LoaiHD, @SoHD)";
+                             VALUES (@Ngay, @MaKH, @MaNV, @TongTien, @LoaiHD, @MaHD)";
                     SqlCommand cmdHD = new SqlCommand(sqlHD, conn, tran);
                     cmdHD.Parameters.AddWithValue("@Ngay", DateTime.Now);
                     cmdHD.Parameters.AddWithValue("@MaKH", maKH);
                     cmdHD.Parameters.AddWithValue("@MaNV", maNV);
                     cmdHD.Parameters.AddWithValue("@TongTien", decimal.Parse(lbl_TongCuoi.Text));
                     cmdHD.Parameters.AddWithValue("@LoaiHD", "SP");
-                    cmdHD.Parameters.AddWithValue("@SoHD", soHD);
+                    cmdHD.Parameters.AddWithValue("@MaHD", MaHD);
 
-                    int maHD = (int)cmdHD.ExecuteScalar();
+                    string maHD_inserted = (string)cmdHD.ExecuteScalar();
 
                     foreach (DataRow r in dtTemp.Rows)
                     {
                         string sqlCT = @"INSERT INTO ChiTietHD_SanPham (MaHD, MaSP, SoLuongSP, DonGia)
                                  VALUES (@MaHD, @MaSP, @SL, @Gia)";
                         SqlCommand cmdCT = new SqlCommand(sqlCT, conn, tran);
-                        cmdCT.Parameters.AddWithValue("@MaHD", soHD);
+                        cmdCT.Parameters.AddWithValue("@MaHD", MaHD);
                         cmdCT.Parameters.AddWithValue("@MaSP", r["MaSP"]); // bạn cần viết
                         cmdCT.Parameters.AddWithValue("@SL", r["SoLuong"]);
                         cmdCT.Parameters.AddWithValue("@Gia", r["GiaBan"]);
@@ -351,7 +352,7 @@ namespace FinalProject_IS
                     }
 
                     tran.Commit();
-                    MessageBox.Show($"Hóa đơn {soHD} đã được lưu thành công!", "Thông báo");
+                    MessageBox.Show($"Hóa đơn {MaHD} đã được lưu thành công!", "Thông báo");
                 }
                 catch (Exception ex)
                 {
@@ -505,7 +506,8 @@ namespace FinalProject_IS
             }
 
             y += 10;
-            g.DrawString("Số tiền phải thanh toán: " + lbl_TongCuoi.Text, font, Brushes.Black, 10, y); y += 20;
+            g.DrawString("Tạm tính: " + lbl_TongTam.Text, font, Brushes.Black, 10, y); y += 20;
+            g.DrawString("Số tiền phải thanh to: " + lbl_TongCuoi.Text, font, Brushes.Black, 10, y); y += 20;
             g.DrawString("Tiền khách đưa: " + lbl_TienKhachDua.Text, font, Brushes.Black, 10, y); y += 20;
             g.DrawString("Tiền thối lại: " + lbl_TienThoi.Text, font, Brushes.Black, 10, y); y += 30;
 
