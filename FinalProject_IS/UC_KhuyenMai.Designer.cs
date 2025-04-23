@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnThem_KM = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvKhuyenMai)).BeginInit();
@@ -50,6 +52,8 @@
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnXoa);
+            this.panel2.Controls.Add(this.btnThem_KM);
             this.panel2.Controls.Add(this.numericUpDown1);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -64,6 +68,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1150, 448);
             this.panel2.TabIndex = 53;
+            // 
+            // btnThem_KM
+            // 
+            this.btnThem_KM.BackColor = System.Drawing.Color.SpringGreen;
+            this.btnThem_KM.Location = new System.Drawing.Point(960, 98);
+            this.btnThem_KM.Name = "btnThem_KM";
+            this.btnThem_KM.Size = new System.Drawing.Size(75, 23);
+            this.btnThem_KM.TabIndex = 46;
+            this.btnThem_KM.Text = "Thêm";
+            this.btnThem_KM.UseVisualStyleBackColor = false;
+            this.btnThem_KM.Click += new System.EventHandler(this.btnThem_KM_Click);
             // 
             // numericUpDown1
             // 
@@ -190,6 +205,17 @@
             this.label1.TabIndex = 54;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.Red;
+            this.btnXoa.Location = new System.Drawing.Point(879, 98);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 47;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // UC_KhuyenMai
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -220,5 +246,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnThem_KM;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
