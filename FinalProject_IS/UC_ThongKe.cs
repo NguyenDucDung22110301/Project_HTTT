@@ -27,7 +27,9 @@ namespace FinalProject_IS
         #region DoanhThu
         private void LoadDoanhThuTheoThang(int month, int year)
         {
-            string query = @"
+            try
+            {
+                string query = @"
                             SELECT 
                                 DAY(Ngay) AS Ngay,
                                 SUM(DoanhThu) AS DoanhThu
@@ -49,37 +51,42 @@ namespace FinalProject_IS
                             GROUP BY DAY(Ngay)
                             ORDER BY Ngay";
 
-            DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
 
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
                 {
-                    cmd.Parameters.AddWithValue("@Month", month);
-                    cmd.Parameters.AddWithValue("@Year", year);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Month", month);
+                        cmd.Parameters.AddWithValue("@Year", year);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                    }
                 }
+
+                chartDoanhThu.Series.Clear();
+                chartDoanhThu.Titles.Clear(); // Clear tiêu đề cũ
+                chartDoanhThu.Titles.Add($"Doanh thu tháng {month}/{year}");
+                Series series = new Series("Doanh thu theo ngày")
+                {
+                    ChartType = SeriesChartType.Column,
+                    IsValueShownAsLabel = true
+                };
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int ngay = Convert.ToInt32(row["Ngay"]);
+                    decimal doanhThu = Convert.ToDecimal(row["DoanhThu"]);
+                    series.Points.AddXY(ngay + "/" + month, doanhThu);
+                }
+
+                chartDoanhThu.Series.Add(series);
             }
-
-            chartDoanhThu.Series.Clear();
-            chartDoanhThu.Titles.Clear(); // Clear tiêu đề cũ
-            chartDoanhThu.Titles.Add($"Doanh thu tháng {month}/{year}");
-            Series series = new Series("Doanh thu theo ngày")
+            catch (Exception ex)
             {
-                ChartType = SeriesChartType.Column,
-                IsValueShownAsLabel = true
-            };
-
-            foreach (DataRow row in dt.Rows)
-            {
-                int ngay = Convert.ToInt32(row["Ngay"]);
-                decimal doanhThu = Convert.ToDecimal(row["DoanhThu"]);
-                series.Points.AddXY(ngay + "/" + month, doanhThu);
+                MessageBox.Show(ex.Message);
             }
-
-            chartDoanhThu.Series.Add(series);
         }
 
         private void LoadDoanhThuTheoNam(int year)

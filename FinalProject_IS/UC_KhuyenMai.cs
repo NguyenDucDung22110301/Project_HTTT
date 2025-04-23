@@ -26,8 +26,8 @@ namespace FinalProject_IS
 
         private void btnThem_KM_Click(object sender, EventArgs e)
         {
-            Form4 form = new Form4();
-            form.Show();
+            //Form4 form = new Form4();
+            //form.Show();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
