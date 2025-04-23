@@ -281,6 +281,10 @@ namespace FinalProject_IS
             // Tiền thối
             lbl_TienThoi.Text = (paid - totalAfterDiscount).ToString("N0");
         }
+        private void btn_LuuHoaDon_Click_1(object sender, EventArgs e)
+        {
+            LuuHoaDon();
+        }
         private void button31_Click(object sender, EventArgs e)
         {
             lbl_TenNV.Text = txt_TenNhanVien.Text;
@@ -581,5 +585,7 @@ namespace FinalProject_IS
             }
 
         }
+
+       
     }
 }

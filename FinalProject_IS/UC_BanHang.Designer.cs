@@ -231,8 +231,9 @@
             this.btn_LuuHoaDon.Name = "btn_LuuHoaDon";
             this.btn_LuuHoaDon.Size = new System.Drawing.Size(152, 26);
             this.btn_LuuHoaDon.TabIndex = 16;
-            this.btn_LuuHoaDon.Text = "Thông Tin CK";
+            this.btn_LuuHoaDon.Text = "Lưu Hóa Đơn";
             this.btn_LuuHoaDon.UseVisualStyleBackColor = true;
+            this.btn_LuuHoaDon.Click += new System.EventHandler(this.btn_LuuHoaDon_Click_1);
             // 
             // btn_InHoaDon
             // 

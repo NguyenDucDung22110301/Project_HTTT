@@ -337,6 +337,7 @@
             this.btn_InHoaDon.TabIndex = 15;
             this.btn_InHoaDon.Text = "In hóa đơn";
             this.btn_InHoaDon.UseVisualStyleBackColor = true;
+            this.btn_InHoaDon.Click += new System.EventHandler(this.btn_InHoaDon_Click);
             // 
             // btn_XemTruoc
             // 

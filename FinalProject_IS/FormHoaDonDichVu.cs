@@ -348,5 +348,11 @@ namespace FinalProject_IS
             public decimal Gia { get; set; }
             public decimal ThanhTien { get; set; }
         }
+
+        private void btn_InHoaDon_Click(object sender, EventArgs e)
+        {
+            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+            printDocument.Print();
+        }
     }
 }
