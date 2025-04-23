@@ -72,6 +72,20 @@ CREATE TABLE KhuyenMai (
     SoLuong INT NOT NULL
 );
 
+ CREATE TABLE KhachHang_KhuyenMai (
+    MaKH       INT          NOT NULL,
+    MaKM       INT          NOT NULL,
+    NgaySuDung DATETIME     NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT PK_KH_KM PRIMARY KEY (MaKH, MaKM),
+    CONSTRAINT FK_KHKM_KH FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
+    CONSTRAINT FK_KHKM_KM FOREIGN KEY (MaKM) REFERENCES KhuyenMai(MaKM)
+);
+
+INSERT INTO KhuyenMai (TenChuongTrinh, GiaTriKhuyenMai, DieuKienKhuyenMai, NgayBatDau, NgayKetThuc, SoLuong)
+VALUES 
+    ('Khuyến Mãi Mùa Hè', 15.5, 'Vơt Yonex', '2025-04-30', '2025-04-20', 100)
+ 
+
 -- Bảng HOA_DON
 CREATE TABLE HoaDon (
     MaHD INT PRIMARY KEY identity(1,1),
@@ -172,27 +186,32 @@ CREATE TABLE ChiTietPhieuNhan (
     FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
 );
 
-ALTER TABLE HoaDon
-ADD SoHD VARCHAR(20) NULL;
 
-UPDATE HoaDon
-SET SoHD = 'TEMP' + CAST(MaHD AS VARCHAR);
 
-ALTER TABLE HoaDon
-ALTER COLUMN SoHD VARCHAR(20) NOT NULL;
+
+
 
 ALTER TABLE HoaDon
-ADD CONSTRAINT UQ_SoHD UNIQUE(SoHD);
+DROP CONSTRAINT PK_HoaDon;
 
+-- Tạo cột tạm
+ALTER TABLE HoaDon ADD MaHD_temp VARCHAR(20);
 
+-- Copy dữ liệu từ MaHD sang
+UPDATE HoaDon SET MaHD_temp = CAST(MaHD AS VARCHAR(20));
 
-ALTER TABLE ChiTietHD_SanPham
-DROP CONSTRAINT CK__ChiTietHD__SoLuo__4F7CD00D;
-ALTER TABLE ChiTietHD_SanPham
-DROP CONSTRAINT FK__ChiTietHD___MaSP__5165187F;
-ALTER TABLE ChiTietHD_SanPham
-DROP CONSTRAINT PK__HoaDon__2725A6E04E560299;
+-- Xoá cột cũ
+ALTER TABLE HoaDon DROP COLUMN MaHD;
 
+-- Đổi tên cột tạm
+EXEC sp_rename 'HoaDon.MaHD_temp', 'MaHD', 'COLUMN';
+
+ALTER TABLE HoaDon
+ALTER COLUMN MaHD VARCHAR(20) NOT NULL;
+
+ALTER TABLE HoaDon
+ADD CONSTRAINT PK_HoaDon PRIMARY KEY (MaHD);
+--- XÓA CÁC KHÓA CHÍNH BẢNG THAM CHIẾU TRƯỚC
 DROP TABLE ChiTietHD_SanPham;
 
 CREATE TABLE ChiTietHD_SanPham (
@@ -202,7 +221,18 @@ CREATE TABLE ChiTietHD_SanPham (
     DonGia DECIMAL(18,2) NOT NULL,
     ThanhTien AS (SoLuongSP * DonGia) PERSISTED,
     PRIMARY KEY (MaHD, MaSP),
-    FOREIGN KEY (MaHD) REFERENCES HoaDon(SoHD),
+    FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD),
     FOREIGN KEY (MaSP) REFERENCES SanPham(MaSP)
 );
 
+CREATE TABLE ChiTiet_HoaDonDichVu (
+    MaCTHDDV INT PRIMARY KEY IDENTITY(1,1),
+    MaHDDV INT NOT NULL,
+    TenVot NVARCHAR(100),
+    LoaiDay NVARCHAR(100),
+    SoKG INT,
+    ThanhTien DECIMAL(18, 2),
+    FOREIGN KEY (MaHDDV) REFERENCES HoaDonDichVu(MaHDDV)
+);
+ALTER TABLE [ShopBadminton].[dbo].[HoaDonDichVu]
+DROP COLUMN [TenVot], [LoaiDay], [SoKG];

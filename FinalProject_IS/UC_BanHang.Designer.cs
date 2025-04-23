@@ -94,20 +94,20 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button19 = new System.Windows.Forms.Button();
             this.dtgvDSSanPham = new System.Windows.Forms.DataGridView();
-            this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GiaBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_TinhTien)).BeginInit();
@@ -703,6 +703,7 @@
             this.button33.TabIndex = 52;
             this.button33.Text = "Áp dụng mã giảm giá";
             this.button33.UseVisualStyleBackColor = false;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
             // richTextBox14
             // 
@@ -862,7 +863,7 @@
             this.Column3,
             this.SoLuong,
             this.GiaBan,
-            this.Column6,
+            this.ThanhTien,
             this.Column7,
             this.Column8});
             this.dtgvDSSanPham.Location = new System.Drawing.Point(47, 217);
@@ -872,54 +873,6 @@
             this.dtgvDSSanPham.Size = new System.Drawing.Size(1059, 122);
             this.dtgvDSSanPham.TabIndex = 19;
             this.dtgvDSSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDSSanPham_CellContentClick);
-            // 
-            // MaSP
-            // 
-            this.MaSP.HeaderText = "Mã vạch";
-            this.MaSP.MinimumWidth = 6;
-            this.MaSP.Name = "MaSP";
-            // 
-            // TenSP
-            // 
-            this.TenSP.HeaderText = "Tên SP";
-            this.TenSP.MinimumWidth = 6;
-            this.TenSP.Name = "TenSP";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Size";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.HeaderText = "Số lượng";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            // 
-            // GiaBan
-            // 
-            this.GiaBan.HeaderText = "Giá";
-            this.GiaBan.MinimumWidth = 6;
-            this.GiaBan.Name = "GiaBan";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Thành tiền";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Ghi chú";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Thao tác";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
             // 
             // label5
             // 
@@ -958,6 +911,54 @@
             // printDialog
             // 
             this.printDialog.UseEXDialog = true;
+            // 
+            // MaSP
+            // 
+            this.MaSP.HeaderText = "Mã vạch";
+            this.MaSP.MinimumWidth = 6;
+            this.MaSP.Name = "MaSP";
+            // 
+            // TenSP
+            // 
+            this.TenSP.HeaderText = "Tên SP";
+            this.TenSP.MinimumWidth = 6;
+            this.TenSP.Name = "TenSP";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Loại SP";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.HeaderText = "Số lượng";
+            this.SoLuong.MinimumWidth = 6;
+            this.SoLuong.Name = "SoLuong";
+            // 
+            // GiaBan
+            // 
+            this.GiaBan.HeaderText = "Giá";
+            this.GiaBan.MinimumWidth = 6;
+            this.GiaBan.Name = "GiaBan";
+            // 
+            // ThanhTien
+            // 
+            this.ThanhTien.HeaderText = "Thành tiền";
+            this.ThanhTien.MinimumWidth = 6;
+            this.ThanhTien.Name = "ThanhTien";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Ghi chú";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Thao tác";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
             // 
             // UC_BanHang
             // 
@@ -1058,7 +1059,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaBan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
