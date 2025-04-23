@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHoaDonDichVu));
-            this.txtHoTen = new System.Windows.Forms.RichTextBox();
+            this.txt_HoTen = new System.Windows.Forms.RichTextBox();
             this.button27 = new System.Windows.Forms.Button();
             this.txt_TenNhanVien = new System.Windows.Forms.RichTextBox();
             this.button26 = new System.Windows.Forms.Button();
-            this.txtSDT = new System.Windows.Forms.RichTextBox();
+            this.txt_SDT = new System.Windows.Forms.RichTextBox();
             this.button25 = new System.Windows.Forms.Button();
             this.txt_NgayXuat = new System.Windows.Forms.RichTextBox();
             this.button24 = new System.Windows.Forms.Button();
@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTenVot = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.date_layvot = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.txt_TienCong = new System.Windows.Forms.RichTextBox();
             this.lab_tt = new System.Windows.Forms.Label();
@@ -61,22 +62,21 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.date_layvot = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_ChiTietDanLuoi)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtHoTen
+            // txt_HoTen
             // 
-            this.txtHoTen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.txtHoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHoTen.Location = new System.Drawing.Point(596, 84);
-            this.txtHoTen.Multiline = false;
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(179, 26);
-            this.txtHoTen.TabIndex = 40;
-            this.txtHoTen.Text = "";
-            this.txtHoTen.WordWrap = false;
+            this.txt_HoTen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.txt_HoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_HoTen.Location = new System.Drawing.Point(596, 84);
+            this.txt_HoTen.Multiline = false;
+            this.txt_HoTen.Name = "txt_HoTen";
+            this.txt_HoTen.Size = new System.Drawing.Size(179, 26);
+            this.txt_HoTen.TabIndex = 40;
+            this.txt_HoTen.Text = "";
+            this.txt_HoTen.WordWrap = false;
             // 
             // button27
             // 
@@ -112,15 +112,15 @@
             this.button26.Text = "Nhân viên bán hàng";
             this.button26.UseVisualStyleBackColor = false;
             // 
-            // txtSDT
+            // txt_SDT
             // 
-            this.txtSDT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.txtSDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSDT.Location = new System.Drawing.Point(260, 87);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(167, 26);
-            this.txtSDT.TabIndex = 36;
-            this.txtSDT.Text = "";
+            this.txt_SDT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.txt_SDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_SDT.Location = new System.Drawing.Point(260, 87);
+            this.txt_SDT.Name = "txt_SDT";
+            this.txt_SDT.Size = new System.Drawing.Size(167, 26);
+            this.txt_SDT.TabIndex = 36;
+            this.txt_SDT.Text = "";
             // 
             // button25
             // 
@@ -252,14 +252,14 @@
             this.panel1.Controls.Add(this.comboBoxTrangThai);
             this.panel1.Controls.Add(this.txt_SoKG);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtHoTen);
+            this.panel1.Controls.Add(this.txt_HoTen);
             this.panel1.Controls.Add(this.button27);
             this.panel1.Controls.Add(this.dtg_ChiTietDanLuoi);
             this.panel1.Controls.Add(this.btn_InHoaDon);
             this.panel1.Controls.Add(this.txt_TenNhanVien);
             this.panel1.Controls.Add(this.btn_XemTruoc);
             this.panel1.Controls.Add(this.button26);
-            this.panel1.Controls.Add(this.txtSDT);
+            this.panel1.Controls.Add(this.txt_SDT);
             this.panel1.Controls.Add(this.button25);
             this.panel1.Controls.Add(this.txt_NgayXuat);
             this.panel1.Controls.Add(this.button24);
@@ -271,6 +271,13 @@
             this.panel1.Size = new System.Drawing.Size(1037, 607);
             this.panel1.TabIndex = 10;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // date_layvot
+            // 
+            this.date_layvot.Location = new System.Drawing.Point(667, 133);
+            this.date_layvot.Name = "date_layvot";
+            this.date_layvot.Size = new System.Drawing.Size(154, 22);
+            this.date_layvot.TabIndex = 47;
             // 
             // button1
             // 
@@ -379,13 +386,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // date_layvot
-            // 
-            this.date_layvot.Location = new System.Drawing.Point(667, 133);
-            this.date_layvot.Name = "date_layvot";
-            this.date_layvot.Size = new System.Drawing.Size(154, 22);
-            this.date_layvot.TabIndex = 47;
-            // 
             // FormHoaDonDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -403,11 +403,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.RichTextBox txtHoTen;
+        private System.Windows.Forms.RichTextBox txt_HoTen;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.RichTextBox txt_TenNhanVien;
         private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.RichTextBox txtSDT;
+        private System.Windows.Forms.RichTextBox txt_SDT;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.RichTextBox txt_NgayXuat;
         private System.Windows.Forms.Button button24;

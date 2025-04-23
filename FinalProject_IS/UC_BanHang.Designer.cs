@@ -56,11 +56,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.RichTextBox();
+            this.txt_HoTen = new System.Windows.Forms.RichTextBox();
             this.button27 = new System.Windows.Forms.Button();
             this.txt_TenNhanVien = new System.Windows.Forms.RichTextBox();
             this.button26 = new System.Windows.Forms.Button();
-            this.txtSDT = new System.Windows.Forms.RichTextBox();
+            this.txt_SDT = new System.Windows.Forms.RichTextBox();
             this.button25 = new System.Windows.Forms.Button();
             this.txt_NgayXuat = new System.Windows.Forms.RichTextBox();
             this.button24 = new System.Windows.Forms.Button();
@@ -122,11 +122,11 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.txtHoTen);
+            this.panel1.Controls.Add(this.txt_HoTen);
             this.panel1.Controls.Add(this.button27);
             this.panel1.Controls.Add(this.txt_TenNhanVien);
             this.panel1.Controls.Add(this.button26);
-            this.panel1.Controls.Add(this.txtSDT);
+            this.panel1.Controls.Add(this.txt_SDT);
             this.panel1.Controls.Add(this.button25);
             this.panel1.Controls.Add(this.txt_NgayXuat);
             this.panel1.Controls.Add(this.button24);
@@ -410,18 +410,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Số HĐ:";
             // 
-            // txtHoTen
+            // txt_HoTen
             // 
-            this.txtHoTen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.txtHoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHoTen.Location = new System.Drawing.Point(485, 71);
-            this.txtHoTen.Multiline = false;
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(179, 26);
-            this.txtHoTen.TabIndex = 40;
-            this.txtHoTen.Text = "";
-            this.txtHoTen.WordWrap = false;
-            this.txtHoTen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoTen_KeyDown);
+            this.txt_HoTen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.txt_HoTen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_HoTen.Location = new System.Drawing.Point(485, 71);
+            this.txt_HoTen.Multiline = false;
+            this.txt_HoTen.Name = "txt_HoTen";
+            this.txt_HoTen.Size = new System.Drawing.Size(179, 26);
+            this.txt_HoTen.TabIndex = 40;
+            this.txt_HoTen.Text = "";
+            this.txt_HoTen.WordWrap = false;
+            this.txt_HoTen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHoTen_KeyDown);
             // 
             // button27
             // 
@@ -457,16 +457,16 @@
             this.button26.Text = "Nhân viên bán hàng";
             this.button26.UseVisualStyleBackColor = false;
             // 
-            // txtSDT
+            // txt_SDT
             // 
-            this.txtSDT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.txtSDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSDT.Location = new System.Drawing.Point(149, 74);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(167, 26);
-            this.txtSDT.TabIndex = 36;
-            this.txtSDT.Text = "";
-            this.txtSDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
+            this.txt_SDT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.txt_SDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_SDT.Location = new System.Drawing.Point(149, 74);
+            this.txt_SDT.Name = "txt_SDT";
+            this.txt_SDT.Size = new System.Drawing.Size(167, 26);
+            this.txt_SDT.TabIndex = 36;
+            this.txt_SDT.Text = "";
+            this.txt_SDT.TextChanged += new System.EventHandler(this.txtSDT_TextChanged);
             // 
             // button25
             // 
@@ -982,11 +982,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox txtHoTen;
+        private System.Windows.Forms.RichTextBox txt_HoTen;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.RichTextBox txt_TenNhanVien;
         private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.RichTextBox txtSDT;
+        private System.Windows.Forms.RichTextBox txt_SDT;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.RichTextBox txt_NgayXuat;
         private System.Windows.Forms.Button button24;

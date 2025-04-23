@@ -25,8 +25,8 @@ namespace FinalProject_IS
         }
 
         public string TenNhanVien => txt_TenNhanVien.Text;
-        public string SDT => txtSDT.Text;
-        public string HoTen => txtHoTen.Text;
+        public string SDT => txt_SDT.Text;
+        public string HoTen => txt_HoTen.Text;
 
         public UC_BanHang()
         {
@@ -38,14 +38,14 @@ namespace FinalProject_IS
 
         private void txtSDT_TextChanged(object sender, EventArgs e)
         {
-            khachHang = KhachHangDAO.TimKiemKhachHangTheoSDT(txtSDT.Text);
+            khachHang = KhachHangDAO.TimKiemKhachHangTheoSDT(txt_SDT.Text);
             if (khachHang == null)
             {
-                txtHoTen.Text = "Không thấy khách hàng";
+                txt_HoTen.Text = "Không thấy khách hàng";
             }
             else
             {
-                txtHoTen.Text = khachHang.HoTen.ToString();
+                txt_HoTen.Text = khachHang.HoTen.ToString();
             }
 
         }
@@ -56,8 +56,8 @@ namespace FinalProject_IS
             {
                 khachHang = new KhachHang
                 {
-                    HoTen = txtHoTen.Text,
-                    SoDienThoai = txtSDT.Text,
+                    HoTen = txt_HoTen.Text,
+                    SoDienThoai = txt_SDT.Text,
                     TongChiTieu = 0, // Có thể là null nếu không cần
                     MaLoaiKH = 1    // Có thể là null nếu không cần
                 };
@@ -244,14 +244,14 @@ namespace FinalProject_IS
         // 7) Hàm tính subtotal và cập nhật các label còn lại
         private void UpdateSubtotal()
         {
-            lbl_SDTKH.Text = txtSDT.Text;
-            if (string.IsNullOrWhiteSpace(txtHoTen.Text) || txtHoTen.Text.Equals("Không thấy khách hàng"))
+            lbl_SDTKH.Text = txt_SDT.Text;
+            if (string.IsNullOrWhiteSpace(txt_HoTen.Text) || txt_HoTen.Text.Equals("Không thấy khách hàng"))
             {
                 MessageBox.Show("Khách hàng chưa có thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                lbl_TenKH.Text = txtHoTen.Text; // Gán giá trị nếu có
+                lbl_TenKH.Text = txt_HoTen.Text; // Gán giá trị nếu có
             }
 
             lbl_TenNV.Text = txt_TenNhanVien.Text;
@@ -336,7 +336,7 @@ namespace FinalProject_IS
                 try
                 {
                     string MaHD = lbl_SoHD.Text;
-                    int maKH = LayMaKH_TuSDT(txtSDT.Text); // tự viết hàm này nếu chưa có
+                    int maKH = LayMaKH_TuSDT(txt_SDT.Text); // tự viết hàm này nếu chưa có
                     int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text); // hoặc lấy từ user đăng nhập
 
 
@@ -554,8 +554,8 @@ namespace FinalProject_IS
 
 
         public string TenNV => txt_TenNhanVien.Text; // Lấy giá trị Tên Nhân Viên
-        public string SDTKH => txtSDT.Text;                 // Lấy giá trị SĐT
-        public string HoTenKH => txtHoTen.Text;             // Lấy giá trị Họ Tên
+        public string SDTKH => txt_SDT.Text;                 // Lấy giá trị SĐT
+        public string HoTenKH => txt_HoTen.Text;             // Lấy giá trị Họ Tên
      
 
         private void dtgvDSSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)

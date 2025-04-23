@@ -16,9 +16,6 @@ namespace FinalProject_IS
 {
     public partial class FormHoaDonDichVu : Form
     {
-        public string nhanvien;
-        public string sdt;
-        public string hoten;
 
 
 
@@ -41,8 +38,8 @@ namespace FinalProject_IS
             InitializeComponent();
 
             txt_TenNhanVien.Text = tenNV;
-            txtSDT.Text = sdt;
-            txtHoTen.Text = hoTen;
+            txt_SDT.Text = sdt;
+            txt_HoTen.Text = hoTen;
 
             //dtg_ChiTietDanLuoi.DataSource = danhSachSP;
             foreach (var tenSP in danhSachDuocChon)
@@ -139,8 +136,8 @@ namespace FinalProject_IS
             g.DrawString("PHIẾU TÍNH TIỀN", new Font("Arial", 12, FontStyle.Bold), Brushes.Black, 60, y); y += 30;
 
             g.DrawString("Ngày: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), font, Brushes.Black, 10, y); y += 20;
-            g.DrawString("Khách hàng: " + txtHoTen.Text, font, Brushes.Black, 10, y); y += 20;
-            g.DrawString("SĐT: " + txtSDT.Text, font, Brushes.Black, 10, y); y += 20;
+            g.DrawString("Khách hàng: " + txt_HoTen.Text, font, Brushes.Black, 10, y); y += 20;
+            g.DrawString("SĐT: " + txt_SDT.Text, font, Brushes.Black, 10, y); y += 20;
             g.DrawString("Nhân viên: " + txt_TenNhanVien.Text, font, Brushes.Black, 10, y); y += 30;
 
             string trangThai = comboBoxTrangThai.SelectedItem.ToString();
@@ -251,7 +248,7 @@ namespace FinalProject_IS
 
                 try
                 {
-                    int maKH = LayMaKH_TuSDT(txtSDT.Text);
+                    int maKH = LayMaKH_TuSDT(txt_SDT.Text);
                     int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text);
 
                     string sqlHD = @"INSERT INTO HoaDonDichVu 
@@ -262,7 +259,7 @@ namespace FinalProject_IS
                     SqlCommand cmdHD = new SqlCommand(sqlHD, conn, tran);
                     cmdHD.Parameters.AddWithValue("@NgayGioTao", DateTime.Now);
                     cmdHD.Parameters.AddWithValue("@MaKH", maKH);
-                    cmdHD.Parameters.AddWithValue("@SoDienThoai", txtSDT.Text);
+                    cmdHD.Parameters.AddWithValue("@SoDienThoai", txt_SDT.Text);
                     cmdHD.Parameters.AddWithValue("@MaNV", maNV);
                     cmdHD.Parameters.AddWithValue("@NgayGioLayVot", date_layvot.Value);
                     cmdHD.Parameters.AddWithValue("@LoaiPhieu", "DV");
