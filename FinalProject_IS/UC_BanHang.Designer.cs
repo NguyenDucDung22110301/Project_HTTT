@@ -94,12 +94,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button19 = new System.Windows.Forms.Button();
             this.dtgvDSSanPham = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.printDocument = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDialog = new System.Windows.Forms.PrintDialog();
             this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,6 +102,12 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_TinhTien)).BeginInit();
@@ -223,6 +223,7 @@
             this.dtg_TinhTien.RowHeadersWidth = 51;
             this.dtg_TinhTien.Size = new System.Drawing.Size(378, 183);
             this.dtg_TinhTien.TabIndex = 20;
+            this.dtg_TinhTien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_TinhTien_CellContentClick);
             // 
             // btn_LuuHoaDon
             // 
@@ -230,9 +231,8 @@
             this.btn_LuuHoaDon.Name = "btn_LuuHoaDon";
             this.btn_LuuHoaDon.Size = new System.Drawing.Size(152, 26);
             this.btn_LuuHoaDon.TabIndex = 16;
-            this.btn_LuuHoaDon.Text = "Lưu Hóa Đơn";
+            this.btn_LuuHoaDon.Text = "Thông Tin CK";
             this.btn_LuuHoaDon.UseVisualStyleBackColor = true;
-            this.btn_LuuHoaDon.Click += new System.EventHandler(this.btn_LuuHoaDon_Click);
             // 
             // btn_InHoaDon
             // 
@@ -853,6 +853,7 @@
             // 
             // dtgvDSSanPham
             // 
+            this.dtgvDSSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvDSSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvDSSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSP,
@@ -866,8 +867,58 @@
             this.dtgvDSSanPham.Location = new System.Drawing.Point(47, 217);
             this.dtgvDSSanPham.Name = "dtgvDSSanPham";
             this.dtgvDSSanPham.RowHeadersWidth = 51;
+            this.dtgvDSSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvDSSanPham.Size = new System.Drawing.Size(1059, 122);
             this.dtgvDSSanPham.TabIndex = 19;
+            this.dtgvDSSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDSSanPham_CellContentClick);
+            // 
+            // MaSP
+            // 
+            this.MaSP.HeaderText = "Mã vạch";
+            this.MaSP.MinimumWidth = 6;
+            this.MaSP.Name = "MaSP";
+            // 
+            // TenSP
+            // 
+            this.TenSP.HeaderText = "Tên SP";
+            this.TenSP.MinimumWidth = 6;
+            this.TenSP.Name = "TenSP";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Size";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.HeaderText = "Số lượng";
+            this.SoLuong.MinimumWidth = 6;
+            this.SoLuong.Name = "SoLuong";
+            // 
+            // GiaBan
+            // 
+            this.GiaBan.HeaderText = "Giá";
+            this.GiaBan.MinimumWidth = 6;
+            this.GiaBan.Name = "GiaBan";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Thành tiền";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Ghi chú";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Thao tác";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
             // 
             // label5
             // 
@@ -906,62 +957,6 @@
             // printDialog
             // 
             this.printDialog.UseEXDialog = true;
-            // 
-            // MaSP
-            // 
-            this.MaSP.HeaderText = "Mã vạch";
-            this.MaSP.MinimumWidth = 6;
-            this.MaSP.Name = "MaSP";
-            this.MaSP.Width = 125;
-            // 
-            // TenSP
-            // 
-            this.TenSP.HeaderText = "Tên SP";
-            this.TenSP.MinimumWidth = 6;
-            this.TenSP.Name = "TenSP";
-            this.TenSP.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Size";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.HeaderText = "Số lượng";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            this.SoLuong.Width = 125;
-            // 
-            // GiaBan
-            // 
-            this.GiaBan.HeaderText = "Giá";
-            this.GiaBan.MinimumWidth = 6;
-            this.GiaBan.Name = "GiaBan";
-            this.GiaBan.Width = 125;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Thành tiền";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Ghi chú";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Thao tác";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
             // 
             // UC_BanHang
             // 
@@ -1024,7 +1019,6 @@
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.DataGridView dtgvDSSanPham;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.GroupBox groupBox1;
@@ -1057,6 +1051,7 @@
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Windows.Forms.PrintDialog printDialog;
+        private System.Windows.Forms.DataGridView dtgvDSSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

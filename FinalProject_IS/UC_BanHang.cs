@@ -19,13 +19,22 @@ namespace FinalProject_IS
         private KhachHang khachHang;
         private SanPham sp;
         private DataTable dtTemp;
+        public DataGridView SanPhamGridView
+        {
+            get { return this.dtgvDSSanPham; }
+        }
+
+        public string TenNhanVien => txt_TenNhanVien.Text;
+        public string SDT => txtSDT.Text;
+        public string HoTen => txtHoTen.Text;
+
         public UC_BanHang()
         {
             InitializeComponent();
             dtgvDSSanPham.CellClick += dtgvDSSanPham_CellClick;
         }
 
-       
+
 
         private void txtSDT_TextChanged(object sender, EventArgs e)
         {
@@ -34,10 +43,11 @@ namespace FinalProject_IS
             {
                 txtHoTen.Text = "Không thấy khách hàng";
             }
-            else {
+            else
+            {
                 txtHoTen.Text = khachHang.HoTen.ToString();
             }
-            
+
         }
 
         private void txtHoTen_KeyDown(object sender, KeyEventArgs e)
@@ -75,16 +85,18 @@ namespace FinalProject_IS
                     txtGia.Text = sp.GiaBan.ToString();
                     txtGiaGoc.Text = sp.GiaGoc.ToString();
                 }
-                else {
+                else
+                {
                     txtTenSP.Text = "";
                     txtGia.Text = "";
                     txtGiaGoc.Text = "";
                 }
-            }          
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+       
             int rowIndex = dtgvDSSanPham.Rows.Add(
                 sp.MaSP,       // Cột 1: Mã sản phẩm
                 sp.TenSP,      // Cột 2: Tên sản phẩm
@@ -93,6 +105,7 @@ namespace FinalProject_IS
                 txtGia.Text, // Cột 5: GIá bán
                 Convert.ToDecimal(txtGia.Text) * Convert.ToInt64(txtSoLuong.Text),// Cột 6: Thành Tiền
                 "",// Cột 7: Ghi chú
+                "",
                 "Xóa" // Tạm thời gán giá trị cho cột Button
             );
             // Chuyển cột cuối cùng thành Button
@@ -130,6 +143,7 @@ namespace FinalProject_IS
                 }
             }
         }
+       
         private void CapNhatTongTien()
         {
             decimal tongTien = 0;
@@ -165,7 +179,7 @@ namespace FinalProject_IS
             }
         }
         private void CapNhatSoTienConThieu(bool laTienMat)
-        {   
+        {
             // Lấy giá trị tổng tiền hàng
             decimal tongTien = 0, tienMat = 0, chuyenKhoan = 0;
 
@@ -192,7 +206,7 @@ namespace FinalProject_IS
                 txt_ChuyenKhoan.Text = "0";
                 //txt_TienThoi.Text = (tienMat - tongTien).ToString("N0"); // Hiển thị tiền thối
             }
-            
+
         }
         private void InitTempTable()
         {
@@ -223,9 +237,9 @@ namespace FinalProject_IS
         }
 
         // 6) Hàm thêm 1 dòng vào dtTemp
-        private void AddRowToTemp( String MaSP,string ten, int sl, decimal gia)
+        private void AddRowToTemp(String MaSP, string ten, int sl, decimal gia)
         {
-            dtTemp.Rows.Add(MaSP,ten, sl, gia);
+            dtTemp.Rows.Add(MaSP, ten, sl, gia);
         }
         // 7) Hàm tính subtotal và cập nhật các label còn lại
         private void UpdateSubtotal()
@@ -278,7 +292,7 @@ namespace FinalProject_IS
             foreach (DataGridViewRow src in dtgvDSSanPham.Rows)
             {
                 if (src.IsNewRow) continue;
-                string MaSP = src.Cells["MaSP"].Value?.ToString();
+               string MaSP = src.Cells["MaSP"].Value?.ToString();
                 string ten = src.Cells["TenSP"].Value?.ToString();
                 int sl = int.Parse(src.Cells["SoLuong"].Value?.ToString() ?? "0");
                 decimal gia = decimal.Parse(src.Cells["GiaBan"].Value?.ToString() ?? "0");
@@ -515,5 +529,57 @@ namespace FinalProject_IS
             g.DrawString("Hẹn gặp lại!", font, Brushes.Black, 90, y);
         }
 
+        private void dtg_TinhTien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public List<string[]> LayDanhSachTenVaGiaSanPham()
+        {
+            List<string[]> danhSachTenVaGiaSanPham = new List<string[]>();
+
+            foreach (DataGridViewRow row in dtgvDSSanPham.SelectedRows)
+            {
+                // Lấy giá trị từ cột "TenSP" và "GiaSP"
+                string tenSP = row.Cells["TenSP"].Value?.ToString(); // Lấy Tên SP
+                string giaSP = row.Cells["GiaBan"].Value?.ToString(); // Lấy Giá SP
+
+                // Kiểm tra nếu cả hai giá trị đều không null hoặc rỗng
+                if (!string.IsNullOrEmpty(tenSP) && !string.IsNullOrEmpty(giaSP))
+                {
+                    danhSachTenVaGiaSanPham.Add(new string[] { tenSP, giaSP });
+                }
+            }
+            return danhSachTenVaGiaSanPham;
+        }
+
+
+        public string TenNV => txt_TenNhanVien.Text; // Lấy giá trị Tên Nhân Viên
+        public string SDTKH => txtSDT.Text;                 // Lấy giá trị SĐT
+        public string HoTenKH => txtHoTen.Text;             // Lấy giá trị Họ Tên
+     
+
+        private void dtgvDSSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Kiểm tra nếu không phải tiêu đề cột và dòng hợp lệ
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Lấy dòng hiện tại
+                DataGridViewRow selectedRow = dtgvDSSanPham.Rows[e.RowIndex];
+
+                // Lặp qua các ô trong dòng
+                for (int i = 0; i < selectedRow.Cells.Count; i++)
+                {
+                    if (i == dtgvDSSanPham.ColumnCount - 1) // Kiểm tra cột cuối cùng (cột Button Xóa)
+                    {
+                        selectedRow.Cells[i].Style.BackColor = Color.White; // Không tô màu (giữ màu mặc định)
+                    }
+                    else
+                    {
+                        selectedRow.Cells[i].Style.BackColor = Color.LightGreen; // Tô xanh các ô còn lại
+                    }
+                }
+            }
+
+        }
     }
 }

@@ -31,7 +31,7 @@
             this.panel_taskBar = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_ThemPhieuDanVot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panel_banHang = new System.Windows.Forms.Panel();
@@ -57,7 +57,7 @@
             this.panel_taskBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
             this.panel_taskBar.Controls.Add(this.button4);
             this.panel_taskBar.Controls.Add(this.button3);
-            this.panel_taskBar.Controls.Add(this.button2);
+            this.panel_taskBar.Controls.Add(this.btn_ThemPhieuDanVot);
             this.panel_taskBar.Controls.Add(this.button1);
             this.panel_taskBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_taskBar.Location = new System.Drawing.Point(0, 0);
@@ -94,19 +94,20 @@
             this.button3.Text = "Đăng xuất";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btn_ThemPhieuDanVot
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(866, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(167, 54);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Thêm phiếu đan vợt";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_ThemPhieuDanVot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
+            this.btn_ThemPhieuDanVot.FlatAppearance.BorderSize = 0;
+            this.btn_ThemPhieuDanVot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ThemPhieuDanVot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ThemPhieuDanVot.ForeColor = System.Drawing.Color.White;
+            this.btn_ThemPhieuDanVot.Location = new System.Drawing.Point(866, 3);
+            this.btn_ThemPhieuDanVot.Name = "btn_ThemPhieuDanVot";
+            this.btn_ThemPhieuDanVot.Size = new System.Drawing.Size(167, 54);
+            this.btn_ThemPhieuDanVot.TabIndex = 3;
+            this.btn_ThemPhieuDanVot.Text = "Thêm phiếu đan vợt";
+            this.btn_ThemPhieuDanVot.UseVisualStyleBackColor = false;
+            this.btn_ThemPhieuDanVot.Click += new System.EventHandler(this.btn_ThemPhieuDanVot_Click);
             // 
             // button1
             // 
@@ -334,7 +335,7 @@
         private System.Windows.Forms.Panel panel_Main;
         private System.Windows.Forms.FlowLayoutPanel fpanel_nav;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_ThemPhieuDanVot;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_BanHang;
