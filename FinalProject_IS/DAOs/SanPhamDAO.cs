@@ -46,6 +46,91 @@ namespace FinalProject_IS.DAOs
             return dsSanPham;
         }
 
+        public static List<SanPham> DSSanPhamTheoTen(string name)
+        {
+            List<SanPham> dsSanPham = new List<SanPham>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM SanPham WHERE TenSP like @name";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", "%" + name + "%");
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            SanPham sp = new SanPham
+                            {
+                                MaSP = Convert.ToInt32(row["MaSP"]),
+                                TenSP = row["TenSP"].ToString(),
+                                LoaiSP = row["LoaiSP"].ToString(),
+                                GiaBan = Convert.ToDecimal(row["GiaBan"]),
+                                SoLuongTon = Convert.ToInt32(row["SoLuongTon"]),
+                                NgayNhapKho = Convert.ToDateTime(row["NgayNhapKho"]),
+                                ThoiGianBaoHanh = row["ThoiGianBaoHanh"] != DBNull.Value ? Convert.ToInt32(row["ThoiGianBaoHanh"]) : (int?)null,
+                                GiaGoc = Convert.ToDecimal(row["GiaGoc"]),
+                                MoTa = row["MoTa"].ToString()
+                            };
+                            dsSanPham.Add(sp);
+                        }
+                    }
+                }
+            }
+
+            return dsSanPham;
+        }
+
+        public static List<SanPham> DSSanPhamSapXep(string name)
+        {
+            List<SanPham> dsSanPham = new List<SanPham>();
+
+            // Whitelist allowed column names
+            string[] allowedColumns = { "MaSP", "TenSP", "LoaiSP", "GiaBan", "SoLuongTon", "NgayNhapKho", "ThoiGianBaoHanh", "GiaGoc" };
+            if (!allowedColumns.Contains(name))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT * FROM SanPham ORDER BY {name}"; // safe because validated
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            SanPham sp = new SanPham
+                            {
+                                MaSP = Convert.ToInt32(row["MaSP"]),
+                                TenSP = row["TenSP"].ToString(),
+                                LoaiSP = row["LoaiSP"].ToString(),
+                                GiaBan = Convert.ToDecimal(row["GiaBan"]),
+                                SoLuongTon = Convert.ToInt32(row["SoLuongTon"]),
+                                NgayNhapKho = Convert.ToDateTime(row["NgayNhapKho"]),
+                                ThoiGianBaoHanh = row["ThoiGianBaoHanh"] != DBNull.Value ? Convert.ToInt32(row["ThoiGianBaoHanh"]) : (int?)null,
+                                GiaGoc = Convert.ToDecimal(row["GiaGoc"]),
+                                MoTa = row["MoTa"].ToString()
+                            };
+                            dsSanPham.Add(sp);
+                        }
+                    }
+                }
+            }
+
+            return dsSanPham;
+        }
+
+
+
         public static int GetNewProductID()
         {
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
