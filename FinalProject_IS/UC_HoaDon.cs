@@ -40,5 +40,22 @@ namespace FinalProject_IS
                 form.Show();
             }
         }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            dtgvHoaDon.DataSource = HoaDonDAO.DSHoaDonTheoTen(rTbx_Search.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedIndex == 0)
+            {
+                dtgvHoaDon.DataSource = HoaDonDAO.DSHoaDonSapXep("MaHD");
+            }
+            else
+            {
+                dtgvHoaDon.DataSource = HoaDonDAO.DSHoaDonSapXep("TongTien");
+            }
+        }
     }
 }

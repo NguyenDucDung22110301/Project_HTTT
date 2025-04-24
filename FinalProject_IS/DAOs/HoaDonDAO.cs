@@ -42,6 +42,87 @@ namespace FinalProject_IS.DAOs
 
             return dsHoaDon;
         }
+
+        public static List<HoaDon> DSHoaDonTheoTen(string mahoadon)
+        {
+            List<HoaDon> dsHoaDon = new List<HoaDon>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM HoaDon WHERE MaHD LIKE @mahoadon";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@mahoadon", "%" + mahoadon + "%");
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            HoaDon hd = new HoaDon
+                            {
+                                MaHD = row["MaHD"].ToString(),
+                                NgayGioTao = Convert.ToDateTime(row["NgayGioTao"]),
+                                MaKH = Convert.ToInt32(row["MaKH"]),
+                                MaNV = Convert.ToInt32(row["MaNV"]),
+                                TongTien = Convert.ToInt32(row["TongTien"]),
+                                MaKM = row["MaKM"] != DBNull.Value ? Convert.ToInt32(row["MaKM"]) : (int?)null,
+                                LoaiHoaDon = row["LoaiHoaDon"].ToString()
+                            };
+                            dsHoaDon.Add(hd);
+                        }
+                    }
+                }
+            }
+
+            return dsHoaDon;
+        }
+
+
+        public static List<HoaDon> DSHoaDonSapXep(string columnName)
+        {
+            List<HoaDon> dsHoaDon = new List<HoaDon>();
+
+            // Whitelist allowed column names
+            string[] allowedColumns = { "MaHD", "NgayGioTao", "MaKH", "MaNV", "TongTien", "MaKM", "LoaiHoaDon" };
+            if (!allowedColumns.Contains(columnName))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT * FROM HoaDon ORDER BY {columnName}";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            HoaDon hd = new HoaDon
+                            {
+                                MaHD = row["MaHD"].ToString(),
+                                NgayGioTao = Convert.ToDateTime(row["NgayGioTao"]),
+                                MaKH = Convert.ToInt32(row["MaKH"]),
+                                MaNV = Convert.ToInt32(row["MaNV"]),
+                                TongTien = Convert.ToInt32(row["TongTien"]),
+                                MaKM = row["MaKM"] != DBNull.Value ? Convert.ToInt32(row["MaKM"]) : (int?)null,
+                                LoaiHoaDon = row["LoaiHoaDon"].ToString()
+                            };
+                            dsHoaDon.Add(hd);
+                        }
+                    }
+                }
+            }
+
+            return dsHoaDon;
+        }
+
         public static List<ChiTietHD_SanPham> LayChiTietTheoMaHD(string id)
         {
             List<ChiTietHD_SanPham> ChiTietHD_SanPham = new List<ChiTietHD_SanPham>();
