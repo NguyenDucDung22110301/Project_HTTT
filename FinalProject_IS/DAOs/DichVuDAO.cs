@@ -45,5 +45,87 @@ namespace FinalProject_IS.DAOs
 
             return dsHoaDonDichVu;
         }
+
+        public static List<HoaDonDichVu> DSDichVuTheoTen(string keyword)
+        {
+            List<HoaDonDichVu> dsHoaDonDichVu = new List<HoaDonDichVu>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM HoaDonDichVu WHERE SoDienThoai LIKE @keyword";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            HoaDonDichVu hddv = new HoaDonDichVu
+                            {
+                                MaHDDV = Convert.ToInt32(row["MaHDDV"]),
+                                NgayGioTao = Convert.ToDateTime(row["NgayGioTao"]),
+                                MaKH = row["MaKH"] != DBNull.Value ? Convert.ToInt32(row["MaKH"]) : (int?)null,
+                                SoDienThoai = row["SoDienThoai"].ToString(),
+                                MaNV = Convert.ToInt32(row["MaNV"]),
+                                NgayGioLayVot = row["NgayGioLayVot"] != DBNull.Value ? Convert.ToDateTime(row["NgayGioLayVot"]) : (DateTime?)null,
+                                ThanhTien = row["ThanhTien"] != DBNull.Value ? Convert.ToDecimal(row["ThanhTien"]) : (decimal?)null,
+                                LoaiPhieu = row["LoaiPhieu"].ToString()
+                            };
+                            dsHoaDonDichVu.Add(hddv);
+                        }
+                    }
+                }
+            }
+
+            return dsHoaDonDichVu;
+        }
+
+        public static List<HoaDonDichVu> DSDichVuSapXep(string columnName)
+        {
+            List<HoaDonDichVu> dsHoaDonDichVu = new List<HoaDonDichVu>();
+
+            // Whitelist valid columns
+            string[] allowedColumns = { "MaHDDV", "NgayGioTao", "MaKH", "SoDienThoai", "MaNV", "NgayGioLayVot", "ThanhTien", "LoaiPhieu" };
+            if (!allowedColumns.Contains(columnName))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT * FROM HoaDonDichVu ORDER BY {columnName}";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            HoaDonDichVu hddv = new HoaDonDichVu
+                            {
+                                MaHDDV = Convert.ToInt32(row["MaHDDV"]),
+                                NgayGioTao = Convert.ToDateTime(row["NgayGioTao"]),
+                                MaKH = row["MaKH"] != DBNull.Value ? Convert.ToInt32(row["MaKH"]) : (int?)null,
+                                SoDienThoai = row["SoDienThoai"].ToString(),
+                                MaNV = Convert.ToInt32(row["MaNV"]),
+                                NgayGioLayVot = row["NgayGioLayVot"] != DBNull.Value ? Convert.ToDateTime(row["NgayGioLayVot"]) : (DateTime?)null,
+                                ThanhTien = row["ThanhTien"] != DBNull.Value ? Convert.ToDecimal(row["ThanhTien"]) : (decimal?)null,
+                                LoaiPhieu = row["LoaiPhieu"].ToString()
+                            };
+                            dsHoaDonDichVu.Add(hddv);
+                        }
+                    }
+                }
+            }
+
+            return dsHoaDonDichVu;
+        }
+
     }
 }
