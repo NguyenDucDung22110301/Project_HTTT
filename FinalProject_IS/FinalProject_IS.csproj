@@ -68,6 +68,12 @@
     <Compile Include="ChiTiet_HoaDonDichVu.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="F_ChiTietSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_ChiTietSanPham.Designer.cs">
+      <DependentUpon>F_ChiTietSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="F_ThemKhuyenMai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +263,9 @@
     <Compile Include="UC_PhieuNhap.Designer.cs">
       <DependentUpon>UC_PhieuNhap.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="F_ChiTietSanPham.resx">
+      <DependentUpon>F_ChiTietSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_ThemKhuyenMai.resx">
       <DependentUpon>F_ThemKhuyenMai.cs</DependentUpon>
     </EmbeddedResource>

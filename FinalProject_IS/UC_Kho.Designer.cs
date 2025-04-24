@@ -107,6 +107,7 @@
             this.dtgvKhoSP.RowHeadersWidth = 51;
             this.dtgvKhoSP.Size = new System.Drawing.Size(1400, 266);
             this.dtgvKhoSP.TabIndex = 41;
+            this.dtgvKhoSP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvKhoSP_CellContentClick);
             // 
             // btn_Search
             // 

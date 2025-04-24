@@ -42,5 +42,11 @@ namespace FinalProject_IS
                 dtgvKhoSP.DataSource = SanPhamDAO.DSSanPhamSapXep("GiaBan");
             }
         }
+
+        private void dtgvKhoSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            F_ChiTietSanPham form = new F_ChiTietSanPham(Convert.ToInt32(dtgvKhoSP[0, e.RowIndex].Value));
+            form.Show();
+        }
     }
 }
