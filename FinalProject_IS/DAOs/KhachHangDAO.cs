@@ -94,5 +94,50 @@ namespace FinalProject_IS.DAOs
                 }
             }
         }
+        public static bool UpdateKhachHang(KhachHang khachHang)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open(); // Mở kết nối đến cơ sở dữ liệu
+
+                string query = "UPDATE KhachHang SET HoTen = @HoTen,SoDienThoai = @SoDienThoai";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@HoTen", khachHang.HoTen);
+                    cmd.Parameters.AddWithValue("@SoDienThoai", khachHang.SoDienThoai);
+                    int rowsAffected = cmd.ExecuteNonQuery(); // Thực thi câu lệnh INSERT
+                    return rowsAffected > 0; // Trả về true nếu thêm thành công
+                }
+            }
+        }
+        public static int XoaKhachHang(int maKH)
+        {
+            int rowsAffected = 0;
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"DELETE FROM KhachHang WHERE MaKH = @MaKH";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@MaKH", maKH);
+
+                    conn.Open();
+                    rowsAffected = cmd.ExecuteNonQuery();
+                }
+            }
+            return rowsAffected;
+
+        }
+
+
+        public static int XoaNhieuKhachhang(List<int> danhSachMaKH)
+        {
+            int rowsAffected = 0;
+            foreach (int maKH in danhSachMaKH)
+            {
+                rowsAffected += XoaKhachHang(maKH);
+            }
+            return rowsAffected;
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace FinalProject_IS
         {
             Form4 form = new Form4();
             form.Show();
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

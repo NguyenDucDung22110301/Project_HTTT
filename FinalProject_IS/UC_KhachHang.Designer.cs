@@ -40,6 +40,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvKhachHang)).BeginInit();
@@ -50,6 +52,8 @@
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnSua);
+            this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.numericUpDown1);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -191,6 +195,16 @@
             this.label1.TabIndex = 48;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
             // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(960, 98);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 47;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
             // UC_KhachHang
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -221,5 +235,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
