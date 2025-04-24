@@ -37,8 +37,8 @@
             this.dtgvKhuyenMai = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox8 = new System.Windows.Forms.RichTextBox();
-            this.button21 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnSapXep = new System.Windows.Forms.Button();
+            this.cbLoc = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,8 +60,8 @@
             this.panel2.Controls.Add(this.dtgvKhuyenMai);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.richTextBox8);
-            this.panel2.Controls.Add(this.button21);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.btnSapXep);
+            this.panel2.Controls.Add(this.cbLoc);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(16, 52);
@@ -158,35 +158,34 @@
             this.richTextBox8.TabIndex = 39;
             this.richTextBox8.Text = "Nhập mã khuyến mãi, tên khuyến mãi";
             // 
-            // button21
+            // btnSapXep
             // 
-            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.button21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.ForeColor = System.Drawing.Color.White;
-            this.button21.Location = new System.Drawing.Point(212, 28);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(57, 26);
-            this.button21.TabIndex = 24;
-            this.button21.Text = "↑↓";
-            this.button21.UseVisualStyleBackColor = false;
+            this.btnSapXep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btnSapXep.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btnSapXep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSapXep.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSapXep.ForeColor = System.Drawing.Color.White;
+            this.btnSapXep.Location = new System.Drawing.Point(212, 28);
+            this.btnSapXep.Name = "btnSapXep";
+            this.btnSapXep.Size = new System.Drawing.Size(57, 26);
+            this.btnSapXep.TabIndex = 24;
+            this.btnSapXep.Text = "↑↓";
+            this.btnSapXep.UseVisualStyleBackColor = false;
+            this.btnSapXep.Click += new System.EventHandler(this.btnSapXep_Click);
             // 
-            // comboBox1
+            // cbLoc
             // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "Lọc theo tên"});
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Lọc theo tên",
-            "Lọc theo giá"});
-            this.comboBox1.Location = new System.Drawing.Point(29, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(177, 26);
-            this.comboBox1.TabIndex = 22;
-            this.comboBox1.Text = "Lọc theo tên mã";
+            this.cbLoc.AutoCompleteCustomSource.AddRange(new string[] {
+            "Lọc Theo Tên",
+            "Lọc Theo mã"});
+            this.cbLoc.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLoc.FormattingEnabled = true;
+            this.cbLoc.Location = new System.Drawing.Point(29, 28);
+            this.cbLoc.Name = "cbLoc";
+            this.cbLoc.Size = new System.Drawing.Size(177, 26);
+            this.cbLoc.TabIndex = 22;
+            this.cbLoc.Text = "Tên";
             // 
             // label14
             // 
@@ -242,8 +241,8 @@
         private System.Windows.Forms.DataGridView dtgvKhuyenMai;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RichTextBox richTextBox8;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnSapXep;
+        private System.Windows.Forms.ComboBox cbLoc;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
