@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_taskBar = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_Name = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_ThemPhieuDanVot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             // panel_taskBar
             // 
             this.panel_taskBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.panel_taskBar.Controls.Add(this.button4);
+            this.panel_taskBar.Controls.Add(this.btn_Name);
             this.panel_taskBar.Controls.Add(this.button3);
             this.panel_taskBar.Controls.Add(this.btn_ThemPhieuDanVot);
             this.panel_taskBar.Controls.Add(this.button1);
@@ -64,20 +64,20 @@
             this.panel_taskBar.Size = new System.Drawing.Size(1502, 57);
             this.panel_taskBar.TabIndex = 0;
             // 
-            // button4
+            // btn_Name
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.button4.Enabled = false;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(571, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(169, 54);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Xin chào [Name]";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
+            this.btn_Name.Enabled = false;
+            this.btn_Name.FlatAppearance.BorderSize = 0;
+            this.btn_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Name.ForeColor = System.Drawing.Color.White;
+            this.btn_Name.Location = new System.Drawing.Point(571, 3);
+            this.btn_Name.Name = "btn_Name";
+            this.btn_Name.Size = new System.Drawing.Size(169, 54);
+            this.btn_Name.TabIndex = 5;
+            this.btn_Name.Text = "Xin chào [Name]";
+            this.btn_Name.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
@@ -323,7 +323,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_ThemPhieuDanVot;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_Name;
         private System.Windows.Forms.Button btn_BanHang;
         private System.Windows.Forms.Button btn_DoanhThu;
         private System.Windows.Forms.Button btn_KhachHang;

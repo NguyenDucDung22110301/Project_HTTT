@@ -65,23 +65,38 @@ namespace FinalProject_IS.DAOs
             }
         }
 
-        public static bool KiemTraDangNhap(string email, int manv)
+        public static NhanVien KiemTraDangNhap(string email, int manv)
         {
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
             {
-                string query = @"SELECT * FROM NhanVien WHERE MaNV = @manv and Email = @email";
+                conn.Open();
 
+                string query = "SELECT * FROM NhanVien WHERE Email = @email and MaNV = @manv;";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@manv", manv);
                     cmd.Parameters.AddWithValue("@email", email);
-
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@manv", manv);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        return reader.HasRows;
+                        if (reader.Read()) // Nếu tìm thấy sản phẩm
+                        {
+                            NhanVien nv = new NhanVien();
+                            nv.MaNV = manv;
+                            nv.HoTen = reader.GetString(reader.GetOrdinal("HoTen"));
+                            nv.GioiTinh = reader.GetString(reader.GetOrdinal("GioiTinh"));
+                            nv.Email = email;
+                            nv.MaChucVu = reader.GetInt32(reader.GetOrdinal("MaChucVu"));
+                            nv.LuongCoBan = reader.GetDecimal(reader.GetOrdinal("LuongCoBan"));
+                            return nv;
+                        }
+                        else
+                        {
+                            return null;
+                        }
                     }
+
+
                 }
             }
         }

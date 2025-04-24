@@ -18,7 +18,7 @@ namespace FinalProject_IS.DAOs
 
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
             {
-                string query = "SELECT TOP 100 * FROM SanPham";
+                string query = "SELECT * FROM SanPham";
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();

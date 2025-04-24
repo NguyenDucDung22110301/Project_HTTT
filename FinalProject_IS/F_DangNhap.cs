@@ -23,9 +23,11 @@ namespace FinalProject_IS
             F_Main form = new F_Main();
             string email = txt_MaNV.Text;
             int manv = Convert.ToInt32(txt_MatKhau.Text);
-            if (NhanVienDAO.KiemTraDangNhap(email, manv))
+            NhanVien nv = NhanVienDAO.KiemTraDangNhap(email, manv);
+            if (nv != null)
             {
                 form.manv = manv;
+                form.tenNV = nv.HoTen;
                 form.Show();
             }
             else
