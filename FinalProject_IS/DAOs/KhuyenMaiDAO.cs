@@ -10,6 +10,7 @@ namespace FinalProject_IS.DAOs
 {
     public class KhuyenMaiDAO
     {
+        private bool isAscending = true;
         public static List<KhuyenMai> DsKhuyenMai()
         {
             List<KhuyenMai> dsKhuyenMai = new List<KhuyenMai>();
@@ -79,7 +80,78 @@ namespace FinalProject_IS.DAOs
 
         }
 
-        
+        public static List<KhuyenMai> SapXepKhuyenMaiTheoTen(bool ascending)
+        {
+            List<KhuyenMai> dsKhuyenMai = new List<KhuyenMai>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string order = ascending ? "ASC" : "DESC";
+                string query = $"SELECT * FROM KhuyenMai ORDER BY TenChuongTrinh {order}";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    KhuyenMai km = new KhuyenMai
+                    {
+                        MaKM = Convert.ToInt32(row["MaKM"]),
+                        TenChuongTrinh = row["TenChuongTrinh"].ToString(),
+                        GiaTriKhuyenMai = Convert.ToDouble(row["GiaTriKhuyenMai"]),
+                        DieuKienKhuyenMai = row["DieuKienKhuyenMai"].ToString(),
+                        NgayBatDau = Convert.ToDateTime(row["NgayBatDau"]),
+                        NgayKetThuc = Convert.ToDateTime(row["NgayKetThuc"]),
+                        SoLuong = Convert.ToInt32(row["SoLuong"])
+                    };
+                    dsKhuyenMai.Add(km);
+                }
+            }
+
+            return dsKhuyenMai;
+        }
+
+        public static List<KhuyenMai> SapXepKhuyenMai(string tieuChi, bool ascending)
+        {
+            List<KhuyenMai> dsKhuyenMai = new List<KhuyenMai>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string order = ascending ? "ASC" : "DESC";
+                string column = "TenChuongTrinh"; // default
+
+                if (tieuChi == "Mã khuyến mãi")
+                    column = "MaKM";
+                else if (tieuChi == "Tên chương trình")
+                    column = "TenChuongTrinh";
+
+                string query = $"SELECT * FROM KhuyenMai ORDER BY {column} {order}";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                DataTable dataTable = new DataTable();
+                dataAdapter.Fill(dataTable);
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    KhuyenMai km = new KhuyenMai
+                    {
+                        MaKM = Convert.ToInt32(row["MaKM"]),
+                        TenChuongTrinh = row["TenChuongTrinh"].ToString(),
+                        GiaTriKhuyenMai = Convert.ToDouble(row["GiaTriKhuyenMai"]),
+                        DieuKienKhuyenMai = row["DieuKienKhuyenMai"].ToString(),
+                        NgayBatDau = Convert.ToDateTime(row["NgayBatDau"]),
+                        NgayKetThuc = Convert.ToDateTime(row["NgayKetThuc"]),
+                        SoLuong = Convert.ToInt32(row["SoLuong"])
+                    };
+                    dsKhuyenMai.Add(km);
+                }
+            }
+
+            return dsKhuyenMai;
+        }
+
+
         public static int XoaNhieuKhuyenMai(List<int> danhSachMaKM)
         {
             int rowsAffected = 0;
