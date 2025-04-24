@@ -42,6 +42,87 @@ namespace FinalProject_IS.DAOs
 
             return dsNhanVien;
         }
+
+        public static List<NhanVien> DsNhanVienTheoTen(string name)
+        {
+            List<NhanVien> dsNhanVien = new List<NhanVien>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM NhanVien Where HoTen like @name";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", "%" + name + "%");
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            NhanVien nv = new NhanVien
+                            {
+                                MaNV = Convert.ToInt32(row["MaNV"]),
+                                HoTen = row["HoTen"].ToString(),
+                                NgaySinh = Convert.ToDateTime(row["NgaySinh"]),
+                                GioiTinh = row["GioiTinh"].ToString(),
+                                Email = Convert.ToString(row["email"]),
+                                MaChucVu = Convert.ToInt32(row["MaChucVu"]),
+                                LuongCoBan = Convert.ToDecimal(row["LuongCoBan"])
+                            };
+                            dsNhanVien.Add(nv);
+                        }
+                    }
+                }
+            }
+
+            return dsNhanVien;
+        }
+
+        public static List<NhanVien> DSNhanVienSapXep(string name)
+        {
+            List<NhanVien> dsNhanVien = new List<NhanVien>();
+
+            // Whitelist allowed columns to sort by
+            string[] allowedColumns = { "MaNV", "HoTen", "NgaySinh", "GioiTinh", "email", "MaChucVu", "LuongCoBan" };
+            if (!allowedColumns.Contains(name))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT * FROM NhanVien ORDER BY {name}"; // safe because name is validated
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            NhanVien nv = new NhanVien
+                            {
+                                MaNV = Convert.ToInt32(row["MaNV"]),
+                                HoTen = row["HoTen"].ToString(),
+                                NgaySinh = Convert.ToDateTime(row["NgaySinh"]),
+                                GioiTinh = row["GioiTinh"].ToString(),
+                                Email = Convert.ToString(row["email"]),
+                                MaChucVu = Convert.ToInt32(row["MaChucVu"]),
+                                LuongCoBan = Convert.ToDecimal(row["LuongCoBan"])
+                            };
+                            dsNhanVien.Add(nv);
+                        }
+                    }
+                }
+            }
+
+            return dsNhanVien;
+        }
+
         public static void ThemNhanVien(NhanVien nv)
         {
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
