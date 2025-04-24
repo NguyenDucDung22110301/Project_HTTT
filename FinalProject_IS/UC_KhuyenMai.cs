@@ -26,7 +26,7 @@ namespace FinalProject_IS
 
         private void btnThem_KM_Click(object sender, EventArgs e)
         {
-            Form4 form = new Form4();
+            F_ThemKhuyenMai form = new F_ThemKhuyenMai();
             form.Show();
         }
 

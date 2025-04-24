@@ -19,7 +19,7 @@ namespace FinalProject_IS
 
         private void btn_XacNhan_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            F_Main form = new F_Main();
             form.Show();
         }
     }

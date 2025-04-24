@@ -80,7 +80,7 @@ namespace FinalProject_IS
         private void btn_ThemPhieu_Click(object sender, EventArgs e)
         {
             int id = PhieuNhanDAO.GetNewPhieuNhanID();
-            Form3 form = new Form3(id);
+            FNhan_ChiTietNhan form = new FNhan_ChiTietNhan(id);
             form.Show();
         }
 
