@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 
 namespace FinalProject_IS.DAOs
 {
@@ -60,6 +61,27 @@ namespace FinalProject_IS.DAOs
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static bool KiemTraDangNhap(string email, int manv)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"SELECT * FROM NhanVien WHERE MaNV = @manv and Email = @email";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@manv", manv);
+                    cmd.Parameters.AddWithValue("@email", email);
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        return reader.HasRows;
+                    }
                 }
             }
         }

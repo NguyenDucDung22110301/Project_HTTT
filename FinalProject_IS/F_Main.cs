@@ -24,6 +24,8 @@ namespace FinalProject_IS
         //private bool isDichVu = false;
         public UC_BanHang ucBanHang;
 
+        public int manv;
+
         public F_Main()
         {
             InitializeComponent();
