@@ -66,13 +66,13 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(16, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1150, 448);
+            this.panel2.Size = new System.Drawing.Size(1460, 448);
             this.panel2.TabIndex = 53;
             // 
             // btnXoa
             // 
             this.btnXoa.BackColor = System.Drawing.Color.Red;
-            this.btnXoa.Location = new System.Drawing.Point(879, 98);
+            this.btnXoa.Location = new System.Drawing.Point(1276, 98);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(75, 23);
             this.btnXoa.TabIndex = 47;
@@ -83,7 +83,7 @@
             // btnThem_KM
             // 
             this.btnThem_KM.BackColor = System.Drawing.Color.SpringGreen;
-            this.btnThem_KM.Location = new System.Drawing.Point(960, 98);
+            this.btnThem_KM.Location = new System.Drawing.Point(1357, 98);
             this.btnThem_KM.Name = "btnThem_KM";
             this.btnThem_KM.Size = new System.Drawing.Size(75, 23);
             this.btnThem_KM.TabIndex = 46;
@@ -130,7 +130,7 @@
             this.dtgvKhuyenMai.Location = new System.Drawing.Point(34, 127);
             this.dtgvKhuyenMai.Name = "dtgvKhuyenMai";
             this.dtgvKhuyenMai.RowHeadersWidth = 51;
-            this.dtgvKhuyenMai.Size = new System.Drawing.Size(1059, 424);
+            this.dtgvKhuyenMai.Size = new System.Drawing.Size(1400, 266);
             this.dtgvKhuyenMai.TabIndex = 41;
             // 
             // button1
@@ -140,7 +140,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.button1.Location = new System.Drawing.Point(960, 28);
+            this.button1.Location = new System.Drawing.Point(1357, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(57, 35);
             this.button1.TabIndex = 40;
@@ -152,7 +152,7 @@
             this.richTextBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.richTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            this.richTextBox8.Location = new System.Drawing.Point(424, 28);
+            this.richTextBox8.Location = new System.Drawing.Point(821, 28);
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.Size = new System.Drawing.Size(530, 35);
             this.richTextBox8.TabIndex = 39;
@@ -223,7 +223,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Name = "UC_KhuyenMai";
-            this.Size = new System.Drawing.Size(1182, 513);
+            this.Size = new System.Drawing.Size(1500, 625);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

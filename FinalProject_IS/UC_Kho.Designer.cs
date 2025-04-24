@@ -62,7 +62,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(17, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1150, 448);
+            this.panel2.Size = new System.Drawing.Size(1460, 448);
             this.panel2.TabIndex = 8;
             // 
             // numericUpDown1
@@ -105,7 +105,7 @@
             this.dtgvKhoSP.Location = new System.Drawing.Point(34, 127);
             this.dtgvKhoSP.Name = "dtgvKhoSP";
             this.dtgvKhoSP.RowHeadersWidth = 51;
-            this.dtgvKhoSP.Size = new System.Drawing.Size(1059, 424);
+            this.dtgvKhoSP.Size = new System.Drawing.Size(1400, 266);
             this.dtgvKhoSP.TabIndex = 41;
             // 
             // button1
@@ -115,7 +115,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.button1.Location = new System.Drawing.Point(960, 28);
+            this.button1.Location = new System.Drawing.Point(1376, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(57, 35);
             this.button1.TabIndex = 40;
@@ -127,7 +127,7 @@
             this.richTextBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.richTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            this.richTextBox8.Location = new System.Drawing.Point(424, 28);
+            this.richTextBox8.Location = new System.Drawing.Point(840, 19);
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.Size = new System.Drawing.Size(530, 35);
             this.richTextBox8.TabIndex = 39;
@@ -199,7 +199,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Name = "UC_Kho";
-            this.Size = new System.Drawing.Size(1184, 515);
+            this.Size = new System.Drawing.Size(1500, 625);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
