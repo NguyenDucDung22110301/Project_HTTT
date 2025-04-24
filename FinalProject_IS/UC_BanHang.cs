@@ -96,7 +96,7 @@ namespace FinalProject_IS
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-       
+
             int rowIndex = dtgvDSSanPham.Rows.Add(
                 sp.MaSP,       // Cột 1: Mã sản phẩm
                 sp.TenSP,      // Cột 2: Tên sản phẩm
@@ -105,7 +105,6 @@ namespace FinalProject_IS
                 txtGia.Text, // Cột 5: GIá bán
                 Convert.ToDecimal(txtGia.Text) * Convert.ToInt64(txtSoLuong.Text),// Cột 6: Thành Tiền
                 "",// Cột 7: Ghi chú
-                "",
                 "Xóa" // Tạm thời gán giá trị cho cột Button
             );
             // Chuyển cột cuối cùng thành Button
@@ -143,7 +142,7 @@ namespace FinalProject_IS
                 }
             }
         }
-       
+
         private void CapNhatTongTien()
         {
             decimal tongTien = 0;
@@ -245,46 +244,78 @@ namespace FinalProject_IS
         private void UpdateSubtotal()
         {
             lbl_SDTKH.Text = txt_SDT.Text;
+
             if (string.IsNullOrWhiteSpace(txt_HoTen.Text) || txt_HoTen.Text.Equals("Không thấy khách hàng"))
             {
                 MessageBox.Show("Khách hàng chưa có thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                lbl_TenKH.Text = txt_HoTen.Text; // Gán giá trị nếu có
+                lbl_TenKH.Text = txt_HoTen.Text;
             }
 
             lbl_TenNV.Text = txt_TenNhanVien.Text;
             lbl_NgayXuat.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+            int maKH = LayMaKH_TuSDT(txt_SDT.Text);
+            decimal giamGia = LayGiamGiaToiDaTheoMaKH(maKH);
+            lbl_GiamGia.Text = giamGia.ToString("P0");
+
             decimal subtotal = 0m;
             foreach (DataRow r in dtTemp.Rows)
                 subtotal += (decimal)r["ThanhTien"];
-
             lbl_TongTam.Text = subtotal.ToString("N0");
 
-            // Giảm giá (ví dụ đọc từ txt_MaGiamGia là "10" nghĩa 10%)
-            decimal discountPercent = 0m;
-            //if (decimal.TryParse(txt_MaGiamGia.Text, out var dp))
-            //    discountPercent = dp;
-            //lbl_GiamGia.Text = discountPercent.ToString("N0") + "%";
+            decimal tongCuoi = subtotal * (1 - giamGia / 100m);
+            lbl_TongCuoi.Text = tongCuoi.ToString("N0");
 
-            decimal rate = 1 - discountPercent / 100m;
-            decimal totalAfterDiscount = subtotal * rate;
-            lbl_TongCuoi.Text = totalAfterDiscount.ToString("N0");
-
-            // Tiền khách đưa
             decimal cash = decimal.TryParse(txt_TraTienMat.Text, out var t1) ? t1 : 0m;
             decimal transfer = decimal.TryParse(txt_ChuyenKhoan.Text, out var t2) ? t2 : 0m;
             decimal paid = cash + transfer;
             lbl_TienKhachDua.Text = paid.ToString("N0");
 
-            // Tiền thối
-            lbl_TienThoi.Text = (paid - totalAfterDiscount).ToString("N0");
+            lbl_TienThoi.Text = (paid - tongCuoi).ToString("N0");
         }
-        private void btn_LuuHoaDon_Click_1(object sender, EventArgs e)
+        private int LayMaKH_TuSDT(string sdt)
         {
-            LuuHoaDon();
+            int maKH = 0;
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open();
+                string query = "SELECT MaKH FROM KhachHang WHERE SoDienThoai = @sdt";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@sdt", sdt);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null)
+                        maKH = Convert.ToInt32(result);
+                }
+            }
+            return maKH;
         }
+        private decimal LayGiamGiaToiDaTheoMaKH(int maKH)
+        {
+            decimal giamGia = 0;
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                conn.Open();
+                string query = @"
+            SELECT lk.GiamGiaToiDa
+            FROM KhachHang kh
+            JOIN LoaiKhachHang lk ON kh.MaLoaiKH = lk.MaLoaiKH
+            WHERE kh.MaKH = @maKH";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@maKH", maKH);
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                        giamGia = Convert.ToDecimal(result);
+                }
+            }
+            return giamGia;
+        }
+
         private void button31_Click(object sender, EventArgs e)
         {
             lbl_TenNV.Text = txt_TenNhanVien.Text;
@@ -296,7 +327,7 @@ namespace FinalProject_IS
             foreach (DataGridViewRow src in dtgvDSSanPham.Rows)
             {
                 if (src.IsNewRow) continue;
-               string MaSP = src.Cells["MaSP"].Value?.ToString();
+                string MaSP = src.Cells["MaSP"].Value?.ToString();
                 string ten = src.Cells["TenSP"].Value?.ToString();
                 int sl = int.Parse(src.Cells["SoLuong"].Value?.ToString() ?? "0");
                 decimal gia = decimal.Parse(src.Cells["GiaBan"].Value?.ToString() ?? "0");
@@ -306,7 +337,10 @@ namespace FinalProject_IS
 
             UpdateSubtotal();
         }
-
+        private void btn_LuuHoaDon_Click_1(object sender, EventArgs e)
+        {
+            LuuHoaDon();
+        }
         private string TaoSoHoaDonNgauNhien()
         {
             string soHD;
@@ -379,26 +413,7 @@ namespace FinalProject_IS
                 }
             }
         }
-        private int LayMaKH_TuSDT(string sdt)
-        {
-            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
-            {
-                conn.Open();
-                string sql = "SELECT MaKH FROM KhachHang WHERE SoDienThoai = @sdt";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@sdt", sdt);
-                object result = cmd.ExecuteScalar();
 
-                if (result != null && int.TryParse(result.ToString(), out int maKH))
-                {
-                    return maKH;
-                }
-                else
-                {
-                    throw new Exception("Không tìm thấy khách hàng với số điện thoại này!");
-                }
-            }
-        }
         private int LayMaNV_TuTen(string tenNV)
         {
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
@@ -560,7 +575,7 @@ namespace FinalProject_IS
         public string TenNV => txt_TenNhanVien.Text; // Lấy giá trị Tên Nhân Viên
         public string SDTKH => txt_SDT.Text;                 // Lấy giá trị SĐT
         public string HoTenKH => txt_HoTen.Text;             // Lấy giá trị Họ Tên
-     
+
 
         private void dtgvDSSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -586,6 +601,101 @@ namespace FinalProject_IS
 
         }
 
-       
+        private void button33_Click(object sender, EventArgs e)
+        {
+            int maKH = LayMaKH_TuSDT(txt_SDT.Text.ToString());
+            if (dtgvDSSanPham.CurrentRow == null) { MessageBox.Show("Chọn sản phẩm."); return; }
+            int maSP = Convert.ToInt32(dtgvDSSanPham.CurrentRow.Cells["MaSP"].Value);
+
+            string sql = @"
+            SELECT km.MaKM, km.TenChuongTrinh, km.GiaTriKhuyenMai
+            FROM KhuyenMai km
+            JOIN SanPham sp   ON sp.MaSP = @MaSP
+            LEFT JOIN ThuongHieu th ON sp.MaTH = th.MaTH
+            WHERE km.SoLuong > 0
+              AND GETDATE() <= km.NgayKetThuc
+              AND (
+                   km.DieuKienKhuyenMai LIKE N'%' + sp.LoaiSP + N'%'
+                AND km.DieuKienKhuyenMai LIKE N'%' + th.TenTH  + N'%'
+              )";
+
+            var dtKM = new DataTable();
+            using (var da = new SqlDataAdapter(sql, DataProvider.ConnStr))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@MaSP", maSP);
+                da.Fill(dtKM);
+            }
+
+            if (dtKM.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có chương trình khuyến mãi phù hợp với sản phẩm này.");
+                return;
+            }
+
+            using (var frm = new FormChonKhuyenMai(dtKM))
+            {
+                if (frm.ShowDialog() != DialogResult.OK) return;
+
+                int selectedMaKM = frm.SelectedMaKM;
+                decimal discountPercent = Convert.ToDecimal((double)frm.SelectedDiscount);
+
+                // 1) Kiểm tra xem khách đã dùng mã này chưa
+                const string checkSql = @"
+                SELECT 1 FROM KhachHang_KhuyenMai
+                WHERE MaKH = @MaKH AND MaKM = @MaKM";
+                using (var conn = new SqlConnection(DataProvider.ConnStr))
+                using (var chk = new SqlCommand(checkSql, conn))
+                {
+                    chk.Parameters.AddWithValue("@MaKH", maKH);
+                    chk.Parameters.AddWithValue("@MaKM", selectedMaKM);
+                    conn.Open();
+                    if (chk.ExecuteScalar() != null)
+                    {
+                        MessageBox.Show("Bạn đã sử dụng mã này rồi, không thể áp dụng lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                // 2) Áp dụng giảm giá: tính giá mới & thành tiền
+                var row = dtgvDSSanPham.CurrentRow;
+                decimal originalPrice = Convert.ToDecimal(row.Cells["GiaBan"].Value);
+                int quantity = Convert.ToInt32(row.Cells["SoLuong"].Value);
+
+                decimal newUnitPrice = Math.Round(
+                    originalPrice * (1 - discountPercent / 100m),
+                    0,
+                    MidpointRounding.AwayFromZero
+                );
+                decimal lineTotal = newUnitPrice * quantity;
+
+                row.Cells["GiaBan"].Value = newUnitPrice;
+                row.Cells["ThanhTien"].Value = lineTotal;
+                txt_TongTienKhachHang.Text = lineTotal.ToString("N0");
+
+                // 3) Giảm số lượng mã KM
+                using (var conn = new SqlConnection(DataProvider.ConnStr))
+                using (var upd = new SqlCommand(
+                    "UPDATE KhuyenMai SET SoLuong = SoLuong - 1 WHERE MaKM = @MaKM", conn))
+                {
+                    upd.Parameters.AddWithValue("@MaKM", selectedMaKM);
+                    conn.Open();
+                    upd.ExecuteNonQuery();
+                }
+
+                // 4) Ghi nhận khách đã dùng mã (KhachHang_KhuyenMai)
+                const string insertSql = @"
+                INSERT INTO KhachHang_KhuyenMai (MaKH, MaKM)
+                VALUES (@MaKH, @MaKM)";
+                using (var conn = new SqlConnection(DataProvider.ConnStr))
+                using (var ins = new SqlCommand(insertSql, conn))
+                {
+                    ins.Parameters.AddWithValue("@MaKH", maKH);
+                    ins.Parameters.AddWithValue("@MaKM", selectedMaKM);
+                    conn.Open();
+                    ins.ExecuteNonQuery();
+                }
+            }
+
+            }
+        }
     }
-}

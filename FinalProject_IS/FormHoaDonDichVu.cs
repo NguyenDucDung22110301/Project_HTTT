@@ -251,12 +251,12 @@ namespace FinalProject_IS
                 {
                     int maKH = LayMaKH_TuSDT(txt_SDT.Text);
                     int maNV = LayMaNV_TuTen(txt_TenNhanVien.Text);
-
+                    string trangThai = comboBoxTrangThai.Text.Trim(); ;
                     string sqlHD = @"INSERT INTO HoaDonDichVu 
-                             (NgayGioTao, MaKH, SoDienThoai, MaNV, NgayGioLayVot, LoaiPhieu)
-                             OUTPUT INSERTED.MaHDDV
-                             VALUES 
-                             (@NgayGioTao, @MaKH, @SoDienThoai, @MaNV, @NgayGioLayVot, @LoaiPhieu)";
+                    (NgayGioTao, MaKH, SoDienThoai, MaNV, NgayGioLayVot, LoaiPhieu, IsThanhToan)
+                    OUTPUT INSERTED.MaHDDV
+                    VALUES 
+                    (@NgayGioTao, @MaKH, @SoDienThoai, @MaNV, @NgayGioLayVot, @LoaiPhieu, @TrangThai)";
                     SqlCommand cmdHD = new SqlCommand(sqlHD, conn, tran);
                     cmdHD.Parameters.AddWithValue("@NgayGioTao", DateTime.Now);
                     cmdHD.Parameters.AddWithValue("@MaKH", maKH);
@@ -264,7 +264,7 @@ namespace FinalProject_IS
                     cmdHD.Parameters.AddWithValue("@MaNV", maNV);
                     cmdHD.Parameters.AddWithValue("@NgayGioLayVot", date_layvot.Value);
                     cmdHD.Parameters.AddWithValue("@LoaiPhieu", "DV");
-
+                    cmdHD.Parameters.AddWithValue("@TrangThai", trangThai == "Đã thanh toán" ? 1 : 0);
                     int maHDDV = (int)cmdHD.ExecuteScalar();
 
                     foreach (DataGridViewRow row in dtg_ChiTietDanLuoi.Rows)

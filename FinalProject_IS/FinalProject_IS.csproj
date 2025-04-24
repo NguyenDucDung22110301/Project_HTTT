@@ -126,11 +126,23 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChonKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChonKhuyenMai.Designer.cs">
+      <DependentUpon>FormChonKhuyenMai.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHoaDonDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormHoaDonDichVu.Designer.cs">
       <DependentUpon>FormHoaDonDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_DangNhap.Designer.cs">
+      <DependentUpon>F_DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="HoaDon.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
@@ -263,8 +275,17 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChonKhuyenMai.resx">
+      <DependentUpon>FormChonKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormHoaDonDichVu.resx">
       <DependentUpon>FormHoaDonDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_DangNhap.resx">
+      <DependentUpon>F_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -274,6 +295,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UC_BanHang.resx">
       <DependentUpon>UC_BanHang.cs</DependentUpon>
@@ -328,6 +350,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\tải xuống.png" />
     <Content Include="ShopBadmintonModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ShopBadmintonModel.Context.cs</LastGenOutput>
