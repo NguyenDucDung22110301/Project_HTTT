@@ -13,9 +13,15 @@ namespace FinalProject_IS
 {
     public partial class UC_KhachHang : UserControl
     {
-        public UC_KhachHang()
+        private int machucvu;
+        public UC_KhachHang(int machucvu)
         {
             InitializeComponent();
+            this.machucvu = machucvu;
+            if(machucvu == 1)
+            {
+                btnSua.Hide();
+            }
             LoadDsKhachHang();
         }
 

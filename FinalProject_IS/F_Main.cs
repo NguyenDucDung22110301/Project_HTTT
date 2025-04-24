@@ -26,6 +26,7 @@ namespace FinalProject_IS
 
         public int manv;
         public string tenNV;
+        public int maChucVu;
         public F_Main()
         {
             InitializeComponent();
@@ -41,6 +42,15 @@ namespace FinalProject_IS
             panel_Main.Controls.Add(ucBanHang);
             btn_Name.Text = "Xin chào " + tenNV;
             ucBanHang.txt_TenNhanVien.Text = tenNV;
+
+            if (maChucVu == 1)
+            {
+                btn_DoanhThu.Hide();
+                btn_KhuyenMai.Hide();
+                btn_PhieuNhan.Hide();
+                btn_PhieuNhap.Hide();
+                btn_NhanVien.Hide();
+            }
         }
 
         private void btn_BanHang_Click(object sender, EventArgs e)
@@ -57,12 +67,12 @@ namespace FinalProject_IS
 
         private void btn_KhachHang_Click(object sender, EventArgs e)
         {
-            ChangeTab(new UC_KhachHang());
+            ChangeTab(new UC_KhachHang(maChucVu));
         }
 
         private void btn_Kho_Click(object sender, EventArgs e)
         {
-            ChangeTab(new UC_Kho());
+            ChangeTab(new UC_Kho(maChucVu));
         }
 
         private void btn_KhuyenMai_Click(object sender, EventArgs e)

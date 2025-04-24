@@ -34,6 +34,8 @@ namespace FinalProject_IS
             {
                 form.manv = manv;
                 form.tenNV = nv.HoTen;
+                form.maChucVu = nv.MaChucVu ?? 0;
+
                 form.Show();
             }
             else if(email == "" && manv == -1)

@@ -15,9 +15,11 @@ namespace FinalProject_IS
 {
     public partial class UC_Kho : UserControl
     {
-        public UC_Kho()
+        private int machucvu;
+        public UC_Kho(int machucvu)
         {
             InitializeComponent();
+            this.machucvu = machucvu;
             LoadSP();
         }
 
@@ -45,6 +47,10 @@ namespace FinalProject_IS
 
         private void dtgvKhoSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(this.machucvu == 1)
+            {
+                return;
+            }
             F_ChiTietSanPham form = new F_ChiTietSanPham(Convert.ToInt32(dtgvKhoSP[0, e.RowIndex].Value));
             form.Show();
         }
