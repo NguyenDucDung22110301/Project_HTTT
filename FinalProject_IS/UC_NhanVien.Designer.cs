@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_ThemNV = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -51,7 +50,6 @@
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btn_ThemNV);
             this.panel2.Controls.Add(this.numericUpDown1);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -66,21 +64,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1460, 448);
             this.panel2.TabIndex = 47;
-            // 
-            // btn_ThemNV
-            // 
-            this.btn_ThemNV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.btn_ThemNV.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.btn_ThemNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ThemNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ThemNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
-            this.btn_ThemNV.Location = new System.Drawing.Point(1229, 94);
-            this.btn_ThemNV.Name = "btn_ThemNV";
-            this.btn_ThemNV.Size = new System.Drawing.Size(205, 27);
-            this.btn_ThemNV.TabIndex = 48;
-            this.btn_ThemNV.Text = "+Thêm nhân viên mới";
-            this.btn_ThemNV.UseVisualStyleBackColor = false;
-            this.btn_ThemNV.Click += new System.EventHandler(this.btn_ThemNV_Click);
             // 
             // numericUpDown1
             // 
@@ -242,6 +225,5 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_ThemNV;
     }
 }

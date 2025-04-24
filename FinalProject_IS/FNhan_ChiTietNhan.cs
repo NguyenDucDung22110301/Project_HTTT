@@ -74,7 +74,7 @@ namespace FinalProject_IS
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Lỗi xảy ra rồi :(((");
                 
             }
         }

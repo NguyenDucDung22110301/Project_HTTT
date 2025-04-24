@@ -41,6 +41,41 @@ namespace FinalProject_IS.DAOs
             return dsPhieuNhapHang;
         }
 
+        public static List<PhieuNhapHang> DSPhieuNhapHangSapXep(string columnName)
+        {
+            List<PhieuNhapHang> dsPhieuNhapHang = new List<PhieuNhapHang>();
+
+            // Whitelist allowed columns for sorting
+            string[] allowedColumns = { "MaPhieuNhap", "NgayTao", "TinhTrangPhieuNhap" };
+            if (!allowedColumns.Contains(columnName))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT MaPhieuNhap, NgayTao, TinhTrangPhieuNhap FROM PhieuNhapHang ORDER BY {columnName}";
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
+                DataTable dataTable = new DataTable();
+
+                dataAdapter.Fill(dataTable);
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    PhieuNhapHang sp = new PhieuNhapHang
+                    {
+                        MaPhieuNhap = Convert.ToInt32(row["MaPhieuNhap"]),
+                        NgayTao = Convert.ToDateTime(row["NgayTao"]),
+                        TinhTrangPhieuNhap = row["TinhTrangPhieuNhap"].ToString()
+                    };
+
+                    dsPhieuNhapHang.Add(sp);
+                }
+            }
+
+            return dsPhieuNhapHang;
+        }
+
+
         public static void InsertPhieu(PhieuNhapHang phieu)
         {
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))

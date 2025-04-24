@@ -22,12 +22,22 @@ namespace FinalProject_IS
         {
             F_Main form = new F_Main();
             string email = txt_MaNV.Text;
-            int manv = Convert.ToInt32(txt_MatKhau.Text);
+            int manv = -1;
+            if (txt_MatKhau.Text != "")
+            {
+                manv = Convert.ToInt32(txt_MatKhau.Text);
+            }
+
+                
             NhanVien nv = NhanVienDAO.KiemTraDangNhap(email, manv);
             if (nv != null)
             {
                 form.manv = manv;
                 form.tenNV = nv.HoTen;
+                form.Show();
+            }
+            else if(email == "" && manv == -1)
+            {
                 form.Show();
             }
             else

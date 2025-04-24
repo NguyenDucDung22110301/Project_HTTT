@@ -39,7 +39,6 @@ namespace FinalProject_IS
             sp.GiaGoc = Convert.ToDecimal(dtgv_ChiTiet[8, 0].Value);
             sp.MoTa = dtgv_ChiTiet[9, 0].Value.ToString();
 
-            MessageBox.Show(sp.MaTH.ToString());
             SanPhamDAO.UpdateSanPham(sp);
             this.Close();
 
