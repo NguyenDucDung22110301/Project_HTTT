@@ -684,8 +684,8 @@ namespace FinalProject_IS
 
                 // 4) Ghi nhận khách đã dùng mã (KhachHang_KhuyenMai)
                 const string insertSql = @"
-            INSERT INTO KhachHang_KhuyenMai (MaKH, MaKM)
-            VALUES (@MaKH, @MaKM)";
+                INSERT INTO KhachHang_KhuyenMai (MaKH, MaKM)
+                VALUES (@MaKH, @MaKM)";
                 using (var conn = new SqlConnection(DataProvider.ConnStr))
                 using (var ins = new SqlCommand(insertSql, conn))
                 {
