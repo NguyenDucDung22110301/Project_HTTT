@@ -23,5 +23,22 @@ namespace FinalProject_IS
         {
             dtgvKhachHang.DataSource = KhachHangDAO.DSKhachHang();
         }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            dtgvKhachHang.DataSource = KhachHangDAO.DSKhachHangTheoTen(rTxb_Search.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                dtgvKhachHang.DataSource = KhachHangDAO.DSKhachHangSapXep("MaKH");
+            }
+            else
+            {
+                dtgvKhachHang.DataSource = KhachHangDAO.DSKhachHangSapXep("TongChiTieu");
+            }
+        }
     }
 }
