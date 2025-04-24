@@ -99,6 +99,7 @@
             // 
             // dtgvKhachHang
             // 
+            this.dtgvKhachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvKhachHang.Location = new System.Drawing.Point(34, 127);
             this.dtgvKhachHang.Name = "dtgvKhachHang";

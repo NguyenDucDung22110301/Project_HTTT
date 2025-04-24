@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_ThemNV = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_ThemNV = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvNhanVien)).BeginInit();
@@ -66,6 +66,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1150, 448);
             this.panel2.TabIndex = 47;
+            // 
+            // btn_ThemNV
+            // 
+            this.btn_ThemNV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btn_ThemNV.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btn_ThemNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ThemNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ThemNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
+            this.btn_ThemNV.Location = new System.Drawing.Point(888, 94);
+            this.btn_ThemNV.Name = "btn_ThemNV";
+            this.btn_ThemNV.Size = new System.Drawing.Size(205, 27);
+            this.btn_ThemNV.TabIndex = 48;
+            this.btn_ThemNV.Text = "+Thêm nhân viên mới";
+            this.btn_ThemNV.UseVisualStyleBackColor = false;
+            this.btn_ThemNV.Click += new System.EventHandler(this.btn_ThemNV_Click);
             // 
             // numericUpDown1
             // 
@@ -101,6 +116,7 @@
             // 
             // dtgvNhanVien
             // 
+            this.dtgvNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvNhanVien.Location = new System.Drawing.Point(34, 127);
             this.dtgvNhanVien.Name = "dtgvNhanVien";
@@ -191,21 +207,6 @@
             this.label1.Size = new System.Drawing.Size(393, 31);
             this.label1.TabIndex = 48;
             this.label1.Text = "Phần mềm bán hàng VNBSports";
-            // 
-            // btn_ThemNV
-            // 
-            this.btn_ThemNV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.btn_ThemNV.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.btn_ThemNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ThemNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ThemNV.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
-            this.btn_ThemNV.Location = new System.Drawing.Point(888, 94);
-            this.btn_ThemNV.Name = "btn_ThemNV";
-            this.btn_ThemNV.Size = new System.Drawing.Size(205, 27);
-            this.btn_ThemNV.TabIndex = 48;
-            this.btn_ThemNV.Text = "+Thêm nhân viên mới";
-            this.btn_ThemNV.UseVisualStyleBackColor = false;
-            this.btn_ThemNV.Click += new System.EventHandler(this.btn_ThemNV_Click);
             // 
             // UC_NhanVien
             // 
