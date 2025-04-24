@@ -64,7 +64,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(16, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1150, 448);
+            this.panel2.Size = new System.Drawing.Size(1460, 448);
             this.panel2.TabIndex = 49;
             // 
             // btn_ThemPhieu
@@ -74,7 +74,7 @@
             this.btn_ThemPhieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ThemPhieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ThemPhieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(238)))), ((int)(((byte)(246)))));
-            this.btn_ThemPhieu.Location = new System.Drawing.Point(888, 94);
+            this.btn_ThemPhieu.Location = new System.Drawing.Point(1229, 94);
             this.btn_ThemPhieu.Name = "btn_ThemPhieu";
             this.btn_ThemPhieu.Size = new System.Drawing.Size(205, 27);
             this.btn_ThemPhieu.TabIndex = 47;
@@ -121,7 +121,7 @@
             this.dtgvPhieuNhan.Location = new System.Drawing.Point(34, 127);
             this.dtgvPhieuNhan.Name = "dtgvPhieuNhan";
             this.dtgvPhieuNhan.RowHeadersWidth = 51;
-            this.dtgvPhieuNhan.Size = new System.Drawing.Size(1059, 424);
+            this.dtgvPhieuNhan.Size = new System.Drawing.Size(1400, 266);
             this.dtgvPhieuNhan.TabIndex = 41;
             this.dtgvPhieuNhan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvPhieuNhan_CellContentClick);
             // 
@@ -132,7 +132,7 @@
             this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.btn_Search.Location = new System.Drawing.Point(960, 28);
+            this.btn_Search.Location = new System.Drawing.Point(1376, 19);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(57, 35);
             this.btn_Search.TabIndex = 40;
@@ -145,7 +145,7 @@
             this.rtxb_SearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.rtxb_SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtxb_SearchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            this.rtxb_SearchBox.Location = new System.Drawing.Point(424, 28);
+            this.rtxb_SearchBox.Location = new System.Drawing.Point(840, 19);
             this.rtxb_SearchBox.Name = "rtxb_SearchBox";
             this.rtxb_SearchBox.Size = new System.Drawing.Size(530, 35);
             this.rtxb_SearchBox.TabIndex = 39;
@@ -218,7 +218,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Name = "UC_PhieuNhan";
-            this.Size = new System.Drawing.Size(1182, 513);
+            this.Size = new System.Drawing.Size(1500, 625);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

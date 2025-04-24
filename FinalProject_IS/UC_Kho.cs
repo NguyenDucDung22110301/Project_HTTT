@@ -25,5 +25,28 @@ namespace FinalProject_IS
         {
             dtgvKhoSP.DataSource = SanPhamDAO.DSSanPham();
         }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(rTxb_Search.Text);
+            dtgvKhoSP.DataSource = SanPhamDAO.DSSanPhamTheoTen(rTxb_Search.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0) {
+                dtgvKhoSP.DataSource = SanPhamDAO.DSSanPhamSapXep("TenSP");  
+            }
+            else
+            {
+                dtgvKhoSP.DataSource = SanPhamDAO.DSSanPhamSapXep("GiaBan");
+            }
+        }
+
+        private void dtgvKhoSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            F_ChiTietSanPham form = new F_ChiTietSanPham(Convert.ToInt32(dtgvKhoSP[0, e.RowIndex].Value));
+            form.Show();
+        }
     }
 }

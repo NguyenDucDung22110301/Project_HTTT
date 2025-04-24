@@ -77,23 +77,33 @@ namespace FinalProject_IS
         {
             if (dtg_ChiTietDanLuoi.SelectedCells.Count > 0) // Kiểm tra có ô nào được chọn không
             {
-                int selectedRowIndex = dtg_ChiTietDanLuoi.SelectedCells[0].RowIndex; // Lấy chỉ số dòng được chọn
-                DataGridViewRow selectedRow = dtg_ChiTietDanLuoi.Rows[selectedRowIndex];
+                
+                
+                try
+                {
+                    int selectedRowIndex = dtg_ChiTietDanLuoi.SelectedCells[0].RowIndex; // Lấy chỉ số dòng được chọn
+                    DataGridViewRow selectedRow = dtg_ChiTietDanLuoi.Rows[selectedRowIndex];
 
-                // Cập nhật dữ liệu cho cột Loại Dây và Số KG
-                selectedRow.Cells["TenVot"].Value = txtTenVot.Text;  // Nhập Loại Dây
-                selectedRow.Cells["SoKg"].Value = txt_SoKG.Text;        // Nhập Số KG
-                decimal thanhTienHienTai = selectedRow.Cells["ThanhTien"].Value != null ? Convert.ToDecimal(selectedRow.Cells["ThanhTien"].Value) : 0;
-
-                decimal tienCong = !string.IsNullOrEmpty(txt_TienCong.Text)
+                    // Cập nhật dữ liệu cho cột Loại Dây và Số KG
+                    selectedRow.Cells["TenVot"].Value = txtTenVot.Text;  // Nhập Loại Dây
+                    selectedRow.Cells["SoKg"].Value = txt_SoKG.Text;        // Nhập Số KG
+                    decimal thanhTienHienTai = selectedRow.Cells["ThanhTien"].Value != null ? Convert.ToDecimal(selectedRow.Cells["ThanhTien"].Value) : 0;
+                    decimal tienCong = !string.IsNullOrEmpty(txt_TienCong.Text)
                     ? Convert.ToDecimal(txt_TienCong.Text)
                     : 0; // Nếu trống, gán mặc định là 0
 
-                // Cập nhật lại giá trị Thành Tiền
-                selectedRow.Cells["ThanhTien"].Value = thanhTienHienTai + tienCong;
+                    // Cập nhật lại giá trị Thành Tiền
+                    selectedRow.Cells["ThanhTien"].Value = thanhTienHienTai + tienCong;
+                    MessageBox.Show("Đã cập nhật chi tiết thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Vui lòng nhập số lượng!!!!");
+                }
+                
 
 
-                MessageBox.Show("Đã cập nhật chi tiết thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             else
             {

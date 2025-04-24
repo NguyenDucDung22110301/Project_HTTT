@@ -1,6 +1,6 @@
 ﻿namespace FinalProject_IS
 {
-    partial class Form1
+    partial class F_Main
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_taskBar = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_Name = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_ThemPhieuDanVot = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,7 +46,6 @@
             this.btn_PhieuNhap = new System.Windows.Forms.Button();
             this.btn_HoaDon = new System.Windows.Forms.Button();
             this.btn_DichVu = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.panel_taskBar.SuspendLayout();
             this.panel_Main.SuspendLayout();
             this.fpanel_nav.SuspendLayout();
@@ -55,7 +54,7 @@
             // panel_taskBar
             // 
             this.panel_taskBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.panel_taskBar.Controls.Add(this.button4);
+            this.panel_taskBar.Controls.Add(this.btn_Name);
             this.panel_taskBar.Controls.Add(this.button3);
             this.panel_taskBar.Controls.Add(this.btn_ThemPhieuDanVot);
             this.panel_taskBar.Controls.Add(this.button1);
@@ -65,20 +64,20 @@
             this.panel_taskBar.Size = new System.Drawing.Size(1502, 57);
             this.panel_taskBar.TabIndex = 0;
             // 
-            // button4
+            // btn_Name
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
-            this.button4.Enabled = false;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(571, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(169, 54);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Xin chào [Name]";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btn_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(141)))), ((int)(((byte)(188)))));
+            this.btn_Name.Enabled = false;
+            this.btn_Name.FlatAppearance.BorderSize = 0;
+            this.btn_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Name.ForeColor = System.Drawing.Color.White;
+            this.btn_Name.Location = new System.Drawing.Point(571, 3);
+            this.btn_Name.Name = "btn_Name";
+            this.btn_Name.Size = new System.Drawing.Size(169, 54);
+            this.btn_Name.TabIndex = 5;
+            this.btn_Name.Text = "Xin chào [Name]";
+            this.btn_Name.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
@@ -156,7 +155,6 @@
             this.fpanel_nav.Controls.Add(this.btn_PhieuNhap);
             this.fpanel_nav.Controls.Add(this.btn_HoaDon);
             this.fpanel_nav.Controls.Add(this.btn_DichVu);
-            this.fpanel_nav.Controls.Add(this.button15);
             this.fpanel_nav.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpanel_nav.Location = new System.Drawing.Point(0, 0);
             this.fpanel_nav.Name = "fpanel_nav";
@@ -294,19 +292,7 @@
             this.btn_DichVu.UseVisualStyleBackColor = true;
             this.btn_DichVu.Click += new System.EventHandler(this.btn_DichVu_Click);
             // 
-            // button15
-            // 
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(184)))));
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Location = new System.Drawing.Point(1064, 4);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(100, 68);
-            this.button15.TabIndex = 10;
-            this.button15.Text = "XXXXXX";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // Form1
+            // F_Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
@@ -317,7 +303,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "F_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -337,7 +323,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btn_ThemPhieuDanVot;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_Name;
         private System.Windows.Forms.Button btn_BanHang;
         private System.Windows.Forms.Button btn_DoanhThu;
         private System.Windows.Forms.Button btn_KhachHang;
@@ -348,7 +334,6 @@
         private System.Windows.Forms.Button btn_PhieuNhap;
         private System.Windows.Forms.Button btn_HoaDon;
         private System.Windows.Forms.Button btn_DichVu;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Panel panel_banHang;
     }
 }

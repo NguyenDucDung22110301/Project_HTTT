@@ -28,5 +28,23 @@ namespace FinalProject_IS
         {
 
         }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            dtgvNhanVien.DataSource = NhanVienDAO.DsNhanVienTheoTen(rTbx_Search.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                dtgvNhanVien.DataSource = NhanVienDAO.DSNhanVienSapXep("HoTen");
+            }
+            else
+            {
+                dtgvNhanVien.DataSource = NhanVienDAO.DSNhanVienSapXep("LuongCoBan");
+            }
+        }
     }
+    
 }

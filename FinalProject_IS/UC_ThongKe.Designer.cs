@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnLoiNhuan = new System.Windows.Forms.Button();
@@ -67,12 +67,12 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(16, 52);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1150, 448);
+            this.panel1.Size = new System.Drawing.Size(1460, 448);
             this.panel1.TabIndex = 10;
             // 
             // btnDoanhThu
             // 
-            this.btnDoanhThu.Location = new System.Drawing.Point(1003, 27);
+            this.btnDoanhThu.Location = new System.Drawing.Point(1315, 27);
             this.btnDoanhThu.Name = "btnDoanhThu";
             this.btnDoanhThu.Size = new System.Drawing.Size(103, 41);
             this.btnDoanhThu.TabIndex = 24;
@@ -82,7 +82,7 @@
             // 
             // btnLoiNhuan
             // 
-            this.btnLoiNhuan.Location = new System.Drawing.Point(882, 27);
+            this.btnLoiNhuan.Location = new System.Drawing.Point(1206, 27);
             this.btnLoiNhuan.Name = "btnLoiNhuan";
             this.btnLoiNhuan.Size = new System.Drawing.Size(103, 41);
             this.btnLoiNhuan.TabIndex = 23;
@@ -123,14 +123,14 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(19, 360);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1087, 329);
+            this.panel2.Size = new System.Drawing.Size(1399, 329);
             this.panel2.TabIndex = 20;
             // 
             // dtpYear
             // 
             this.dtpYear.CustomFormat = "yyyy";
             this.dtpYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpYear.Location = new System.Drawing.Point(804, 42);
+            this.dtpYear.Location = new System.Drawing.Point(1156, 45);
             this.dtpYear.Name = "dtpYear";
             this.dtpYear.Size = new System.Drawing.Size(200, 22);
             this.dtpYear.TabIndex = 42;
@@ -151,7 +151,7 @@
             this.lbThongKeNam.AutoSize = true;
             this.lbThongKeNam.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbThongKeNam.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbThongKeNam.Location = new System.Drawing.Point(583, 36);
+            this.lbThongKeNam.Location = new System.Drawing.Point(935, 39);
             this.lbThongKeNam.Margin = new System.Windows.Forms.Padding(0);
             this.lbThongKeNam.Name = "lbThongKeNam";
             this.lbThongKeNam.Size = new System.Drawing.Size(196, 31);
@@ -170,16 +170,16 @@
             // chartDoanhThu
             // 
             this.chartDoanhThu.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend1);
+            chartArea11.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend11);
             this.chartDoanhThu.Location = new System.Drawing.Point(21, 109);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series1);
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series11);
             this.chartDoanhThu.Size = new System.Drawing.Size(1011, 300);
             this.chartDoanhThu.TabIndex = 38;
             this.chartDoanhThu.Text = "chart1";
@@ -202,7 +202,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1066, 24);
+            this.panel3.Size = new System.Drawing.Size(1378, 24);
             this.panel3.TabIndex = 35;
             // 
             // dtgvTopSales
@@ -213,7 +213,7 @@
             this.dtgvTopSales.Location = new System.Drawing.Point(19, 74);
             this.dtgvTopSales.Name = "dtgvTopSales";
             this.dtgvTopSales.RowHeadersWidth = 51;
-            this.dtgvTopSales.Size = new System.Drawing.Size(1087, 266);
+            this.dtgvTopSales.Size = new System.Drawing.Size(1400, 266);
             this.dtgvTopSales.TabIndex = 19;
             // 
             // label5
@@ -242,7 +242,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Name = "UC_ThongKe";
-            this.Size = new System.Drawing.Size(1182, 513);
+            this.Size = new System.Drawing.Size(1500, 625);
             this.Load += new System.EventHandler(this.UC_ThongKe_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

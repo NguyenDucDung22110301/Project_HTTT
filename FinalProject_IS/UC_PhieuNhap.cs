@@ -35,7 +35,7 @@ namespace FinalProject_IS
         private void btn_ThemPhieu_Click(object sender, EventArgs e)
         {
             int ID = PhieuNhapHangDAO.GetNewPhieuNhapID();
-            Form2 phieu = new Form2(ID);
+            FNhap_ChiTietNhapHang phieu = new FNhap_ChiTietNhapHang(ID);
             phieu.Show();
         }
 

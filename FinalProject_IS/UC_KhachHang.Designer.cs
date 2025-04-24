@@ -33,8 +33,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dtgvKhachHang = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.rTxb_Search = new System.Windows.Forms.RichTextBox();
             this.button21 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -58,15 +58,15 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.dtgvKhachHang);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.richTextBox8);
+            this.panel2.Controls.Add(this.btn_Search);
+            this.panel2.Controls.Add(this.rTxb_Search);
             this.panel2.Controls.Add(this.button21);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(16, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1150, 448);
+            this.panel2.Size = new System.Drawing.Size(1460, 448);
             this.panel2.TabIndex = 47;
             // 
             // numericUpDown1
@@ -108,33 +108,34 @@
             this.dtgvKhachHang.Location = new System.Drawing.Point(34, 127);
             this.dtgvKhachHang.Name = "dtgvKhachHang";
             this.dtgvKhachHang.RowHeadersWidth = 51;
-            this.dtgvKhachHang.Size = new System.Drawing.Size(1059, 424);
+            this.dtgvKhachHang.Size = new System.Drawing.Size(1400, 266);
             this.dtgvKhachHang.TabIndex = 41;
             // 
-            // button1
+            // btn_Search
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
-            this.button1.Location = new System.Drawing.Point(960, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 35);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "⌕";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.btn_Search.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(161)))), ((int)(((byte)(203)))));
+            this.btn_Search.Location = new System.Drawing.Point(1377, 21);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(57, 35);
+            this.btn_Search.TabIndex = 40;
+            this.btn_Search.Text = "⌕";
+            this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // richTextBox8
+            // rTxb_Search
             // 
-            this.richTextBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.richTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
-            this.richTextBox8.Location = new System.Drawing.Point(424, 28);
-            this.richTextBox8.Name = "richTextBox8";
-            this.richTextBox8.Size = new System.Drawing.Size(530, 35);
-            this.richTextBox8.TabIndex = 39;
-            this.richTextBox8.Text = "Nhập số điện thoại, id khách hàng";
+            this.rTxb_Search.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.rTxb_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rTxb_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(201)))), ((int)(((byte)(201)))));
+            this.rTxb_Search.Location = new System.Drawing.Point(841, 21);
+            this.rTxb_Search.Name = "rTxb_Search";
+            this.rTxb_Search.Size = new System.Drawing.Size(530, 35);
+            this.rTxb_Search.TabIndex = 39;
+            this.rTxb_Search.Text = "Nhập số điện thoại, id khách hàng";
             // 
             // button21
             // 
@@ -158,13 +159,14 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Lọc theo tên",
-            "Lọc theo giá"});
+            "Lọc theo mã khách hàng",
+            "Lọc theo tổng chi tiêu"});
             this.comboBox1.Location = new System.Drawing.Point(29, 28);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(177, 26);
             this.comboBox1.TabIndex = 22;
-            this.comboBox1.Text = "Lọc theo số điện thoại";
+            this.comboBox1.Text = "Lọc theo mã khách hàng";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -211,7 +213,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label1);
             this.Name = "UC_KhachHang";
-            this.Size = new System.Drawing.Size(1182, 513);
+            this.Size = new System.Drawing.Size(1500, 625);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -228,8 +230,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dtgvKhachHang;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox8;
+        private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.RichTextBox rTxb_Search;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label14;

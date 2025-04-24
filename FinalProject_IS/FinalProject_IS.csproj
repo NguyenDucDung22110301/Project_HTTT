@@ -68,11 +68,17 @@
     <Compile Include="ChiTiet_HoaDonDichVu.cs">
       <DependentUpon>ShopBadmintonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form4.cs">
+    <Compile Include="F_ChiTietSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form4.Designer.cs">
-      <DependentUpon>Form4.cs</DependentUpon>
+    <Compile Include="F_ChiTietSanPham.Designer.cs">
+      <DependentUpon>F_ChiTietSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_ThemKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_ThemKhuyenMai.Designer.cs">
+      <DependentUpon>F_ThemKhuyenMai.cs</DependentUpon>
     </Compile>
     <Compile Include="Form5.cs">
       <SubType>Form</SubType>
@@ -114,23 +120,23 @@
     <Compile Include="DAOs\KhachHangDAO.cs" />
     <Compile Include="DAOs\SanPhamDAO.cs" />
     <Compile Include="DAOs\ThuongHieuDAO.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="F_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="F_Main.Designer.cs">
+      <DependentUpon>F_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="FNhap_ChiTietNhapHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="FNhap_ChiTietNhapHang.Designer.cs">
+      <DependentUpon>FNhap_ChiTietNhapHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
+    <Compile Include="FNhan_ChiTietNhan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="FNhan_ChiTietNhan.Designer.cs">
+      <DependentUpon>FNhan_ChiTietNhan.cs</DependentUpon>
     </Compile>
     <Compile Include="FormChonKhuyenMai.cs">
       <SubType>Form</SubType>
@@ -263,8 +269,11 @@
     <Compile Include="UC_PhieuNhap.Designer.cs">
       <DependentUpon>UC_PhieuNhap.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form4.resx">
-      <DependentUpon>Form4.cs</DependentUpon>
+    <EmbeddedResource Include="F_ChiTietSanPham.resx">
+      <DependentUpon>F_ChiTietSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_ThemKhuyenMai.resx">
+      <DependentUpon>F_ThemKhuyenMai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
@@ -278,14 +287,14 @@
     <EmbeddedResource Include="F_ChiTietPhieuNhap.resx">
       <DependentUpon>F_ChiTietPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="F_Main.resx">
+      <DependentUpon>F_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="FNhap_ChiTietNhapHang.resx">
+      <DependentUpon>FNhap_ChiTietNhapHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <EmbeddedResource Include="FNhan_ChiTietNhan.resx">
+      <DependentUpon>FNhan_ChiTietNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChonKhuyenMai.resx">
       <DependentUpon>FormChonKhuyenMai.cs</DependentUpon>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalProject_IS.DAOs;
 
 namespace FinalProject_IS
 {
@@ -19,8 +20,20 @@ namespace FinalProject_IS
 
         private void btn_XacNhan_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
-            form.Show();
+            F_Main form = new F_Main();
+            string email = txt_MaNV.Text;
+            int manv = Convert.ToInt32(txt_MatKhau.Text);
+            NhanVien nv = NhanVienDAO.KiemTraDangNhap(email, manv);
+            if (nv != null)
+            {
+                form.manv = manv;
+                form.tenNV = nv.HoTen;
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("Đăng nhập không thành công");
+            }
         }
     }
 }

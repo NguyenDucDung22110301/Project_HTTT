@@ -40,6 +40,83 @@ namespace FinalProject_IS.DAOs
 
             return dsKhachHang;
         }
+
+        public static List<KhachHang> DSKhachHangTheoTen(string name)
+        {
+            List<KhachHang> dsKhachHang = new List<KhachHang>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM KhachHang WHERE HoTen LIKE @name";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", "%" + name + "%");
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            KhachHang kh = new KhachHang
+                            {
+                                MaKH = Convert.ToInt32(row["MaKH"]),
+                                HoTen = row["HoTen"].ToString(),
+                                SoDienThoai = row["SoDienThoai"].ToString(),
+                                TongChiTieu = Convert.ToDecimal(row["TongChiTieu"]),
+                                MaLoaiKH = Convert.ToInt32(row["MaLoaiKH"]),
+                            };
+                            dsKhachHang.Add(kh);
+                        }
+                    }
+                }
+            }
+
+            return dsKhachHang;
+        }
+
+        public static List<KhachHang> DSKhachHangSapXep(string name)
+        {
+            List<KhachHang> dsKhachHang = new List<KhachHang>();
+
+            // Whitelist allowed columns to sort by
+            string[] allowedColumns = { "MaKH", "HoTen", "SoDienThoai", "TongChiTieu", "MaLoaiKH" };
+            if (!allowedColumns.Contains(name))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT * FROM KhachHang ORDER BY {name}"; // safe because name is validated
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            KhachHang kh = new KhachHang
+                            {
+                                MaKH = Convert.ToInt32(row["MaKH"]),
+                                HoTen = row["HoTen"].ToString(),
+                                SoDienThoai = row["SoDienThoai"].ToString(),
+                                TongChiTieu = Convert.ToDecimal(row["TongChiTieu"]),
+                                MaLoaiKH = Convert.ToInt32(row["MaLoaiKH"])
+                            };
+                            dsKhachHang.Add(kh);
+                        }
+                    }
+                }
+            }
+
+            return dsKhachHang;
+        }
+
+
         public static KhachHang TimKiemKhachHangTheoSDT(string soDienThoai)
         {
             KhachHang khachHang = null;

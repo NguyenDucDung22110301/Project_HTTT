@@ -13,10 +13,14 @@ namespace FinalProject_IS
 {
     public partial class UC_KhuyenMai : UserControl
     {
+        private bool isAscending = true;
         public UC_KhuyenMai()
         {
             InitializeComponent();
             LoadDSKhuyenMai();
+            cbLoc.Items.Add("Tên chương trình");
+            cbLoc.Items.Add("Mã khuyến mãi");
+            cbLoc.SelectedIndex = 0;
         }
 
         public void LoadDSKhuyenMai()
@@ -26,7 +30,7 @@ namespace FinalProject_IS
 
         private void btnThem_KM_Click(object sender, EventArgs e)
         {
-            Form4 form = new Form4();
+            F_ThemKhuyenMai form = new F_ThemKhuyenMai();
             form.Show();
 
         }
@@ -80,6 +84,22 @@ namespace FinalProject_IS
                     }
                 }
             }
+        }
+
+        private void btnSapXep_Click(object sender, EventArgs e)
+        {
+            string tieuChi = cbLoc.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(tieuChi))
+            {
+                MessageBox.Show("Vui lòng chọn tiêu chí sắp xếp trong ComboBox.");
+                return;
+            }
+
+            List<KhuyenMai> danhSach = KhuyenMaiDAO.SapXepKhuyenMai(tieuChi, isAscending);
+
+            dtgvKhuyenMai.DataSource = danhSach;
+
+            isAscending = !isAscending;
         }
     }
 }

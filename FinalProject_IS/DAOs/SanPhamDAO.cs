@@ -18,7 +18,7 @@ namespace FinalProject_IS.DAOs
 
             using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
             {
-                string query = "SELECT TOP 100 * FROM SanPham";
+                string query = "SELECT * FROM SanPham";
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
@@ -34,6 +34,7 @@ namespace FinalProject_IS.DAOs
                         LoaiSP = row["LoaiSP"].ToString(),
                         GiaBan = Convert.ToDecimal(row["GiaBan"]),
                         SoLuongTon = Convert.ToInt32(row["SoLuongTon"]),
+                        MaTH = Convert.ToInt32(row["SoLuongTon"]),
                         NgayNhapKho = Convert.ToDateTime(row["NgayNhapKho"]),
                         ThoiGianBaoHanh = row["ThoiGianBaoHanh"] != DBNull.Value ? Convert.ToInt32(row["ThoiGianBaoHanh"]) : (int?)null,
                         GiaGoc = Convert.ToDecimal(row["GiaGoc"]),
@@ -45,6 +46,136 @@ namespace FinalProject_IS.DAOs
 
             return dsSanPham;
         }
+
+
+
+        public static List<SanPham> DSSanPhamTheoTen(string name)
+        {
+            List<SanPham> dsSanPham = new List<SanPham>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM SanPham WHERE TenSP like @name";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", "%" + name + "%");
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            SanPham sp = new SanPham
+                            {
+                                MaSP = Convert.ToInt32(row["MaSP"]),
+                                TenSP = row["TenSP"].ToString(),
+                                LoaiSP = row["LoaiSP"].ToString(),
+                                MaTH = Convert.ToInt32(row["SoLuongTon"]),
+                                GiaBan = Convert.ToDecimal(row["GiaBan"]),
+                                SoLuongTon = Convert.ToInt32(row["SoLuongTon"]),
+                                NgayNhapKho = Convert.ToDateTime(row["NgayNhapKho"]),
+                                ThoiGianBaoHanh = row["ThoiGianBaoHanh"] != DBNull.Value ? Convert.ToInt32(row["ThoiGianBaoHanh"]) : (int?)null,
+                                GiaGoc = Convert.ToDecimal(row["GiaGoc"]),
+                                MoTa = row["MoTa"].ToString()
+                            };
+                            dsSanPham.Add(sp);
+                        }
+                    }
+                }
+            }
+
+            return dsSanPham;
+        }
+
+        public static List<SanPham> DSSanPhamTheoID(int id)
+        {
+            List<SanPham> dsSanPham = new List<SanPham>();
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = "SELECT * FROM SanPham WHERE MaSP = @id;";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            SanPham sp = new SanPham
+                            {
+                                MaSP = Convert.ToInt32(row["MaSP"]),
+                                TenSP = row["TenSP"].ToString(),
+                                LoaiSP = row["LoaiSP"].ToString(),
+                                GiaBan = Convert.ToDecimal(row["GiaBan"]),
+                                MaTH = Convert.ToInt32(row["SoLuongTon"]),
+                                SoLuongTon = Convert.ToInt32(row["SoLuongTon"]),
+                                NgayNhapKho = Convert.ToDateTime(row["NgayNhapKho"]),
+                                ThoiGianBaoHanh = row["ThoiGianBaoHanh"] != DBNull.Value ? Convert.ToInt32(row["ThoiGianBaoHanh"]) : (int?)null,
+                                GiaGoc = Convert.ToDecimal(row["GiaGoc"]),
+                                MoTa = row["MoTa"].ToString()
+                            };
+                            dsSanPham.Add(sp);
+                        }
+                    }
+                }
+            }
+
+            return dsSanPham;
+        }
+
+        public static List<SanPham> DSSanPhamSapXep(string name)
+        {
+            List<SanPham> dsSanPham = new List<SanPham>();
+
+            // Whitelist allowed column names
+            string[] allowedColumns = { "MaSP", "TenSP", "LoaiSP", "GiaBan", "SoLuongTon", "NgayNhapKho", "ThoiGianBaoHanh", "GiaGoc" };
+            if (!allowedColumns.Contains(name))
+                throw new ArgumentException("Invalid column name");
+
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = $"SELECT * FROM SanPham ORDER BY {name}"; // safe because validated
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
+
+                        foreach (DataRow row in dataTable.Rows)
+                        {
+                            SanPham sp = new SanPham
+                            {
+                                MaSP = Convert.ToInt32(row["MaSP"]),
+                                TenSP = row["TenSP"].ToString(),
+                                LoaiSP = row["LoaiSP"].ToString(),
+                                GiaBan = Convert.ToDecimal(row["GiaBan"]),
+                                SoLuongTon = Convert.ToInt32(row["SoLuongTon"]),
+                                MaTH = Convert.ToInt32(row["SoLuongTon"]),
+                                NgayNhapKho = Convert.ToDateTime(row["NgayNhapKho"]),
+                                ThoiGianBaoHanh = row["ThoiGianBaoHanh"] != DBNull.Value ? Convert.ToInt32(row["ThoiGianBaoHanh"]) : (int?)null,
+                                GiaGoc = Convert.ToDecimal(row["GiaGoc"]),
+                                MoTa = row["MoTa"].ToString()
+                            };
+                            dsSanPham.Add(sp);
+                        }
+                    }
+                }
+            }
+
+            return dsSanPham;
+        }
+
+
 
         public static int GetNewProductID()
         {
@@ -173,5 +304,42 @@ namespace FinalProject_IS.DAOs
                 }
             }
         }
+
+        public static void UpdateSanPham(SanPham sp)
+        {
+            using (SqlConnection conn = new SqlConnection(DataProvider.ConnStr))
+            {
+                string query = @"
+                    UPDATE SanPham SET
+                        TenSP = @TenSP,
+                        LoaiSP = @LoaiSP,
+                        GiaBan = @GiaBan,
+                        SoLuongTon = @SoLuongTon,
+                        NgayNhapKho = @NgayNhapKho,
+                        ThoiGianBaoHanh = @ThoiGianBaoHanh,
+                        GiaGoc = @GiaGoc,
+                        MoTa = @MoTa
+                    WHERE MaSP = @MaSP";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TenSP", sp.TenSP);
+                    cmd.Parameters.AddWithValue("@LoaiSP", sp.LoaiSP);
+                    cmd.Parameters.AddWithValue("@GiaBan", sp.GiaBan);
+                    cmd.Parameters.AddWithValue("@SoLuongTon", sp.SoLuongTon);
+                    cmd.Parameters.AddWithValue("@NgayNhapKho", sp.NgayNhapKho);
+                    cmd.Parameters.AddWithValue("@ThoiGianBaoHanh", sp.ThoiGianBaoHanh); // int, not nullable
+                    cmd.Parameters.AddWithValue("@MaTH", sp.MaTH);
+                    cmd.Parameters.AddWithValue("@GiaGoc", sp.GiaGoc);
+                    cmd.Parameters.AddWithValue("@MoTa", sp.MoTa);
+                    cmd.Parameters.AddWithValue("@MaSP", sp.MaSP);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
     }
 }

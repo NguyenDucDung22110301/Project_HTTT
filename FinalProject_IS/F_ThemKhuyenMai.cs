@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace FinalProject_IS
 {
-    public partial class Form4 : Form
+    public partial class F_ThemKhuyenMai : Form
     {
-        public Form4()
+        public F_ThemKhuyenMai()
         {
             InitializeComponent();
         }

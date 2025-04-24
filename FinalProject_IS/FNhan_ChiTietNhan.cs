@@ -11,10 +11,10 @@ using FinalProject_IS.DAOs;
 
 namespace FinalProject_IS
 {
-    public partial class Form3 : Form
+    public partial class FNhan_ChiTietNhan : Form
     {
         private int maphieu;
-        public Form3(int maphieu)
+        public FNhan_ChiTietNhan(int maphieu)
         {
             InitializeComponent();
             this.maphieu = maphieu;
